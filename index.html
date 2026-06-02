@@ -851,7 +851,289 @@
     letter-spacing: 1px;
   }
 
-  /* ── DIVIDER BANDERA ── */
+  /* ── GRILLA DE PILOTOS ── */
+  .argentinos {
+    padding: 100px 48px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .argentinos-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 56px;
+    gap: 40px;
+  }
+
+  .argentinos-header p {
+    font-size: 15px;
+    color: var(--texto-muted);
+    max-width: 420px;
+    line-height: 1.7;
+  }
+
+  .drivers-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+  }
+
+  .driver-card {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 3/4;
+    background: var(--gris);
+    cursor: default;
+  }
+
+  .driver-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+    filter: grayscale(20%) contrast(1.05);
+    transition: transform 0.5s ease, filter 0.4s ease;
+  }
+
+  .driver-card:hover img {
+    transform: scale(1.04);
+    filter: grayscale(0%) contrast(1.1);
+  }
+
+  .driver-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 40%, rgba(10,10,10,0.95) 85%);
+    transition: opacity 0.3s;
+  }
+
+  .driver-card-body {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 24px 20px;
+  }
+
+  .driver-kicker {
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--celeste);
+    margin-bottom: 6px;
+  }
+
+  .driver-card h3 {
+    font-family: var(--font-display);
+    font-size: 28px;
+    letter-spacing: 2px;
+    color: var(--blanco);
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+
+  .driver-card p {
+    font-size: 13px;
+    color: rgba(245,240,232,0.6);
+    line-height: 1.5;
+    max-width: 220px;
+  }
+
+  .driver-card-accent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--celeste) 33.3%, var(--blanco) 33.3%, var(--blanco) 66.6%, var(--celeste) 66.6%);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .driver-card:hover .driver-card-accent { opacity: 1; }
+
+  .driver-fallback {
+    width: 100%;
+    height: 100%;
+    background: var(--gris-medio);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 40px;
+    letter-spacing: 3px;
+    color: rgba(116,172,223,0.15);
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  /* ── TOMO 01 DETALLE ── */
+  .tomo-detalle {
+    padding: 100px 48px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .tomo-detalle-cover {
+    background: var(--gris);
+    border: 1px solid rgba(200,169,81,0.25);
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .tomo-detalle-cover-stripe {
+    height: 5px;
+    background: linear-gradient(90deg, var(--celeste) 33.3%, var(--blanco) 33.3%, var(--blanco) 66.6%, var(--celeste) 66.6%);
+  }
+
+  .tomo-detalle-cover-head {
+    background: var(--celeste);
+    padding: 20px 28px 18px;
+  }
+
+  .tomo-detalle-cover-head span {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(10,10,10,0.55);
+    margin-bottom: 4px;
+  }
+
+  .tomo-detalle-cover-head strong {
+    font-family: var(--font-display);
+    font-size: 38px;
+    letter-spacing: 3px;
+    color: var(--negro);
+    line-height: 1;
+  }
+
+  .tomo-detalle-cover-body {
+    padding: 28px 28px 24px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .tomo-detalle-cover-body h3 {
+    font-family: var(--font-display);
+    font-size: 28px;
+    letter-spacing: 2px;
+    color: var(--blanco);
+    line-height: 1.05;
+    margin-bottom: 12px;
+  }
+
+  .tomo-detalle-cover-body p {
+    font-size: 13px;
+    color: var(--texto-muted);
+    line-height: 1.7;
+  }
+
+  .tomo-detalle-cover-footer {
+    padding: 14px 28px;
+    background: rgba(0,0,0,0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(200,169,81,0.15);
+  }
+
+  .tomo-detalle-cover-footer span {
+    font-family: var(--font-display);
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--dorado);
+  }
+
+  .tomo-detalle-cover-badge {
+    background: var(--celeste);
+    color: var(--negro);
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 5px 12px;
+  }
+
+  .tomo-detalle-right { }
+
+  .tomo-detalle-right h2 {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 4.5vw, 56px);
+    letter-spacing: 2px;
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+
+  .tomo-detalle-right .subtitulo-serif {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 20px;
+    color: var(--celeste);
+    margin-bottom: 36px;
+    line-height: 1.3;
+  }
+
+  .chapters {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 40px;
+  }
+
+  .chapter {
+    display: grid;
+    grid-template-columns: 48px 1fr auto;
+    align-items: center;
+    gap: 20px;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    transition: background 0.2s;
+  }
+
+  .chapter:first-child { border-top: 1px solid rgba(255,255,255,0.06); }
+
+  .chapter-num {
+    font-family: var(--font-display);
+    font-size: 28px;
+    color: rgba(200,169,81,0.25);
+    letter-spacing: 1px;
+    line-height: 1;
+  }
+
+  .chapter strong {
+    font-size: 14px;
+    color: var(--blanco);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+
+  .chapter-tag {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--celeste);
+    white-space: nowrap;
+    opacity: 0.7;
+  }
+
+  /* ── RESPONSIVE AÑADIDOS ── */
+  @media (max-width: 900px) {
+    .argentinos { padding: 60px 24px; }
+    .argentinos-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .drivers-grid { grid-template-columns: 1fr 1fr; }
+    .tomo-detalle { grid-template-columns: 1fr; gap: 40px; padding: 60px 24px; }
+  }
+
+  @media (max-width: 500px) {
+    .drivers-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+
   .divider-bandera {
     height: 2px;
     background: linear-gradient(90deg, transparent, var(--celeste) 30%, var(--blanco) 50%, var(--celeste) 70%, transparent);
@@ -899,6 +1181,7 @@
   <a href="#" class="nav-logo">PCA<span>.</span></a>
   <ul class="nav-links">
     <li><a href="#tomos">Tomos</a></li>
+    <li><a href="#argentinos">Argentinos</a></li>
     <li><a href="#proyecto">El proyecto</a></li>
     <li><a href="#newsletter">Newsletter</a></li>
   </ul>
@@ -979,6 +1262,138 @@
 
 <div class="divider-bandera"></div>
 
+<!-- GRILLA DE PILOTOS ARGENTINOS -->
+<section class="argentinos" id="argentinos">
+  <div class="argentinos-header">
+    <div>
+      <p class="section-label">Archivo argentino</p>
+      <h2 class="section-titulo">LOS NOMBRES<br>QUE ENCIENDEN<br>LA GRILLA.</h2>
+    </div>
+    <p>Esta sección le da cuerpo argentino a la página: no solo símbolos, sino personas, memoria y continuidad entre generaciones.</p>
+  </div>
+
+  <div class="drivers-grid">
+
+    <article class="driver-card">
+      <div class="driver-card-accent"></div>
+      <img
+        src="https://commons.wikimedia.org/wiki/Special:FilePath/Fangio-MB-W196-3lMotor-1986.jpg?width=800"
+        alt="Juan Manuel Fangio en un Mercedes-Benz W196"
+        onerror="this.style.display='none'; this.parentElement.querySelector('.driver-fallback').style.display='flex';"
+      />
+      <div class="driver-fallback" style="display:none;">FANGIO</div>
+      <div class="driver-card-overlay"></div>
+      <div class="driver-card-body">
+        <p class="driver-kicker">Cinco veces campeón mundial</p>
+        <h3>Juan Manuel<br>Fangio</h3>
+        <p>La vara histórica de la Fórmula 1 argentina. El punto de partida inevitable.</p>
+      </div>
+    </article>
+
+    <article class="driver-card">
+      <div class="driver-card-accent"></div>
+      <img
+        src="https://commons.wikimedia.org/wiki/Special:FilePath/Carlos%20Reutemann%20Walkins%20Glen%20Ferrari%201978.jpg?width=800"
+        alt="Carlos Reutemann manejando una Ferrari de Fórmula 1 en 1978"
+        onerror="this.style.display='none'; this.parentElement.querySelector('.driver-fallback').style.display='flex';"
+      />
+      <div class="driver-fallback" style="display:none;">LOLE</div>
+      <div class="driver-card-overlay"></div>
+      <div class="driver-card-body">
+        <p class="driver-kicker">Lole · Ferrari · Williams</p>
+        <h3>Carlos<br>Reutemann</h3>
+        <p>La elegancia competitiva que marcó a una generación de fanáticos argentinos.</p>
+      </div>
+    </article>
+
+    <article class="driver-card">
+      <div class="driver-card-accent"></div>
+      <img
+        src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Franco_Colapinto_Road_Show_Argentina_Banderita_26_Abril_2026.jpg"
+        alt="Franco Colapinto en el Road Show Argentina"
+        onerror="this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Franco%20Colapinto%20Mercedes-Benz%20W196%20en%20el%20Road%20Show%20Argentina%2026%20Abril%202026.jpg?width=800';"
+      />
+      <div class="driver-card-overlay"></div>
+      <div class="driver-card-body">
+        <p class="driver-kicker">Nueva generación · Alpine 2026</p>
+        <h3>Franco<br>Colapinto</h3>
+        <p>El nombre que volvió a poner a una nueva audiencia argentina frente a la pantalla.</p>
+      </div>
+    </article>
+
+    <article class="driver-card">
+      <div class="driver-card-accent"></div>
+      <img
+        src="https://commons.wikimedia.org/wiki/Special:FilePath/Oscar%20Alfredo%20G%C3%A1lvez%20-%20El%20Gr%C3%A1fico%201483.jpg?width=800"
+        alt="Oscar Alfredo Gálvez"
+        onerror="this.style.display='none'; this.parentElement.querySelector('.driver-fallback').style.display='flex';"
+      />
+      <div class="driver-fallback" style="display:none;">GÁLVEZ</div>
+      <div class="driver-card-overlay"></div>
+      <div class="driver-card-body">
+        <p class="driver-kicker">Pionero argentino</p>
+        <h3>Oscar<br>Gálvez</h3>
+        <p>Una raíz nacional que demuestra que la relación argentina con la velocidad viene de lejos.</p>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<div class="divider-bandera"></div>
+
+<!-- TOMO 01 DETALLE -->
+<section class="tomo-detalle" id="tomo01">
+  <div class="tomo-detalle-cover">
+    <div class="tomo-detalle-cover-stripe"></div>
+    <div class="tomo-detalle-cover-head">
+      <span>Proyecto Combustión Argentina · Tomo 01 · 2026</span>
+      <strong>PCA</strong>
+    </div>
+    <div class="tomo-detalle-cover-body">
+      <h3>El Gran Circo<br>vuelve a casa</h3>
+      <p>Franco Colapinto en Alpine, MotoGP 2027 en Buenos Aires y la pregunta que todo el país se hace: ¿cuándo vuelve la F1 a Argentina?</p>
+    </div>
+    <div class="tomo-detalle-cover-footer">
+      <span>Edición especial · F1 &amp; Motor</span>
+      <span class="tomo-detalle-cover-badge">Disponible</span>
+    </div>
+  </div>
+
+  <div class="tomo-detalle-right">
+    <p class="section-label">Dentro del Tomo 01</p>
+    <h2>Una edición con<br>pulso de largada.</h2>
+    <p class="subtitulo-serif">Cuatro capítulos. Una sola pregunta que el país se hace.</p>
+
+    <div class="chapters">
+      <div class="chapter">
+        <span class="chapter-num">01</span>
+        <strong>Franco Colapinto y la nueva ansiedad argentina</strong>
+        <span class="chapter-tag">Portada</span>
+      </div>
+      <div class="chapter">
+        <span class="chapter-num">02</span>
+        <strong>Fangio, Reutemann y la memoria de la máxima</strong>
+        <span class="chapter-tag">Archivo</span>
+      </div>
+      <div class="chapter">
+        <span class="chapter-num">03</span>
+        <strong>Qué tendría que pasar para que vuelva la F1</strong>
+        <span class="chapter-tag">Análisis</span>
+      </div>
+      <div class="chapter">
+        <span class="chapter-num">04</span>
+        <strong>La tribuna argentina en el paddock global</strong>
+        <span class="chapter-tag">Opinión</span>
+      </div>
+    </div>
+
+    <a href="C:\Users\Usuario\OneDrive\Documentos\CombustiónArgentina\Tomos\Combustión Argentina_vol.html" class="btn-primario" style="display:inline-block;">Leer el Tomo 01 →</a>
+  </div>
+</section>
+
+<div class="divider-bandera"></div>
+
 <!-- CATÁLOGO DE TOMOS -->
 <section class="catalogo" id="tomos">
   <div class="section-header">
@@ -997,7 +1412,7 @@
         <p class="tomo-card-num">Tomo 01 · 2026 · Edición Especial</p>
         <h3 class="tomo-card-titulo">El Gran Circo vuelve a casa</h3>
         <p class="tomo-card-desc">Franco Colapinto en Alpine, MotoGP 2027 en Buenos Aires y la pregunta que todo el país se hace: ¿cuándo vuelve la F1 a Argentina? El primer tomo de Combustión Argentina.</p>
-        <a href="Tomos/Combustion_Argentina_vol-1.html" class="tomo-card-btn">Leer ahora →</a>
+        <a href="C:\Users\Usuario\OneDrive\Documentos\CombustiónArgentina\Tomos\Combustión Argentina_vol.html" class="tomo-card-btn">Leer ahora →</a>
       </div>
     </div>
     <div class="tomo-card">
