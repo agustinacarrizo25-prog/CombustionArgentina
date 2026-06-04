@@ -104,8 +104,8 @@
   /* ── HERO ── */
   .hero {
     min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    align-items: stretch;
     padding-top: 80px;
     position: relative;
     overflow: hidden;
@@ -117,8 +117,8 @@
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(90deg, rgba(10,10,10,0.94) 0%, rgba(10,10,10,0.82) 38%, rgba(10,10,10,0.48) 68%, rgba(10,10,10,0.7) 100%),
-      linear-gradient(180deg, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.88) 100%);
+      linear-gradient(90deg, rgba(10,10,10,0.94) 0%, rgba(10,10,10,0.76) 36%, rgba(10,10,10,0.22) 68%, rgba(10,10,10,0.44) 100%),
+      linear-gradient(180deg, rgba(10,10,10,0.2) 0%, rgba(10,10,10,0.74) 100%);
     pointer-events: none;
   }
 
@@ -146,6 +146,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    width: min(620px, 100%);
     padding: 80px 64px 80px 48px;
     position: relative;
     z-index: 1;
@@ -231,157 +232,84 @@
 
   .btn-secundario:hover { color: var(--blanco); border-color: var(--blanco); }
 
-  .hero-right {
-    display: flex;
+  .tomo-hero-strip {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
     align-items: center;
-    justify-content: center;
-    padding: 80px 48px;
+    gap: 28px;
+    padding: 22px 48px;
+    background: #0d0d0d;
+    border-top: 3px solid var(--dorado);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    position: relative;
+    z-index: 2;
+  }
+
+  .tomo-hero-strip::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(116,172,223,0.07), transparent 34%, rgba(200,169,81,0.08));
+    pointer-events: none;
+  }
+
+  .tomo-strip-edicion,
+  .tomo-strip-titulo,
+  .tomo-strip-btn {
     position: relative;
     z-index: 1;
   }
 
-  /* Mockup de tomo */
-  .tomo-mockup {
-    position: relative;
-    width: 320px;
-    height: 430px;
-    animation: float 4s ease-in-out infinite;
+  .tomo-strip-edicion {
+    min-width: 168px;
+    padding-right: 28px;
+    border-right: 1px solid rgba(255,255,255,0.16);
   }
 
-  @keyframes float {
-    0%, 100% { transform: translateY(0px) rotate(-2deg); }
-    50%       { transform: translateY(-14px) rotate(-1deg); }
-  }
-
-  .tomo-cover {
-    width: 100%;
-    height: 100%;
-    background: var(--gris);
-    border: 1px solid rgba(200,169,81,0.3);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    position: relative;
-  }
-
-  .tomo-stripe-top {
-    height: 6px;
-    background: linear-gradient(90deg, var(--celeste) 33.3%, var(--blanco) 33.3%, var(--blanco) 66.6%, var(--celeste) 66.6%);
-  }
-
-  .tomo-header-area {
-    background: var(--celeste);
-    padding: 20px 24px 16px;
-  }
-
-  .tomo-numero {
-    font-family: var(--font-display);
+  .tomo-strip-label {
+    display: block;
     font-size: 11px;
     letter-spacing: 3px;
-    color: rgba(10,10,10,0.6);
-    margin-bottom: 4px;
-  }
-
-  .tomo-nombre {
-    font-family: var(--font-display);
-    font-size: 36px;
-    letter-spacing: 2px;
-    color: var(--negro);
-    line-height: 1;
-  }
-
-  .tomo-nombre .tomo-sub {
-    font-family: var(--font-serif);
-    font-size: 13px;
-    font-style: italic;
-    color: rgba(10,10,10,0.65);
-    letter-spacing: 0;
-    display: block;
-    margin-top: 2px;
-  }
-
-  .tomo-imagen {
-    flex: 1;
-    background: var(--gris-medio);
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  /* Ilustración abstracta de circuito */
-  .circuito-svg {
-    opacity: 0.25;
-  }
-
-  .tomo-pronto {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-  }
-
-  .tomo-pronto-label {
-    font-family: var(--font-display);
-    font-size: 42px;
-    letter-spacing: 4px;
-    color: var(--dorado);
-    opacity: 0.9;
-  }
-
-  .tomo-pronto-sub {
-    font-size: 11px;
-    letter-spacing: 2px;
     text-transform: uppercase;
     color: var(--texto-muted);
+    font-weight: 700;
   }
 
-  .tomo-footer-area {
-    padding: 14px 24px;
-    background: var(--negro);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .tomo-footer-titulo {
+  .tomo-strip-marca {
+    display: block;
     font-family: var(--font-display);
-    font-size: 13px;
+    font-size: 30px;
+    line-height: 1;
     letter-spacing: 2px;
     color: var(--dorado);
+    margin-top: 4px;
   }
 
-  .tomo-footer-año {
-    font-size: 11px;
-    color: var(--texto-muted);
-    letter-spacing: 1px;
+  .tomo-strip-titulo {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--blanco);
   }
 
-  /* Sombra y decoración del mockup */
-  .tomo-shadow {
-    position: absolute;
-    bottom: -24px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 260px;
-    height: 24px;
-    background: radial-gradient(ellipse, rgba(200,169,81,0.2) 0%, transparent 70%);
+  .tomo-strip-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 214px;
+    background: var(--dorado);
+    color: var(--negro);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 14px 24px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
   }
 
-  .hero-numero-bg {
-    position: absolute;
-    font-family: var(--font-display);
-    font-size: 320px;
-    color: rgba(116,172,223,0.04);
-    right: -20px;
-    bottom: -40px;
-    line-height: 1;
-    pointer-events: none;
-    user-select: none;
+  .tomo-strip-btn:hover {
+    background: var(--dorado-claro);
+    transform: translateY(-1px);
   }
 
   /* ── PROPUESTA DE VALOR ── */
@@ -1181,16 +1109,17 @@
   .hero-subtitulo { animation: fadeUp 0.7s ease both 0.35s; }
   .hero-desc  { animation: fadeUp 0.7s ease both 0.45s; }
   .hero-btns  { animation: fadeUp 0.7s ease both 0.55s; }
-  .tomo-mockup { animation: fadeUp 0.9s ease both 0.4s, float 4s ease-in-out 1.3s infinite; }
+  .tomo-hero-strip { animation: fadeUp 0.7s ease both 0.65s; }
 
   /* ── RESPONSIVE BÁSICO ── */
   @media (max-width: 900px) {
     nav { padding: 16px 24px; }
     .nav-links { display: none; }
-    .hero { grid-template-columns: 1fr; min-height: auto; background-position: center top; }
-    .hero-left { padding: 60px 24px 40px; }
-    .hero-right { padding: 20px 24px 60px; }
-    .tomo-mockup { width: 240px; height: 320px; }
+    .hero { min-height: 78vh; background-position: 58% center; }
+    .hero-left { padding: 60px 24px 48px; }
+    .tomo-hero-strip { grid-template-columns: 1fr; gap: 14px; padding: 20px 24px 24px; }
+    .tomo-strip-edicion { min-width: 0; padding-right: 0; padding-bottom: 14px; border-right: 0; border-bottom: 1px solid rgba(255,255,255,0.16); }
+    .tomo-strip-btn { width: 100%; min-width: 0; }
     .propuesta, .sobre { grid-template-columns: 1fr; gap: 40px; padding: 60px 24px; }
     .catalogo { padding: 60px 24px; }
     .catalogo-grid { grid-template-columns: 1fr; }
@@ -1230,36 +1159,15 @@
       <a href="#proyecto" class="btn-secundario">Conocer el proyecto</a>
     </div>
   </div>
-  <div class="hero-right">
-    <div class="tomo-mockup">
-      <div class="tomo-cover">
-        <div class="tomo-stripe-top"></div>
-        <div class="tomo-header-area">
-          <div class="tomo-numero">TOMO 01 · 2025</div>
-          <div class="tomo-nombre">PCA<span class="tomo-sub">Proyecto Combustión Argentina — F1 &amp; Motor</span></div>
-        </div>
-        <div class="tomo-imagen">
-          <svg class="circuito-svg" width="260" height="200" viewBox="0 0 260 200">
-            <path d="M30 160 Q30 80 80 60 Q140 40 180 80 Q220 120 200 160 Q180 190 130 185 Q80 180 30 160Z" fill="none" stroke="#74ACDF" stroke-width="1.5"/>
-            <path d="M55 155 Q55 90 95 72 Q145 52 178 88 Q208 120 190 155 Q175 178 128 175 Q88 172 55 155Z" fill="none" stroke="#C8A951" stroke-width="0.8" stroke-dasharray="4 3"/>
-            <circle cx="80" cy="65" r="4" fill="#74ACDF" opacity="0.6"/>
-            <circle cx="190" cy="85" r="3" fill="#C8A951" opacity="0.6"/>
-            <circle cx="200" cy="155" r="4" fill="#74ACDF" opacity="0.4"/>
-          </svg>
-          <div class="tomo-pronto">
-            <span class="tomo-pronto-label">TOMO 01</span>
-            <span class="tomo-pronto-sub">Disponible ahora</span>
-          </div>
-        </div>
-        <div class="tomo-footer-area">
-          <span class="tomo-footer-titulo">PROYECTO COMBUSTIÓN ARGENTINA</span>
-          <span class="tomo-footer-año">2025</span>
-        </div>
-      </div>
-      <div class="tomo-shadow"></div>
-    </div>
-    <div class="hero-numero-bg">01</div>
+</section>
+
+<section class="tomo-hero-strip" aria-label="Tomo 01 disponible">
+  <div class="tomo-strip-edicion">
+    <span class="tomo-strip-label">Tomo 01 · 2025</span>
+    <span class="tomo-strip-marca">PCA</span>
   </div>
+  <p class="tomo-strip-titulo">Proyecto Combustión Argentina — F1 &amp; Motor</p>
+  <a href="Tomos/Combustion_Argentina_vol-1.html" class="tomo-strip-btn">Disponible ahora &rarr;</a>
 </section>
 
 <!-- PROPUESTA DE VALOR -->
