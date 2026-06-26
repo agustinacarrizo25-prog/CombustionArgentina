@@ -706,6 +706,703 @@
   .fp-indice li::before { content: ''; display: block; width: 12px; height: 1px; background: var(--dorado); flex-shrink: 0; }
   .fp-sources { margin-top: auto; font-size: 8px; letter-spacing: 1px; color: rgba(245,242,237,0.25); line-height: 1.6; }
 
+  /* ===========================
+     EDITORIAL REDESIGN PASS
+     Visual direction: racing magazine, image-led spreads, stronger hierarchy.
+  =========================== */
+  :root {
+    --rojo-f1: #e10600;
+    --papel: #f4f0e8;
+    --tinta: #101010;
+  }
+
+  .toolbar {
+    background: rgba(8,8,8,0.98);
+    border-bottom: 2px solid var(--rojo-f1);
+  }
+  .toolbar-logo { color: var(--blanco); }
+  .toolbar-logo::before {
+    content: '';
+    display: inline-block;
+    width: 18px;
+    height: 8px;
+    margin-right: 8px;
+    background: var(--rojo-f1);
+    transform: skewX(-18deg);
+  }
+
+  .stage {
+    background:
+      radial-gradient(circle at 50% 0%, rgba(225,6,0,0.16), transparent 28%),
+      linear-gradient(180deg, #151515 0%, #070707 100%);
+  }
+
+  .spread {
+    box-shadow:
+      -16px 8px 44px rgba(0,0,0,0.82),
+      16px 8px 44px rgba(0,0,0,0.82),
+      0 26px 70px rgba(0,0,0,0.62);
+  }
+
+  .page {
+    background: var(--papel);
+    color: var(--tinta);
+  }
+
+  .page-content {
+    inset: 30px 28px 34px;
+  }
+
+  #spread-0 .page,
+  #spread-6 .page {
+    background: var(--negro);
+    color: var(--blanco);
+  }
+
+  .sec-tag {
+    color: var(--rojo-f1);
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+  }
+
+  .sec-title {
+    color: var(--tinta);
+    font-size: 52px;
+    line-height: 0.84;
+    letter-spacing: 0;
+    max-width: 360px;
+  }
+
+  .sec-rule {
+    width: 64px;
+    height: 5px;
+    background: var(--rojo-f1);
+    transform: skewX(-18deg);
+    margin: 12px 0 18px;
+  }
+
+  .lead {
+    color: #222;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .body-txt,
+  .tl-desc,
+  .sp-desc,
+  .fase-desc,
+  .obra-txt,
+  .callout-txt,
+  .horizon-txt,
+  .horizon-quote,
+  .prob-name,
+  .obstacle-desc {
+    color: rgba(16,16,16,0.72);
+  }
+
+  .body-txt strong,
+  .obra-txt strong {
+    color: var(--tinta);
+  }
+
+  .running-head,
+  .page-num {
+    color: rgba(16,16,16,0.34);
+  }
+
+  #spread-0 .running-head,
+  #spread-0 .page-num,
+  #spread-6 .page-num {
+    color: rgba(245,242,237,0.42);
+  }
+
+  .quote-block,
+  .stat-box,
+  .sp-card,
+  .comp-panel,
+  .fase-card,
+  .data-table,
+  .horizon-box,
+  .context-box,
+  .obstacle-card {
+    background: #ffffff;
+    border: 1px solid rgba(16,16,16,0.11);
+    box-shadow: 0 10px 22px rgba(0,0,0,0.07);
+  }
+
+  .quote-block {
+    border-left: 6px solid var(--rojo-f1);
+  }
+
+  .quote-text {
+    color: var(--tinta);
+    font-size: 13px;
+  }
+
+  .quote-src,
+  .stat-l,
+  .div-label,
+  .data-label {
+    color: rgba(16,16,16,0.48);
+  }
+
+  .stat-n,
+  .tl-year,
+  .p-stat-n,
+  .prob-pct,
+  .impacto-monto {
+    color: var(--rojo-f1);
+  }
+
+  .timeline::before {
+    background: linear-gradient(to bottom, var(--rojo-f1), rgba(225,6,0,0));
+  }
+
+  .tl-dot,
+  .prob-fill {
+    background: var(--rojo-f1);
+  }
+
+  .prob-track {
+    background: rgba(16,16,16,0.16);
+  }
+
+  .divider-label-line::before,
+  .divider-label-line::after,
+  .data-row,
+  .obra-item,
+  .comp-row-sm {
+    border-color: rgba(16,16,16,0.12);
+  }
+
+  .photo-slot {
+    position: relative;
+    min-height: 168px;
+    overflow: hidden;
+    background:
+      linear-gradient(135deg, rgba(225,6,0,0.88), rgba(10,10,10,0.92)),
+      repeating-linear-gradient(90deg, transparent 0 18px, rgba(255,255,255,0.08) 18px 20px);
+    color: var(--blanco);
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    isolation: isolate;
+  }
+
+  .photo-slot::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 75% 25%, rgba(255,255,255,0.22), transparent 22%),
+      linear-gradient(120deg, transparent 0 48%, rgba(255,255,255,0.1) 49% 51%, transparent 52%);
+    z-index: -1;
+  }
+
+  .photo-slot::after {
+    content: attr(data-suggest);
+    font-size: 9px;
+    line-height: 1.35;
+    letter-spacing: 1.7px;
+    text-transform: uppercase;
+    color: rgba(245,242,237,0.76);
+  }
+
+  .photo-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 30px;
+    line-height: 0.95;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  .portada {
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0.14), rgba(0,0,0,0.88)),
+      radial-gradient(circle at 76% 35%, rgba(225,6,0,0.56), transparent 30%),
+      linear-gradient(135deg, #050505 0%, #171717 58%, #050505 100%);
+  }
+
+  .portada-band-top {
+    height: 9px;
+    background: linear-gradient(90deg, var(--rojo-f1) 0 38%, var(--blanco) 38% 43%, var(--celeste) 43% 68%, #050505 68% 100%);
+  }
+
+  .portada-grid {
+    grid-template-columns: 1.05fr 0.95fr;
+  }
+
+  .portada-izq {
+    padding: 36px 30px 28px;
+  }
+
+  .portada-eyebrow {
+    color: var(--rojo-f1);
+  }
+
+  .portada-eyebrow::before {
+    background: var(--rojo-f1);
+  }
+
+  .portada-titulo {
+    font-size: 88px;
+    line-height: 0.78;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+
+  .portada-titulo span {
+    color: var(--rojo-f1);
+  }
+
+  .portada-sub {
+    color: rgba(245,242,237,0.82);
+    border-left: 4px solid var(--rojo-f1);
+    padding-left: 12px;
+  }
+
+  .portada-cta {
+    background: var(--rojo-f1);
+    color: var(--blanco);
+  }
+
+  .portada-der {
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0.04), rgba(0,0,0,0.82)),
+      linear-gradient(135deg, #232323, #070707);
+  }
+
+  .portada-der::before {
+    content: 'IMAGEN SUGERIDA\A F1 showrun en Buenos Aires, Alpine de Colapinto o recta principal del Galvez';
+    white-space: pre-line;
+    position: absolute;
+    inset: 34px 28px 184px;
+    z-index: 1;
+    border: 1px solid rgba(255,255,255,0.22);
+    background:
+      linear-gradient(135deg, rgba(225,6,0,0.72), rgba(10,10,10,0.75)),
+      repeating-linear-gradient(90deg, transparent 0 22px, rgba(255,255,255,0.08) 22px 24px);
+    display: flex;
+    align-items: flex-end;
+    padding: 18px;
+    font-size: 9px;
+    line-height: 1.45;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: rgba(245,242,237,0.82);
+  }
+
+  .portada-stats {
+    inset: auto 0 0 0 !important;
+    height: 182px;
+    z-index: 2;
+    grid-template-rows: 1fr 1fr;
+  }
+
+  .portada-stat-item {
+    background: rgba(5,5,5,0.86);
+    padding: 14px 18px;
+  }
+
+  .p-stat-n {
+    color: var(--blanco);
+  }
+
+  .p-stat-l {
+    color: rgba(245,242,237,0.62);
+  }
+
+  .legales-page {
+    background: var(--papel);
+    color: var(--tinta);
+    padding: 32px 30px;
+  }
+
+  .legales-page::before {
+    content: 'CONTENTS';
+    top: 10px;
+    right: -12px;
+    bottom: auto;
+    font-size: 92px;
+    color: rgba(225,6,0,0.06);
+  }
+
+  .leg-titulo {
+    color: var(--tinta);
+    font-size: 42px;
+    line-height: 0.9;
+  }
+
+  .leg-subtitulo,
+  .leg-txt,
+  .leg-indice-name {
+    color: rgba(16,16,16,0.62);
+  }
+
+  .leg-label,
+  .leg-indice-num {
+    color: var(--rojo-f1);
+  }
+
+  .leg-rule {
+    width: 74px;
+    height: 5px;
+    background: var(--rojo-f1);
+    transform: skewX(-18deg);
+  }
+
+  .leg-indice {
+    border-top: 3px solid var(--tinta);
+  }
+
+  .leg-indice-titulo {
+    color: var(--tinta);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 1px;
+  }
+
+  .leg-indice-grid {
+    gap: 8px 18px;
+  }
+
+  .leg-indice-item {
+    border-bottom: 1px solid rgba(16,16,16,0.12);
+    padding-bottom: 5px;
+  }
+
+  #spread-1 .page:last-child {
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.74)),
+      linear-gradient(135deg, #242424, #050505);
+    color: var(--blanco);
+  }
+
+  #spread-1 .page:last-child::before {
+    content: 'IMAGEN SUGERIDA\A vista aerea del Autodromo Oscar y Juan Galvez o tribunas llenas';
+    white-space: pre-line;
+    position: absolute;
+    inset: 34px 30px 210px;
+    z-index: 2;
+    border: 1px solid rgba(255,255,255,0.22);
+    background:
+      linear-gradient(135deg, rgba(116,172,223,0.52), rgba(225,6,0,0.5)),
+      repeating-linear-gradient(90deg, transparent 0 20px, rgba(255,255,255,0.08) 20px 22px);
+    display: flex;
+    align-items: flex-end;
+    padding: 18px;
+    font-size: 9px;
+    line-height: 1.45;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: rgba(245,242,237,0.84);
+  }
+
+  #spread-1 .page:last-child .portada-stats {
+    height: 210px;
+  }
+
+  #spread-2 .page-left .page-content,
+  #spread-3 .page-left .page-content,
+  #spread-4 .page-left .page-content,
+  #spread-5 .page-left .page-content {
+    display: grid;
+    grid-template-rows: auto auto auto auto 1fr;
+    align-content: start;
+  }
+
+  #spread-2 .page-left .page-content::before,
+  #spread-3 .page-left .page-content::before,
+  #spread-4 .page-left .page-content::before,
+  #spread-5 .page-left .page-content::before {
+    content: 'IMAGEN SUGERIDA';
+    height: 96px;
+    margin-bottom: 14px;
+    background:
+      linear-gradient(135deg, rgba(225,6,0,0.82), rgba(15,15,15,0.9)),
+      repeating-linear-gradient(90deg, transparent 0 18px, rgba(255,255,255,0.08) 18px 20px);
+    color: rgba(245,242,237,0.82);
+    display: flex;
+    align-items: flex-end;
+    padding: 14px;
+    font-size: 9px;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+  }
+
+  #spread-3 .page-left .page-content::before,
+  #spread-4 .page-left .page-content::before,
+  #spread-5 .page-left .page-content::before {
+    height: 54px;
+    margin-bottom: 10px;
+    padding: 10px 12px;
+    font-size: 8px;
+  }
+
+  #spread-3 .sec-title,
+  #spread-4 .sec-title,
+  #spread-5 .sec-title {
+    font-size: 44px;
+  }
+
+  #spread-3 .lead,
+  #spread-4 .lead,
+  #spread-5 .lead {
+    font-size: 12.5px;
+    margin-bottom: 8px;
+  }
+
+  #spread-3 .body-txt,
+  #spread-4 .body-txt,
+  #spread-5 .body-txt {
+    font-size: 10.4px;
+    line-height: 1.5;
+    margin-bottom: 7px;
+  }
+
+  #spread-3 .comp-wrap {
+    margin-top: 8px;
+  }
+
+  #spread-3 .comp-panel {
+    padding: 9px 10px;
+  }
+
+  #spread-3 .comp-team {
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+
+  #spread-3 .comp-row-sm {
+    padding: 4px 0;
+  }
+
+  #spread-3 .comp-note {
+    margin-top: 6px;
+    padding: 6px;
+    font-size: 8px;
+    line-height: 1.35;
+  }
+
+  #spread-4 .obras-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+
+  #spread-4 .obra-item {
+    padding: 6px;
+    border: 1px solid rgba(16,16,16,0.12);
+    background: rgba(255,255,255,0.48);
+  }
+
+  #spread-4 .obra-icon {
+    width: 18px;
+    height: 18px;
+    font-size: 8px;
+  }
+
+  #spread-4 .obra-txt {
+    font-size: 8.5px;
+    line-height: 1.35;
+  }
+
+  #spread-2 .page-left .page-content::before {
+    content: 'IMAGEN SUGERIDA: Fangio / Reutemann / GP Argentina historico';
+  }
+
+  #spread-3 .page-left .page-content::before {
+    content: 'IMAGEN SUGERIDA: retrato de Franco Colapinto o Alpine en Buenos Aires';
+  }
+
+  #spread-4 .page-left .page-content::before {
+    content: 'IMAGEN SUGERIDA: render u obra del Autodromo Oscar y Juan Galvez';
+  }
+
+  #spread-5 .page-left .page-content::before {
+    content: 'IMAGEN SUGERIDA: calendario F1, boxes o paddock de Buenos Aires';
+  }
+
+  #spread-2 .page:not(.page-left) .page-content,
+  #spread-3 .page:not(.page-left) .page-content,
+  #spread-4 .page:not(.page-left) .page-content,
+  #spread-5 .page:not(.page-left) .page-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  #spread-2 .page:not(.page-left),
+  #spread-4 .page:not(.page-left) {
+    background: #111;
+    color: var(--blanco);
+  }
+
+  #spread-2 .page:not(.page-left) .body-txt,
+  #spread-2 .page:not(.page-left) .tl-desc,
+  #spread-2 .page:not(.page-left) .quote-src,
+  #spread-4 .page:not(.page-left) .body-txt,
+  #spread-4 .page:not(.page-left) .callout-txt,
+  #spread-4 .page:not(.page-left) .data-label,
+  #spread-4 .page:not(.page-left) .quote-src {
+    color: rgba(245,242,237,0.68);
+  }
+
+  #spread-2 .page:not(.page-left) .quote-block,
+  #spread-4 .page:not(.page-left) .quote-block,
+  #spread-4 .page:not(.page-left) .data-table,
+  #spread-4 .page:not(.page-left) .motogp-callout {
+    background: rgba(255,255,255,0.06);
+    border-color: rgba(255,255,255,0.13);
+    box-shadow: none;
+  }
+
+  #spread-2 .page:not(.page-left) .quote-text,
+  #spread-4 .page:not(.page-left) .quote-text,
+  #spread-4 .page:not(.page-left) .data-val {
+    color: var(--blanco);
+  }
+
+  .impacto-card {
+    background: linear-gradient(135deg, var(--rojo-f1), #740000);
+  }
+
+  .impacto-monto {
+    color: var(--blanco);
+  }
+
+  .cards-2x2 {
+    gap: 10px;
+  }
+
+  .tag-pos {
+    background: rgba(22,130,70,0.12);
+    color: #14763d;
+  }
+
+  .tag-chal {
+    background: rgba(225,6,0,0.1);
+    border-color: rgba(225,6,0,0.28);
+    color: var(--rojo-f1);
+  }
+
+  .cierre-page {
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.86)),
+      radial-gradient(circle at 50% 22%, rgba(225,6,0,0.54), transparent 34%),
+      linear-gradient(135deg, #050505, #202020);
+  }
+
+  .cierre-page::after {
+    content: 'IMAGEN SUGERIDA: publico argentino, bandera y auto de F1 en pista';
+    position: absolute;
+    left: 34px;
+    right: 34px;
+    bottom: 86px;
+    border-top: 1px solid rgba(245,242,237,0.24);
+    padding-top: 12px;
+    color: rgba(245,242,237,0.55);
+    font-size: 9px;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+  }
+
+  .cierre-bandera {
+    width: 86px;
+    height: 5px;
+  }
+
+  .cierre-titulo {
+    font-size: 72px;
+  }
+
+  /* Legibilidad: las paginas claras usan tinta negra y destacados dorados. */
+  #spread-1 .page-left *,
+  #spread-2 .page-left *,
+  #spread-3 .page *,
+  #spread-4 .page-left *,
+  #spread-5 .page * {
+    color: var(--tinta);
+  }
+
+  #spread-1 .leg-label,
+  #spread-1 .leg-indice-num,
+  #spread-2 .sec-tag,
+  #spread-2 .tl-year,
+  #spread-3 .sec-tag,
+  #spread-3 .sp-tipo,
+  #spread-3 .comp-after,
+  #spread-4 .sec-tag,
+  #spread-4 .fase-title,
+  #spread-5 .sec-tag,
+  #spread-5 .prob-pct,
+  #spread-5 .horizon-label,
+  #spread-5 .tag-chal {
+    color: var(--dorado);
+  }
+
+  #spread-4 .fase-n,
+  #spread-5 .horizon-year {
+    color: rgba(200,168,75,0.16);
+    z-index: 0;
+  }
+
+  #spread-5 .horizon-box > *:not(.horizon-year) {
+    position: relative;
+    z-index: 1;
+  }
+
+  #spread-1 .leg-txt,
+  #spread-1 .leg-subtitulo,
+  #spread-1 .leg-indice-name,
+  #spread-2 .body-txt,
+  #spread-2 .tl-desc,
+  #spread-3 .body-txt,
+  #spread-3 .sp-desc,
+  #spread-3 .comp-before,
+  #spread-3 .comp-note,
+  #spread-4 .body-txt,
+  #spread-4 .fase-desc,
+  #spread-4 .obra-txt,
+  #spread-5 .body-txt,
+  #spread-5 .obstacle-desc,
+  #spread-5 .horizon-txt {
+    color: rgba(16,16,16,0.74);
+  }
+
+  #spread-3 .sp-name,
+  #spread-3 .comp-team,
+  #spread-3 .comp-note strong,
+  #spread-4 .obra-txt strong,
+  #spread-5 .quote-text,
+  #spread-5 .horizon-quote,
+  #spread-5 .prob-name {
+    color: var(--tinta);
+  }
+
+  #spread-3 .comp-badge,
+  #spread-3 .comp-badge *,
+  #spread-4 .obra-icon,
+  #spread-4 .obra-icon *,
+  #spread-5 .tag-pos {
+    color: #0a0a0a;
+  }
+
+  #spread-3 .comp-badge[style*="#FF0090"],
+  #spread-3 .comp-badge[style*="#FF0090"] *,
+  #spread-3 .comp-badge[style*="background:#FF0090"],
+  #spread-3 .comp-badge[style*="background:#FF0090"] * {
+    color: #fff;
+  }
+
+  @media (min-width: 900px) {
+    .spread.single .page {
+      width: 610px;
+      height: 790px;
+    }
+  }
+
     /* ===== RESPONSIVE ===== */
 
   /* TABLET 600-899px: scale pages to viewport */
