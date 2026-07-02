@@ -1016,7 +1016,7 @@
   .legales-page {
     background: var(--papel);
     color: var(--tinta);
-    padding: 32px 30px;
+    padding: 24px 30px 26px;
   }
 
   .legales-page::before {
@@ -1030,8 +1030,29 @@
 
   .leg-titulo {
     color: var(--tinta);
-    font-size: 42px;
+    font-size: 38px;
     line-height: 0.9;
+  }
+
+  .leg-subtitulo {
+    margin-bottom: 14px;
+  }
+
+  #spread-1 .opening-line {
+    margin-bottom: 12px !important;
+  }
+
+  #spread-1 .leg-block {
+    margin-bottom: 10px;
+  }
+
+  #spread-1 .leg-label {
+    margin-bottom: 3px;
+  }
+
+  #spread-1 .leg-txt {
+    font-size: 9px;
+    line-height: 1.45;
   }
 
   .leg-subtitulo,
@@ -1050,26 +1071,29 @@
     height: 5px;
     background: var(--rojo-f1);
     transform: skewX(-18deg);
+    margin-bottom: 14px;
   }
 
   .leg-indice {
     border-top: 3px solid var(--tinta);
+    padding-top: 12px;
   }
 
   .leg-indice-titulo {
     color: var(--tinta);
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 22px;
+    font-size: 20px;
     letter-spacing: 1px;
+    margin-bottom: 7px;
   }
 
   .leg-indice-grid {
-    gap: 8px 18px;
+    gap: 5px 18px;
   }
 
   .leg-indice-item {
     border-bottom: 1px solid rgba(16,16,16,0.12);
-    padding-bottom: 5px;
+    padding-bottom: 4px;
   }
 
   #spread-1 .page:last-child {
