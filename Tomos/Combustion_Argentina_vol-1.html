@@ -1199,6 +1199,43 @@
     color: rgba(255,255,255,0.9) !important;
   }
 
+  #spread-2 .historia-timeline {
+    position: absolute;
+    top: 350px;
+    left: 22px;
+    right: 8px;
+    margin: 0;
+    padding-left: 18px;
+  }
+
+  #spread-2 .historia-timeline .tl-item {
+    margin-bottom: 9px;
+  }
+
+  #spread-2 .historia-timeline .tl-year {
+    color: var(--dorado) !important;
+    font-size: 18px;
+  }
+
+  #spread-2 .historia-timeline .tl-desc {
+    color: rgba(255,255,255,0.72) !important;
+    font-size: 8.5px;
+    line-height: 1.35;
+  }
+
+  #spread-2 .historia-texto {
+    padding: 18px 20px 10px;
+    background: rgba(5,5,5,0.72);
+    border-left: 3px solid var(--dorado);
+    backdrop-filter: blur(2px);
+  }
+
+  #spread-2 .historia-texto .body-txt {
+    color: rgba(255,255,255,0.86) !important;
+    font-size: 10px;
+    line-height: 1.58;
+  }
+
   #spread-2 .page-left .page-content,
   #spread-3 .page-left .page-content,
   #spread-4 .page-left .page-content,
@@ -1896,9 +1933,13 @@
             <h2 class="sec-title">¿Por qué<br>se fue<br>la F1?</h2>
             <div class="sec-rule"></div>
             <p class="lead">La Argentina tuvo veinte Grandes Premios. El último fue el 12 de abril de 1998. Desde entonces, el Gran Circo no volvió. Pero la historia es mucho más compleja que solo números.</p>
-            <p class="body-txt">Argentina fue pionera: en 1953 fue el primer país sudamericano en el calendario y el segundo fuera de Europa en toda la historia de la F1, con más de 100.000 personas en las tribunas del Autódromo de Buenos Aires para ver a Juan Manuel Fangio. Pero lo que construyó el Quíntuple con su genio al volante no pudo sostenerse cuando él colgó el casco.</p>
-            <p class="body-txt">La F1 estuvo en Argentina en tres períodos: de 1953 a 1960 impulsada por Fangio, de 1972 a 1981 gracias a Carlos Reutemann, y de 1995 a 1998 por el trabajo de un grupo de empresarios. Cada vez que un argentino dejó la grilla, el Gran Premio lo siguió.</p>
-            <p class="body-txt">La vuelta de 1995 llegó sin piloto argentino y sin grandes patrocinantes locales. Solo la relación personal de McGough con Ecclestone hizo posible el evento. Se gastaron 7 millones de dólares en obras, más el fee anual. Pero la deuda creció, los bancos se retiraron y el Gobierno de Menem se negó a aportar fondos. En 1999, la fecha fue excluida del calendario.</p>
+            <div class="timeline historia-timeline">
+              <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">1953</div><div class="tl-desc">Primera carrera de F1 en Argentina. Fangio domina ante más de 100.000 espectadores. El país se convierte en referencia mundial del automovilismo.</div></div>
+              <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">1960</div><div class="tl-desc">Fangio se retira en 1958. Hay una sola carrera más en 1960 y el calendario abandona Argentina durante 11 años.</div></div>
+              <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">1972</div><div class="tl-desc">Regreso gracias a Carlos Reutemann. La F1 vuelve y se queda hasta 1981 con la excepción de 1976. El retiro del Lole detiene el ciclo.</div></div>
+              <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">1995</div><div class="tl-desc">Tercer regreso. La paridad peso-dólar hace posible el evento. Cuatro carreras entre 1995 y 1998. Schumacher gana la última.</div></div>
+              <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">1998</div><div class="tl-desc">Último Gran Premio. Crisis financiera, deudas impagables y falta de apoyo estatal. Argentina desaparece del calendario. Han pasado 26 años.</div></div>
+            </div>
           </div>
           <span class="running-head running-head-left">Combustión Argentina</span>
           <span class="page-num page-num-left">3</span>
@@ -1906,32 +1947,10 @@
         <!-- Página derecha -->
         <div class="page">
           <div class="page-content">
-            <div class="timeline">
-              <div class="tl-item">
-                <div class="tl-dot"></div>
-                <div class="tl-year">1953</div>
-                <div class="tl-desc">Primera carrera de F1 en Argentina. Fangio domina ante más de 100.000 espectadores. El país se convierte en referencia mundial del automovilismo.</div>
-              </div>
-              <div class="tl-item">
-                <div class="tl-dot"></div>
-                <div class="tl-year">1960</div>
-                <div class="tl-desc">Fangio se retira en 1958. Hay una sola carrera más en 1960 y el calendario abandona Argentina durante 11 años.</div>
-              </div>
-              <div class="tl-item">
-                <div class="tl-dot"></div>
-                <div class="tl-year">1972</div>
-                <div class="tl-desc">Regreso gracias a Carlos Reutemann. La F1 vuelve y se queda hasta 1981 con la excepción de 1976. El retiro del Lole detiene el ciclo.</div>
-              </div>
-              <div class="tl-item">
-                <div class="tl-dot"></div>
-                <div class="tl-year">1995</div>
-                <div class="tl-desc">Tercer regreso. La paridad peso-dólar hace posible el evento. Cuatro carreras entre 1995 y 1998. Schumacher gana la última.</div>
-              </div>
-              <div class="tl-item">
-                <div class="tl-dot"></div>
-                <div class="tl-year">1998</div>
-                <div class="tl-desc">Último Gran Premio. Crisis financiera, deudas impagables y falta de apoyo estatal. Argentina desaparece del calendario. Han pasado 26 años.</div>
-              </div>
+            <div class="historia-texto">
+              <p class="body-txt">Argentina fue pionera: en 1953 fue el primer país sudamericano en el calendario y el segundo fuera de Europa en toda la historia de la F1, con más de 100.000 personas en las tribunas del Autódromo de Buenos Aires para ver a Juan Manuel Fangio. Pero lo que construyó el Quíntuple con su genio al volante no pudo sostenerse cuando él colgó el casco.</p>
+              <p class="body-txt">La F1 estuvo en Argentina en tres períodos: de 1953 a 1960 impulsada por Fangio, de 1972 a 1981 gracias a Carlos Reutemann, y de 1995 a 1998 por el trabajo de un grupo de empresarios. Cada vez que un argentino dejó la grilla, el Gran Premio lo siguió.</p>
+              <p class="body-txt">La vuelta de 1995 llegó sin piloto argentino y sin grandes patrocinantes locales. Solo la relación personal de McGough con Ecclestone hizo posible el evento. Se gastaron 7 millones de dólares en obras, más el fee anual. Pero la deuda creció, los bancos se retiraron y el Gobierno de Menem se negó a aportar fondos. En 1999, la fecha fue excluida del calendario.</p>
             </div>
             <div class="context-box">
               <div class="context-label">El contexto actual</div>
