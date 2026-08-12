@@ -1461,6 +1461,15 @@
     color: var(--tinta);
   }
 
+  /* Numeración visible sobre todas las páginas oscuras. */
+  #spread-0 .page-num,
+  #spread-1 .page:last-child .page-num,
+  #spread-2 .page-num,
+  #spread-4 .page:not(.page-left) .page-num,
+  #spread-6 .page-num {
+    color: rgba(255,255,255,0.78) !important;
+  }
+
   #spread-1 .leg-label,
   #spread-1 .leg-indice-num,
   #spread-2 .sec-tag,
