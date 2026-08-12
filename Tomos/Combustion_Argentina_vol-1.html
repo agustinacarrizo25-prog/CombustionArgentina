@@ -1141,6 +1141,28 @@
     color: rgba(255,255,255,0.86);
   }
 
+  #spread-2 .historia-panoramica {
+    position: absolute;
+    top: 34px;
+    left: 28px;
+    right: 28px;
+    height: 330px;
+    z-index: 1;
+    background:
+      linear-gradient(90deg, rgba(0,0,0,0.5), rgba(0,0,0,0.08) 45%, rgba(0,0,0,0.3)),
+      linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.7)),
+      url('../img/GP arg.webp') center center / cover no-repeat;
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+
+  #spread-2 .page {
+    background: linear-gradient(180deg, #101010 0%, #050505 100%);
+  }
+
+  #spread-2 .page-content {
+    z-index: 2;
+  }
+
   #spread-2 .page-left .page-content,
   #spread-3 .page-left .page-content,
   #spread-4 .page-left .page-content,
@@ -1545,6 +1567,7 @@
     .mv-lead { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 16px; line-height: 1.55; color: var(--blanco); margin-bottom: 12px; }
     .mv-body { font-size: 14px; line-height: 1.75; color: rgba(245,242,237,0.72); margin-bottom: 11px; }
     .mv-body strong { color: var(--blanco); }
+    .mv-historia-foto { width: 100%; aspect-ratio: 2.05 / 1; margin: 15px 0 18px; background: url('../img/GP arg.webp') center center / cover no-repeat; border: 1px solid var(--gris-medio); }
 
     .mv-quote { background: var(--gris); border-left: 3px solid var(--celeste); padding: 13px 15px; margin: 13px 0; }
     .mv-quote-text { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 14px; line-height: 1.55; color: var(--blanco); }
@@ -1829,6 +1852,7 @@
     <!-- ===================== SPREAD 2: HISTORIA (doble página) ===================== -->
     <div class="spread-container" id="spread-2">
       <div class="spread">
+        <div class="historia-panoramica" role="img" aria-label="Carlos Reutemann con Ferrari en el Gran Premio de Argentina de 1978"></div>
         <!-- Página izquierda -->
         <div class="page page-left">
           <div class="page-content">
@@ -2348,6 +2372,7 @@
     <div class="mv-sec-tag">// 01 · Historia</div>
     <h2 class="mv-sec-title">¿Por qué<br>se fue<br>la F1?</h2>
     <div class="mv-sec-rule"></div>
+    <div class="mv-historia-foto" role="img" aria-label="Carlos Reutemann con Ferrari en el Gran Premio de Argentina de 1978"></div>
     <p class="mv-lead">La Argentina tuvo veinte Grandes Premios. El último fue el 12 de abril de 1998. Desde entonces, el Gran Circo no volvió.</p>
     <p class="mv-body">Argentina fue pionera: en 1953 fue el primer país sudamericano en el calendario. Fangio fue el motor de la primera era, Reutemann de la segunda, y un grupo de empresarios trajo la tercera etapa (1995–1998). Cada vez que un argentino dejó la grilla, el Gran Premio lo siguió.</p>
     <div class="mv-quote"><p class="mv-quote-text">En una reunión con Menem, le pidieron apoyo y él dijo que no podía poner plata para la carrera. Ahí fue el final del proceso.</p><div class="mv-quote-src">— Felipe McGough, organizador del GP Argentina 1995–1998</div></div>
