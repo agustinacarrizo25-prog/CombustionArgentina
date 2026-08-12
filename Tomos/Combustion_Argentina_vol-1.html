@@ -1108,22 +1108,37 @@
 
   #spread-1 .page:last-child {
     background:
-      linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.74)),
-      linear-gradient(135deg, #242424, #050505);
+      linear-gradient(180deg, rgba(0,0,0,0.32), rgba(0,0,0,0.68)),
+      linear-gradient(90deg, rgba(0,0,0,0.36), rgba(0,0,0,0.12)),
+      url('../img/Galvez autodromo.webp') center center / cover no-repeat;
     color: var(--blanco);
   }
 
   #spread-1 .page:last-child::before {
-    content: '';
-    position: absolute;
-    inset: 34px 30px 210px;
-    z-index: 2;
-    border: 1px solid rgba(255,255,255,0.22);
-    background: url('../img/Galvez autodromo.webp') center center / cover no-repeat;
+    display: none;
   }
 
   #spread-1 .page:last-child .portada-stats {
-    height: 210px;
+    inset: 34px 30px 38px !important;
+    height: auto;
+    gap: 10px;
+    z-index: 2;
+  }
+
+  #spread-1 .page:last-child .portada-stat-row {
+    gap: 10px;
+  }
+
+  #spread-1 .page:last-child .portada-stat-item {
+    min-height: 0;
+    padding: 22px 20px;
+    border: 1px solid rgba(255,255,255,0.24);
+    background: rgba(5,5,5,0.62);
+    backdrop-filter: blur(2px);
+  }
+
+  #spread-1 .page:last-child .p-stat-l {
+    color: rgba(255,255,255,0.86);
   }
 
   #spread-2 .page-left .page-content,
