@@ -940,17 +940,48 @@
     padding: 100px 48px;
     border-top: 1px solid rgba(255,255,255,0.05);
     display: grid;
-    grid-template-columns: 1fr 1.4fr;
-    gap: 80px;
+    grid-template-columns: minmax(320px, 0.82fr) 1.4fr;
+    gap: clamp(56px, 7vw, 110px);
     align-items: center;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+  }
+
+  .tomo-detalle::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    inset: 0 53% 0 0;
+    background:
+      linear-gradient(90deg, rgba(10,10,10,0.42), rgba(10,10,10,0.96)),
+      url('img/portada.webp') center 62% / cover no-repeat;
+    filter: blur(16px);
+    transform: scale(1.08);
+    opacity: 0.4;
   }
 
   .tomo-detalle-cover {
-    background: var(--gris);
-    border: 1px solid rgba(200,169,81,0.25);
+    width: min(100%, 390px);
+    aspect-ratio: 610 / 790;
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.08) 38%, rgba(0,0,0,0.88) 100%),
+      url('img/portada.webp') center center / cover no-repeat;
+    border: 1px solid rgba(255,255,255,0.22);
     padding: 0;
     position: relative;
     overflow: hidden;
+    box-shadow: 22px 28px 60px rgba(0,0,0,0.55), -8px 10px 28px rgba(0,0,0,0.25);
+    transform: rotate(-1.25deg);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+  }
+
+  .tomo-detalle-cover:hover {
+    transform: rotate(0deg) translateY(-5px);
+    box-shadow: 24px 34px 70px rgba(0,0,0,0.62), -8px 10px 28px rgba(0,0,0,0.25);
   }
 
   .tomo-detalle-cover-stripe {
@@ -959,8 +990,8 @@
   }
 
   .tomo-detalle-cover-head {
-    background: var(--celeste);
-    padding: 20px 28px 18px;
+    background: linear-gradient(180deg, rgba(5,5,5,0.76), rgba(5,5,5,0));
+    padding: 25px 27px 52px;
   }
 
   .tomo-detalle-cover-head span {
@@ -968,26 +999,27 @@
     font-size: 10px;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: rgba(10,10,10,0.55);
-    margin-bottom: 4px;
+    color: rgba(255,255,255,0.82);
+    margin-bottom: 8px;
   }
 
   .tomo-detalle-cover-head strong {
     font-family: var(--font-display);
     font-size: 38px;
     letter-spacing: 3px;
-    color: var(--negro);
+    color: var(--blanco);
     line-height: 1;
   }
 
   .tomo-detalle-cover-body {
-    padding: 28px 28px 24px;
-    border-top: 1px solid rgba(255,255,255,0.05);
+    margin-top: auto;
+    padding: 44px 28px 22px;
+    border-top: 0;
   }
 
   .tomo-detalle-cover-body h3 {
     font-family: var(--font-display);
-    font-size: 28px;
+    font-size: clamp(34px, 3vw, 46px);
     letter-spacing: 2px;
     color: var(--blanco);
     line-height: 1.05;
@@ -996,13 +1028,14 @@
 
   .tomo-detalle-cover-body p {
     font-size: 13px;
-    color: var(--texto-muted);
-    line-height: 1.7;
+    color: rgba(255,255,255,0.78);
+    line-height: 1.55;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.72);
   }
 
   .tomo-detalle-cover-footer {
-    padding: 14px 28px;
-    background: rgba(0,0,0,0.3);
+    padding: 15px 28px 18px;
+    background: rgba(0,0,0,0.72);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -1094,6 +1127,8 @@
     .argentinos-header { flex-direction: column; align-items: flex-start; gap: 16px; }
     .drivers-grid { grid-template-columns: 1fr 1fr; }
     .tomo-detalle { grid-template-columns: 1fr; gap: 40px; padding: 60px 24px; }
+    .tomo-detalle::before { inset: 0; opacity: 0.25; }
+    .tomo-detalle-cover { width: min(82vw, 370px); transform: rotate(-0.75deg); }
   }
 
   @media (max-width: 500px) {
