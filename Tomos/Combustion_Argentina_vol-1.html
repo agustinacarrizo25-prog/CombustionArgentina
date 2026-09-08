@@ -1465,9 +1465,15 @@
 
   .cierre-page {
     background:
-      linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.86)),
-      radial-gradient(circle at 50% 22%, rgba(225,6,0,0.54), transparent 34%),
-      linear-gradient(135deg, #050505, #202020);
+      linear-gradient(180deg, rgba(0,0,0,0.72), rgba(0,0,0,0.9)),
+      radial-gradient(circle at 50% 22%, rgba(225,6,0,0.2), transparent 36%),
+      url('../img/portada.webp') center 62% / cover no-repeat;
+  }
+
+  .cierre-page .cierre-titulo,
+  .cierre-page .cierre-sub,
+  .cierre-page .cierre-edition {
+    text-shadow: 0 2px 14px rgba(0,0,0,0.9);
   }
 
   .cierre-bandera {
@@ -1815,7 +1821,7 @@
     .mv-horizon-quote { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 14px; line-height: 1.5; color: var(--blanco); margin-bottom: 8px; position: relative; z-index: 1; }
     .mv-horizon-txt { font-size: 12px; line-height: 1.7; color: rgba(245,242,237,0.7); position: relative; z-index: 1; }
 
-    .mv-cierre { background: linear-gradient(180deg, #0d0d0d 0%, #1a2d42 60%, #0d1e2e 100%); padding: 60px 22px; text-align: center; position: relative; overflow: hidden; }
+    .mv-cierre { background: linear-gradient(180deg, rgba(0,0,0,0.72), rgba(0,0,0,0.9)), url('../img/portada.webp') center 62% / cover no-repeat; padding: 60px 22px; text-align: center; position: relative; overflow: hidden; }
     .mv-cierre::before { content: 'ARGENTINA'; font-family: 'Bebas Neue', sans-serif; font-size: 96px; color: rgba(255,255,255,0.025); position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); white-space: nowrap; pointer-events: none; line-height: 1; }
     .mv-bandera { display: flex; width: 48px; height: 3px; margin: 0 auto 17px; }
     .mv-bf-c { flex: 1; background: #74acdf; }
