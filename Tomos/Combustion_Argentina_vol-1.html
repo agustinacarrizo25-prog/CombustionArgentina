@@ -1170,7 +1170,9 @@
   }
 
   #spread-5 .page-left {
-    background: url('../img/ROADSHOW.webp') center center / cover no-repeat;
+    background:
+      linear-gradient(180deg, rgba(245,242,237,0.72) 0%, rgba(245,242,237,0.2) 36%, rgba(245,242,237,0) 55%),
+      url('../img/ROADSHOW.webp') center center / cover no-repeat;
   }
 
   #spread-3 .page-left .body-txt {
@@ -1616,6 +1618,48 @@
   #spread-3 .comp-badge[style*="background:#FF0090"],
   #spread-3 .comp-badge[style*="background:#FF0090"] * {
     color: #fff;
+  }
+
+  #spread-5 .page-left .sec-title {
+    text-shadow: 0 1px 12px rgba(255,255,255,0.72);
+  }
+
+  #spread-5 .page-left .lead,
+  #spread-5 .page-left > .page-content > .body-txt {
+    align-self: start;
+    padding: 10px 13px;
+    background: rgba(245,242,237,0.76);
+    border: 1px solid rgba(255,255,255,0.5);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    backdrop-filter: blur(3px);
+  }
+
+  #spread-5 .page-left .semaforo-panel {
+    align-self: end;
+    margin-top: 12px;
+    padding: 14px 16px 10px;
+    background: rgba(5,5,5,0.76);
+    border: 1px solid rgba(255,255,255,0.15);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.28);
+    backdrop-filter: blur(4px);
+  }
+
+  #spread-5 .semaforo-panel .divider-label-line {
+    margin-top: 0;
+  }
+
+  #spread-5 .semaforo-panel .divider-label-line::before,
+  #spread-5 .semaforo-panel .divider-label-line::after {
+    background: rgba(255,255,255,0.32);
+  }
+
+  #spread-5 .semaforo-panel .div-label,
+  #spread-5 .semaforo-panel .prob-name {
+    color: rgba(255,255,255,0.9) !important;
+  }
+
+  #spread-5 .semaforo-panel .prob-track {
+    background: rgba(255,255,255,0.22);
   }
 
   @media (min-width: 900px) {
@@ -2175,8 +2219,9 @@
             <div class="sec-rule"></div>
             <p class="lead">El sueño nunca estuvo más cerca. Pero entre el sueño y la realidad hay 40 millones de dólares anuales, homologaciones técnicas y la voluntad de Liberty Media.</p>
             <p class="body-txt">La F1 de hoy es un negocio radicalmente distinto al de 1998. Liberty Media expandió el calendario a 24 carreras y sigue mirando nuevos mercados. El interés por Latinoamérica está ahí: México tiene Gran Premio, Brasil tiene Gran Premio. Argentina podría ser el tercero del continente. Pero solo si los números cierran.</p>
-            <div class="divider-label-line"><span class="div-label">El semáforo de la vuelta</span></div>
-            <div class="prob-container">
+            <div class="semaforo-panel">
+              <div class="divider-label-line"><span class="div-label">El semáforo de la vuelta</span></div>
+              <div class="prob-container">
               <div class="prob-row">
                 <div class="prob-head"><span class="prob-name">MotoGP 2027 — confirmado</span><span class="prob-pct">100%</span></div>
                 <div class="prob-track"><div class="prob-fill" style="width:100%;"></div></div>
@@ -2196,6 +2241,7 @@
               <div class="prob-row">
                 <div class="prob-head"><span class="prob-name">GP Argentina en el calendario F1</span><span class="prob-pct">40%</span></div>
                 <div class="prob-track"><div class="prob-fill" style="width:40%;"></div></div>
+              </div>
               </div>
             </div>
           </div>
