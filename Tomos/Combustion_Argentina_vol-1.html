@@ -1889,6 +1889,21 @@
 
   .mobile-view { display: none; }
 
+  @media (max-width: 599px) {
+    body { background: #111; }
+    .page-indicator { min-width: 92px; }
+    .stage { display: flex; justify-content: center; padding: 20px 14px 40px; min-height: calc(100vh - 52px); }
+    .spread-wrapper { display: block !important; width: var(--mobile-page-width, 610px); zoom: var(--mobile-page-scale, 0.6); }
+    .spread { width: max-content; }
+    .spread::after { display: none; }
+    .spread-container .page { display: none; }
+    .spread-container .page.mobile-visible { display: block; }
+    .spread.single .page { width: 610px; height: 790px; }
+    #spread-0 .portada-titulo { font-size: 80px !important; }
+    .page-left { border-right: 0; }
+    .mobile-view { display: none !important; }
+  }
+
   </style>
 </head>
 <body>
@@ -2387,16 +2402,24 @@
   }
 
   const mobileQuery = window.matchMedia('(max-width: 599px)');
-  let mobilePages = [];
+  const mobilePages = [...document.querySelectorAll('.spread-container .page')];
+  const spreadWrapper = document.querySelector('.spread-wrapper');
   let mobileCurrent = 0;
+
+  function sizeMobilePage() {
+    const width = mobilePages[mobileCurrent].closest('.spread.single') ? 610 : 520;
+    spreadWrapper.style.setProperty('--mobile-page-width', `${width}px`);
+    spreadWrapper.style.setProperty('--mobile-page-scale', Math.min(1, (window.innerWidth - 28) / width));
+  }
 
   function goToMobilePage(index) {
     if (index < 0 || index >= mobilePages.length || index === mobileCurrent) return;
-    mobilePages[mobileCurrent].classList.remove('active');
-    mobilePages[mobileCurrent].setAttribute('aria-hidden', 'true');
+    mobilePages[mobileCurrent].classList.remove('mobile-visible');
+    mobilePages[mobileCurrent].closest('.spread-container').classList.remove('active');
     mobileCurrent = index;
-    mobilePages[mobileCurrent].classList.add('active');
-    mobilePages[mobileCurrent].removeAttribute('aria-hidden');
+    mobilePages[mobileCurrent].closest('.spread-container').classList.add('active');
+    mobilePages[mobileCurrent].classList.add('mobile-visible');
+    sizeMobilePage();
     document.getElementById('page-indicator').textContent = `PÁG ${index + 1} / ${mobilePages.length}`;
     document.getElementById('btn-prev').disabled = index === 0;
     document.getElementById('btn-next').disabled = index === mobilePages.length - 1;
@@ -2420,6 +2443,7 @@
 
   // Click on spread halves
   document.querySelector('.spread-wrapper').addEventListener('click', (e) => {
+    if (mobileQuery.matches) { nextSpread(); return; }
     const wrapper = document.querySelector('.spread-wrapper');
     const rect = wrapper.getBoundingClientRect();
     const midX = rect.left + rect.width / 2;
@@ -2436,25 +2460,26 @@
   }, { passive: true });
 
   document.addEventListener('DOMContentLoaded', () => {
-    mobilePages = [...document.querySelectorAll('#mobile-view .mv-sheet')];
-    mobilePages.slice(1).forEach(page => page.setAttribute('aria-hidden', 'true'));
-    const coverLink = document.querySelector('.mv-cta');
-    coverLink.addEventListener('click', (e) => {
-      if (!mobileQuery.matches) return;
-      e.preventDefault();
-      goToMobilePage(2);
-    });
+    mobilePages[0].classList.add('mobile-visible');
+    sizeMobilePage();
     mobileQuery.addEventListener('change', () => {
       if (mobileQuery.matches) {
+        spreads.forEach(spread => spread.classList.remove('active'));
+        mobilePages[mobileCurrent].closest('.spread-container').classList.add('active');
+        sizeMobilePage();
         document.getElementById('page-indicator').textContent = `PÁG ${mobileCurrent + 1} / ${mobilePages.length}`;
         document.getElementById('btn-prev').disabled = mobileCurrent === 0;
         document.getElementById('btn-next').disabled = mobileCurrent === mobilePages.length - 1;
       } else {
+        spreads.forEach(spread => spread.classList.remove('active'));
+        current = [...spreads].indexOf(mobilePages[mobileCurrent].closest('.spread-container'));
+        spreads[current].classList.add('active');
         document.getElementById('page-indicator').textContent = pageLabels[current];
         document.getElementById('btn-prev').disabled = current === 0;
         document.getElementById('btn-next').disabled = current === totalSpreads - 1;
       }
     });
+    window.addEventListener('resize', () => { if (mobileQuery.matches) sizeMobilePage(); });
     if (mobileQuery.matches) document.getElementById('page-indicator').textContent = `PÁG 1 / ${mobilePages.length}`;
   });
 
