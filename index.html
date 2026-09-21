@@ -537,58 +537,13 @@
   .sobre {
     padding: 100px 48px;
     background: var(--gris);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: center;
     border-top: 1px solid rgba(255,255,255,0.05);
   }
 
-  .sobre-imagen-wrap {
-    position: relative;
+  .sobre-contenido {
+    max-width: 800px;
+    margin: 0 auto;
   }
-
-  .sobre-imagen {
-    width: 100%;
-    aspect-ratio: 4/5;
-    background: var(--gris-medio);
-    border: 1px solid rgba(116,172,223,0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .sobre-imagen-deco {
-    position: absolute;
-    bottom: -16px;
-    right: -16px;
-    width: 80%;
-    height: 80%;
-    border: 2px solid rgba(200,169,81,0.2);
-    z-index: -1;
-  }
-
-  .sobre-icon {
-    font-family: var(--font-display);
-    font-size: 80px;
-    color: rgba(116,172,223,0.15);
-    letter-spacing: 3px;
-  }
-
-  .sobre-foto-label {
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    background: rgba(10,10,10,0.7);
-    padding: 12px 20px;
-    font-size: 12px;
-    color: var(--texto-muted);
-    letter-spacing: 1px;
-    backdrop-filter: blur(4px);
-  }
-
-  .sobre-contenido { }
 
   .sobre-cita {
     font-family: var(--font-serif);
@@ -1165,7 +1120,8 @@
     .tomo-hero-strip { grid-template-columns: 1fr; gap: 14px; padding: 20px 24px 24px; }
     .tomo-strip-edicion { min-width: 0; padding-right: 0; padding-bottom: 14px; border-right: 0; border-bottom: 1px solid rgba(255,255,255,0.16); }
     .tomo-strip-btn { width: 100%; min-width: 0; }
-    .propuesta, .sobre { grid-template-columns: 1fr; gap: 40px; padding: 60px 24px; }
+    .propuesta { grid-template-columns: 1fr; gap: 40px; padding: 60px 24px; }
+    .sobre { padding: 60px 24px; }
     .catalogo { padding: 60px 24px; }
     .catalogo-grid { grid-template-columns: 1fr; }
     .newsletter { padding: 60px 24px; }
@@ -1436,13 +1392,6 @@
 
 <!-- SOBRE EL PROYECTO -->
 <section class="sobre" id="proyecto">
-  <div class="sobre-imagen-wrap">
-    <div class="sobre-imagen">
-      <span class="sobre-icon">ARG</span>
-      <p class="sobre-foto-label">Directora editorial · Combustión Argentina</p>
-    </div>
-    <div class="sobre-imagen-deco"></div>
-  </div>
   <div class="sobre-contenido">
     <p class="prop-label">Sobre el proyecto</p>
     <p class="sobre-texto">Mi abuelo miraba a Carlos Reutemann. Mi mamá, a Michael Schumacher. Y yo empecé a seguir la Formula 1 los fines de semana porque un pibe de Pilar llamado Franco Colapinto soñaba con llegar a la categoría máxima.</p>
