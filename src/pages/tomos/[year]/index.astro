@@ -1,0 +1,149 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const tomos = await getCollection('tomos');
+  const years = [...new Set(tomos.map((tomo) => tomo.data.year))];
+
+  return years.map((year) => ({
+    params: { year: String(year) },
+    props: {
+      year,
+      tomos: tomos
+        .filter((tomo) => tomo.data.year === year)
+        .sort((a, b) => a.data.volume - b.data.volume),
+    },
+  }));
+}
+
+const { year, tomos } = Astro.props;
+---
+
+<BaseLayout title={`Tomos ${year} | Combustión Argentina`}>
+  <main class="archive">
+    <a class="back" href="/" aria-label="Combustión Argentina inicio">
+      <img
+        src="/img/brand/combustion-argentina-symbol-header-dark.png"
+        width="320"
+        height="147"
+        alt=""
+        decoding="async"
+      />
+    </a>
+    <p class="eyebrow">Archivo anual</p>
+    <h1>Tomos {year}</h1>
+    <section>
+      {tomos.map((tomo) => (
+        <article>
+          <img
+            src={tomo.data.cover}
+            width="387"
+            height="581"
+            alt=""
+            loading="lazy"
+            decoding="async"
+          />
+          <div>
+            <p>{tomo.data.volumeLabel}</p>
+            <h2>{tomo.data.title}</h2>
+            <p>{tomo.data.summary}</p>
+            <a href={`/tomos/${tomo.data.year}/${tomo.data.slug}/`}>Leer tomo</a>
+          </div>
+        </article>
+      ))}
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .archive {
+    width: min(1080px, calc(100% - 48px));
+    margin: 0 auto;
+    padding: 44px 0 86px;
+  }
+
+  .back {
+    display: inline-flex;
+    align-items: center;
+    width: 132px;
+    height: 62px;
+    margin-bottom: 56px;
+    text-decoration: none;
+  }
+
+  .back img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  h1 {
+    margin: 0 0 36px;
+    font-family: var(--font-display);
+    font-size: clamp(58px, 10vw, 116px);
+    line-height: 0.86;
+    text-transform: uppercase;
+  }
+
+  section {
+    display: grid;
+    gap: 18px;
+  }
+
+  article {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 28px;
+    padding: 18px;
+    border: 1px solid rgba(245, 240, 232, 0.1);
+    background: var(--brand-carbon);
+  }
+
+  img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+  }
+
+  article p:first-child {
+    margin: 0 0 8px;
+    color: var(--brand-sky);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  h2 {
+    margin: 0 0 10px;
+    font-family: var(--font-display);
+    font-size: 42px;
+    line-height: 0.95;
+    text-transform: uppercase;
+  }
+
+  article p:not(:first-child) {
+    color: var(--brand-muted);
+  }
+
+  article a {
+    color: var(--brand-gold);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 680px) {
+    .archive {
+      width: min(100% - 32px, 620px);
+    }
+
+    article {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

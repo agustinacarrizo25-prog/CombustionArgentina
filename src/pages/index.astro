@@ -1,0 +1,510 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import SiteHeader from '@components/SiteHeader.astro';
+import NewsletterForm from '@components/NewsletterForm.astro';
+import { drivers } from '@data/drivers';
+import { editions, featuredStats } from '@data/editions';
+---
+
+<BaseLayout preloadImages={['/img/Franco Colapinto hero.webp']}>
+  <SiteHeader />
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Revista digital · Automovilismo</p>
+        <h1 class="display-title"><span>Combustión</span><br />Argentina</h1>
+        <p class="serif-lead">El automovilismo argentino, en primera fila.</p>
+        <p class="hero-text">
+          Los grandes medios de F1 hablan desde Europa. Nosotros hablamos desde acá:
+          desde el fervor argentino, desde el seguimiento a nuestros pilotos y desde
+          una pasión que no necesita subtítulos.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="/tomos/2026/vol-001-la-vuelta-del-gran-circo/">Leer el Tomo 01</a>
+          <a class="btn btn-secondary" href="#proyecto">Conocer el proyecto</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="issue-strip" aria-label="Tomo 01 disponible">
+      <div>
+        <p class="eyebrow">Tomo 01 disponible</p>
+        <h2>La vuelta del Gran Circo</h2>
+      </div>
+      <p>F1, Colapinto, MotoGP 2027 y el sueño de volver a tener un Gran Premio argentino.</p>
+      <a class="btn btn-secondary" href="/tomos/2026/vol-001-la-vuelta-del-gran-circo/">Abrir edición</a>
+    </section>
+
+    <section class="section manifesto" id="proyecto">
+      <div class="container manifesto-grid">
+        <div>
+          <p class="eyebrow">Por qué Combustión Argentina</p>
+          <h2 class="section-title">Pasión que se vuelve motor.</h2>
+        </div>
+        <div class="manifesto-copy">
+          <p>
+            En este rincón del mundo, el automovilismo no se consume con tibieza:
+            se vive con un fervor que quema. Combustión Argentina nace para contar
+            ese incendio con análisis, criterio e identidad propia.
+          </p>
+          <blockquote>
+            Tres generaciones, tres pilotos, una misma pasión que atravesó el tiempo.
+          </blockquote>
+          <p>
+            Esta revista no es solo mía. Es de todos los que alguna vez se emocionaron
+            viendo correr a un argentino. Y es tuya, si te quedás.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section stats">
+      <div class="container stats-grid">
+        {featuredStats.map((stat) => (
+          <article>
+            <strong>{stat.value}</strong>
+            <span>{stat.label}</span>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section drivers" id="argentinos">
+      <div class="container section-head">
+        <div>
+          <p class="eyebrow">Argentinos en la grilla</p>
+          <h2 class="section-title">Los nombres que encienden la pista.</h2>
+        </div>
+        <p class="muted">
+          De Fangio a Colapinto, el automovilismo argentino tiene una memoria larga
+          y una forma muy propia de mirar el mundo.
+        </p>
+      </div>
+      <div class="container driver-grid">
+        {drivers.map((driver) => (
+          <article class="driver-card">
+            <img
+              src={driver.image}
+              alt={driver.name}
+              width={driver.width}
+              height={driver.height}
+              loading="lazy"
+              decoding="async"
+            />
+            <div>
+              <span>{driver.era}</span>
+              <h3>{driver.name}</h3>
+              <p>{driver.description}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section editions" id="tomos">
+      <div class="container section-head">
+        <div>
+          <p class="eyebrow">Catálogo editorial</p>
+          <h2 class="section-title">Los tomos</h2>
+        </div>
+        <p class="muted">
+          Cada edición se piensa como una publicación propia: foco, ritmo visual y una
+          pregunta grande sobre el automovilismo argentino.
+        </p>
+      </div>
+      <div class="container edition-grid">
+        {editions.map((edition) => (
+          <article class="edition-card">
+            <a href={edition.href} class="edition-image" aria-label={`Abrir ${edition.title}`}>
+              <img
+                src={edition.image}
+                alt=""
+                width={edition.width}
+                height={edition.height}
+                loading="lazy"
+                decoding="async"
+              />
+              <span>{edition.status}</span>
+            </a>
+            <div class="edition-body">
+              <p>{edition.kicker}</p>
+              <h3><span>{edition.number}</span>{edition.title}</h3>
+              <p>{edition.summary}</p>
+              <a href={edition.href}>Leer más</a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section newsletter" id="newsletter">
+      <div class="container newsletter-inner">
+        <p class="eyebrow">Sumate al proyecto</p>
+        <h2 class="section-title">No te pierdas el <span>Tomo 02</span></h2>
+        <p>
+          Dejá tu email y te avisamos cuando salga la próxima edición. Sin spam,
+          sin ruido: solo la señal de largada cuando estemos listos.
+        </p>
+        <NewsletterForm />
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a class="footer-logo" href="/" aria-label="Combustión Argentina inicio">
+      <img
+        src="/img/brand/combustion-argentina-symbol-header-dark.png"
+        width="320"
+        height="147"
+        alt=""
+        loading="lazy"
+        decoding="async"
+      />
+    </a>
+    <nav aria-label="Pie de página">
+      <a href="#tomos">Tomos</a>
+      <a href="#proyecto">El proyecto</a>
+      <a href="#newsletter">Newsletter</a>
+      <a href="mailto:combustionargentina.mg@gmail.com">Contacto</a>
+    </nav>
+    <small>© 2026 Combustión Argentina · Todos los derechos reservados</small>
+  </footer>
+</BaseLayout>
+
+<style>
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    align-items: center;
+    position: relative;
+    padding: 120px 48px 80px;
+    background:
+      linear-gradient(90deg, rgba(10, 10, 10, 0.96) 0%, rgba(10, 10, 10, 0.75) 42%, rgba(10, 10, 10, 0.28) 76%, rgba(10, 10, 10, 0.45) 100%),
+      linear-gradient(180deg, rgba(10, 10, 10, 0.1), rgba(10, 10, 10, 0.88)),
+      url('/img/Franco Colapinto hero.webp') center right / cover no-repeat;
+  }
+
+  .hero-copy {
+    width: min(620px, 100%);
+  }
+
+  .hero .display-title span,
+  .newsletter span {
+    color: var(--brand-gold);
+  }
+
+  .hero-text {
+    width: min(470px, 100%);
+    margin: 24px 0 42px;
+    color: var(--brand-muted);
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .issue-strip {
+    display: grid;
+    grid-template-columns: 1.1fr 1.4fr auto;
+    gap: 24px;
+    align-items: center;
+    padding: 28px 48px;
+    border-top: 3px solid var(--brand-gold);
+    border-bottom: 1px solid rgba(200, 169, 81, 0.18);
+    background: var(--brand-carbon);
+  }
+
+  .issue-strip h2 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: 34px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .issue-strip p {
+    margin: 0;
+    color: var(--brand-muted);
+  }
+
+  .manifesto {
+    background:
+      linear-gradient(180deg, rgba(116, 172, 223, 0.08), transparent 42%),
+      var(--brand-black);
+  }
+
+  .manifesto-grid {
+    display: grid;
+    grid-template-columns: minmax(260px, 0.9fr) minmax(0, 1.1fr);
+    gap: 64px;
+    align-items: start;
+  }
+
+  .manifesto-copy p {
+    margin: 0 0 22px;
+    color: var(--brand-muted);
+    font-size: 18px;
+  }
+
+  blockquote {
+    margin: 0 0 22px;
+    padding-left: 22px;
+    border-left: 3px solid var(--brand-sky);
+    color: var(--brand-paper);
+    font-family: var(--font-serif);
+    font-size: 28px;
+    font-style: italic;
+    line-height: 1.2;
+  }
+
+  .stats {
+    padding: 42px 0;
+    background: var(--brand-paper);
+    color: var(--brand-black);
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(10, 10, 10, 0.16);
+  }
+
+  .stats article {
+    min-height: 150px;
+    padding: 28px;
+    background: var(--brand-paper);
+  }
+
+  .stats strong {
+    display: block;
+    color: var(--brand-gold);
+    font-family: var(--font-display);
+    font-size: 62px;
+    line-height: 0.9;
+  }
+
+  .stats span {
+    display: block;
+    margin-top: 10px;
+    max-width: 220px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .section-head {
+    display: grid;
+    grid-template-columns: minmax(280px, 0.9fr) minmax(0, 1fr);
+    gap: 42px;
+    align-items: end;
+    margin-bottom: 38px;
+  }
+
+  .driver-grid,
+  .edition-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+  }
+
+  .driver-card,
+  .edition-card {
+    background: var(--brand-carbon);
+    border: 1px solid rgba(245, 240, 232, 0.08);
+  }
+
+  .driver-card {
+    overflow: hidden;
+  }
+
+  .driver-card img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    filter: saturate(0.92) contrast(1.06);
+  }
+
+  .driver-card div,
+  .edition-body {
+    padding: 20px;
+  }
+
+  .driver-card span,
+  .edition-body > p:first-child,
+  .edition-image span {
+    color: var(--brand-sky);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .driver-card h3,
+  .edition-card h3 {
+    margin: 8px 0;
+    font-family: var(--font-display);
+    font-size: 30px;
+    line-height: 0.95;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .driver-card p,
+  .edition-card p {
+    margin: 0;
+    color: var(--brand-muted);
+    font-size: 14px;
+  }
+
+  .edition-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .edition-image {
+    position: relative;
+    display: block;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    color: var(--brand-black);
+    text-decoration: none;
+  }
+
+  .edition-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 220ms ease;
+  }
+
+  .edition-image:hover img {
+    transform: scale(1.03);
+  }
+
+  .edition-image span {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    padding: 6px 8px;
+    background: var(--brand-sky);
+    color: var(--brand-black);
+  }
+
+  .edition-card h3 span {
+    display: inline-block;
+    margin-right: 10px;
+    color: var(--brand-gold);
+  }
+
+  .edition-body a {
+    display: inline-flex;
+    margin-top: 18px;
+    color: var(--brand-gold);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .newsletter {
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    background:
+      linear-gradient(90deg, rgba(10, 10, 10, 0.96), rgba(10, 10, 10, 0.74)),
+      url('/img/ROADSHOW.webp') center / cover no-repeat;
+  }
+
+  .newsletter-inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  .newsletter p:not(.eyebrow) {
+    width: min(560px, 100%);
+    margin: 18px auto 32px;
+    color: var(--brand-muted);
+  }
+
+  .site-footer {
+    display: grid;
+    gap: 22px;
+    justify-items: center;
+    padding: 52px 24px;
+    border-top: 1px solid rgba(245, 240, 232, 0.08);
+    background: #050505;
+    color: var(--brand-muted);
+  }
+
+  .footer-logo {
+    display: inline-flex;
+    align-items: center;
+    width: 168px;
+    height: 78px;
+    text-decoration: none;
+  }
+
+  .footer-logo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .site-footer nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 18px;
+  }
+
+  .site-footer a:not(.footer-logo) {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 980px) {
+    .issue-strip,
+    .manifesto-grid,
+    .section-head {
+      grid-template-columns: 1fr;
+    }
+
+    .driver-grid,
+    .edition-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero {
+      min-height: 86vh;
+      padding: 108px 24px 56px;
+      background-position: 62% center;
+    }
+
+    .issue-strip {
+      grid-template-columns: 1fr;
+      padding: 24px;
+    }
+
+    .stats-grid,
+    .driver-grid,
+    .edition-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .stats article {
+      min-height: auto;
+    }
+  }
+</style>

@@ -11,6 +11,13 @@ Regula recursos remotos, secretos, datos personales, formularios e incorporació
 - El contacto usa `mailto:`.
 - No hay variables de entorno, secretos, autenticación, analytics, API, backend, base de datos, mensajería ni proveedor real de newsletter.
 
+## Política de newsletter aprobada
+
+- Brevo es el proveedor aprobado para la primera integración real de newsletter.
+- La integración inicial debe capturar suscriptores mediante Brevo o un endpoint mínimo que delegue en Brevo. No crear una base de datos propia de suscriptores salvo que se apruebe una desviación de arquitectura.
+- El formulario debe comunicar con precisión si el alta fue enviada, aceptada o falló. No afirmar que un email quedó registrado si Brevo no confirmó la operación.
+- Toda propuesta de usar otro proveedor de newsletter, guardar suscriptores en una base propia, enviar campañas desde infraestructura propia o incorporar automatizaciones fuera de Brevo debe indicar que va contra las políticas de construcción de Combustión Argentina y justificar el cambio antes de implementarlo.
+
 ## Directivas
 
 - No versionar claves, tokens, credenciales, listas de correo ni datos personales en HTML, JavaScript, historial Git o assets.

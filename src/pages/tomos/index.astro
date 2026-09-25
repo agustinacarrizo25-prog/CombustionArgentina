@@ -1,0 +1,146 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@layouts/BaseLayout.astro';
+
+const tomos = (await getCollection('tomos')).sort((a, b) => a.data.volume - b.data.volume);
+const years = [...new Set(tomos.map((tomo) => tomo.data.year))];
+---
+
+<BaseLayout title="Tomos | Combustión Argentina">
+  <main class="tomos-index">
+    <a class="back" href="/" aria-label="Combustión Argentina inicio">
+      <img
+        src="/img/brand/combustion-argentina-symbol-header-dark.png"
+        width="320"
+        height="147"
+        alt=""
+        decoding="async"
+      />
+    </a>
+    <p class="eyebrow">Catálogo editorial</p>
+    <h1>Tomos</h1>
+    <nav aria-label="Años disponibles">
+      {years.map((year) => <a href={`/tomos/${year}/`}>{year}</a>)}
+    </nav>
+    <section>
+      {tomos.map((tomo) => (
+        <article>
+          <a href={`/tomos/${tomo.data.year}/${tomo.data.slug}/`}>
+            <img
+              src={tomo.data.cover}
+              width="387"
+              height="581"
+              alt=""
+              loading="lazy"
+              decoding="async"
+            />
+            <span>{tomo.data.volumeLabel}</span>
+            <h2>{tomo.data.title}</h2>
+          </a>
+        </article>
+      ))}
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .tomos-index {
+    width: min(1180px, calc(100% - 48px));
+    margin: 0 auto;
+    padding: 44px 0 86px;
+  }
+
+  .back {
+    display: inline-flex;
+    align-items: center;
+    width: 132px;
+    height: 62px;
+    margin-bottom: 56px;
+    text-decoration: none;
+  }
+
+  .back img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  h1 {
+    margin: 0 0 28px;
+    font-family: var(--font-display);
+    font-size: clamp(64px, 12vw, 136px);
+    line-height: 0.84;
+    text-transform: uppercase;
+  }
+
+  nav {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 36px;
+  }
+
+  nav a {
+    padding: 8px 12px;
+    background: var(--brand-sky);
+    color: var(--brand-black);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-decoration: none;
+  }
+
+  section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+
+  article {
+    background: var(--brand-carbon);
+    border: 1px solid rgba(245, 240, 232, 0.1);
+  }
+
+  article a {
+    display: block;
+    padding-bottom: 20px;
+    color: var(--brand-paper);
+    text-decoration: none;
+  }
+
+  img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+  }
+
+  span,
+  h2 {
+    display: block;
+    margin-inline: 20px;
+  }
+
+  span {
+    margin-top: 18px;
+    color: var(--brand-gold);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  h2 {
+    margin-top: 8px;
+    margin-bottom: 0;
+    font-family: var(--font-display);
+    font-size: 40px;
+    line-height: 0.95;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 840px) {
+    section {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

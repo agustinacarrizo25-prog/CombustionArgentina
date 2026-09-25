@@ -1,0 +1,194 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  subtitle: string;
+  volumeLabel: string;
+  year: number;
+  cover: string;
+  summary: string;
+  canonicalPath: string;
+}
+
+const { title, subtitle, volumeLabel, year, cover, summary, canonicalPath } = Astro.props;
+---
+
+<BaseLayout title={`${volumeLabel} · ${title} | Combustión Argentina`} description={summary}>
+  <main class="tomo-shell">
+    <nav class="tomo-topbar" aria-label="Navegación del tomo">
+      <a href="/" aria-label="Combustión Argentina inicio">
+        <img
+          src="/img/brand/combustion-argentina-symbol-header-dark.png"
+          width="320"
+          height="147"
+          alt=""
+          decoding="async"
+        />
+      </a>
+      <div>
+        <a href="/#tomos">Tomos</a>
+        <a href="/#newsletter">Newsletter</a>
+      </div>
+    </nav>
+
+    <article class="tomo-article">
+      <header class="tomo-hero">
+        <div class="tomo-hero-copy">
+          <p class="eyebrow">{volumeLabel} · {year}</p>
+          <h1>{title}</h1>
+          <p class="subtitle">{subtitle}</p>
+          <p>{summary}</p>
+          <a class="btn btn-primary" href={canonicalPath}>Ruta canónica</a>
+        </div>
+        <figure>
+          <img src={cover} width="387" height="581" alt="" decoding="async" />
+        </figure>
+      </header>
+
+      <div class="tomo-content">
+        <slot />
+      </div>
+    </article>
+  </main>
+</BaseLayout>
+
+<style>
+  .tomo-shell {
+    min-height: 100vh;
+    background:
+      linear-gradient(180deg, rgba(116, 172, 223, 0.08), transparent 360px),
+      var(--brand-black);
+  }
+
+  .tomo-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    padding: 22px 48px;
+    border-bottom: 1px solid rgba(245, 240, 232, 0.1);
+    background: rgba(10, 10, 10, 0.86);
+  }
+
+  .tomo-topbar a {
+    color: var(--brand-paper);
+    text-decoration: none;
+  }
+
+  .tomo-topbar > a {
+    display: inline-flex;
+    align-items: center;
+    width: 132px;
+    height: 62px;
+  }
+
+  .tomo-topbar > a img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .tomo-topbar div {
+    display: flex;
+    gap: 18px;
+  }
+
+  .tomo-topbar div a {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .tomo-article {
+    width: min(1180px, calc(100% - 48px));
+    margin: 0 auto;
+    padding: 56px 0 96px;
+  }
+
+  .tomo-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(320px, 0.8fr);
+    gap: 48px;
+    align-items: center;
+  }
+
+  .tomo-hero h1 {
+    margin: 0;
+    max-width: 680px;
+    color: var(--brand-paper);
+    font-family: var(--font-display);
+    font-size: clamp(58px, 9vw, 132px);
+    line-height: 0.85;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+
+  .subtitle {
+    color: var(--brand-gold);
+    font-family: var(--font-serif);
+    font-size: clamp(24px, 4vw, 42px);
+    line-height: 1.08;
+  }
+
+  .tomo-hero-copy > p:not(.eyebrow):not(.subtitle) {
+    max-width: 620px;
+    color: var(--brand-muted);
+    font-size: 18px;
+  }
+
+  figure {
+    margin: 0;
+  }
+
+  figure img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border: 1px solid rgba(245, 240, 232, 0.14);
+  }
+
+  .tomo-content {
+    max-width: 760px;
+    margin: 72px auto 0;
+    color: var(--brand-paper);
+  }
+
+  .tomo-content :global(h2) {
+    margin: 52px 0 14px;
+    color: var(--brand-gold);
+    font-family: var(--font-display);
+    font-size: clamp(38px, 5vw, 62px);
+    line-height: 0.9;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+
+  .tomo-content :global(p) {
+    margin: 0 0 22px;
+    color: var(--brand-muted);
+    font-size: 19px;
+    line-height: 1.75;
+  }
+
+  @media (max-width: 820px) {
+    .tomo-topbar {
+      padding: 18px 24px;
+    }
+
+    .tomo-article {
+      width: min(100% - 32px, 720px);
+      padding-top: 36px;
+    }
+
+    .tomo-hero {
+      grid-template-columns: 1fr;
+    }
+
+    figure img {
+      aspect-ratio: 16 / 10;
+    }
+  }
+</style>

@@ -1,0 +1,137 @@
+---
+const brevoEndpoint = import.meta.env.PUBLIC_BREVO_FORM_ENDPOINT;
+---
+
+<form class="newsletter-form" data-newsletter-form data-endpoint={brevoEndpoint ?? ''}>
+  <label class="sr-only" for="newsletter-email">Email para recibir novedades</label>
+  <input id="newsletter-email" name="email" type="email" placeholder="tu@email.com" autocomplete="email" required />
+  <button type="submit">Avisame</button>
+  <p class="form-status" data-form-status role="status" aria-live="polite">
+    Configurá Brevo para activar el alta real.
+  </p>
+</form>
+
+<script>
+  const form = document.querySelector('[data-newsletter-form]');
+  const status = document.querySelector('[data-form-status]');
+
+  form?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    if (!(form instanceof HTMLFormElement) || !(status instanceof HTMLElement)) return;
+
+    const endpoint = form.dataset.endpoint;
+    const data = new FormData(form);
+    const email = String(data.get('email') || '').trim();
+    const button = form.querySelector('button');
+
+    if (!endpoint) {
+      status.textContent = 'El formulario ya esta listo, pero falta configurar Brevo.';
+      return;
+    }
+
+    if (!email) {
+      status.textContent = 'Ingresá un email válido.';
+      return;
+    }
+
+    button?.setAttribute('disabled', 'true');
+    status.textContent = 'Enviando alta...';
+
+    try {
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, source: 'combustion-argentina-home' }),
+      });
+
+      if (!response.ok) throw new Error('Newsletter request failed');
+
+      form.reset();
+      status.textContent = 'Listo. Cuando salga el próximo tomo te avisamos.';
+    } catch {
+      status.textContent = 'No pudimos registrar el email. Probá de nuevo en unos minutos.';
+    } finally {
+      button?.removeAttribute('disabled');
+    }
+  });
+</script>
+
+<style>
+  .newsletter-form {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0;
+    width: min(620px, 100%);
+    margin: 0 auto;
+    border: 1px solid rgba(200, 169, 81, 0.35);
+    background: rgba(10, 10, 10, 0.72);
+  }
+
+  input {
+    min-height: 58px;
+    border: 0;
+    background: transparent;
+    color: var(--brand-paper);
+    padding: 0 22px;
+    outline: none;
+  }
+
+  input:focus {
+    box-shadow: inset 0 0 0 2px rgba(116, 172, 223, 0.5);
+  }
+
+  button {
+    min-height: 58px;
+    border: 0;
+    background: var(--brand-gold);
+    color: var(--brand-black);
+    cursor: pointer;
+    padding: 0 26px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  button:disabled {
+    cursor: wait;
+    opacity: 0.7;
+  }
+
+  .form-status {
+    grid-column: 1 / -1;
+    min-height: 22px;
+    margin: 8px 0 0;
+    padding: 0 4px 12px;
+    color: var(--brand-muted);
+    font-size: 13px;
+    text-align: center;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  @media (max-width: 640px) {
+    .newsletter-form {
+      grid-template-columns: 1fr;
+      border: 0;
+      gap: 10px;
+      background: transparent;
+    }
+
+    input {
+      border: 1px solid rgba(200, 169, 81, 0.35);
+      background: rgba(10, 10, 10, 0.72);
+    }
+  }
+</style>

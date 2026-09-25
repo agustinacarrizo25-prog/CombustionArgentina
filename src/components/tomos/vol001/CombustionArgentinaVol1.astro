@@ -1,0 +1,2708 @@
+---
+// Migracion 1:1 del diseno original de Tomos/Combustion_Argentina_vol-1.html.
+// No rediseniar este componente sin aprobacion editorial explicita.
+---
+
+
+
+<!-- TOOLBAR -->
+<div class="toolbar">
+  <ul class="toolbar-sections">
+    <li><button onclick="goToSpread(0)">Portada</button></li>
+    <li><button onclick="goToSpread(1)">Historia</button></li>
+    <li><button onclick="goToSpread(2)">Colapinto</button></li>
+    <li><button onclick="goToSpread(3)">MotoGP</button></li>
+    <li><button onclick="goToSpread(4)">El Futuro</button></li>
+    <li><button onclick="goToSpread(5)">Cierre</button></li>
+  </ul>
+  <div class="toolbar-nav">
+    <button class="nav-btn" id="btn-prev" onclick="prevSpread()" disabled>&#8592;</button>
+    <div class="page-indicator" id="page-indicator">PÁG 1</div>
+    <button class="nav-btn" id="btn-next" onclick="nextSpread()">&#8594;</button>
+  </div>
+</div>
+
+<!-- STAGE -->
+<div class="stage">
+  <div class="spread-wrapper">
+
+    <!-- ===================== SPREAD 0: PORTADA (single page) ===================== -->
+    <div class="spread-container active" id="spread-0">
+      <div class="spread single">
+        <div class="page">
+          <div class="portada">
+            <div class="portada-band-top"></div>
+            <div class="portada-foto" aria-hidden="true"></div>
+
+            <!-- Sol de Mayo: imagen real de la bandera argentina -->
+            <div class="portada-sol-anterior" style="position:absolute;right:-180px;top:50%;transform:translateY(-52%);width:480px;height:480px;pointer-events:none;z-index:1;opacity:0.18;mix-blend-mode:luminosity;">
+              <img src="/img/tomos/2026/vol-001/sol-de-mayo.jpg" width="960" height="960" decoding="async" fetchpriority="high" style="width:100%;height:100%;object-fit:contain;" alt="Sol de Mayo"/>
+            </div>
+
+            <div class="portada-izq" style="height:calc(100% - 5px - 44px); padding:40px 40px; border-right:none; position:relative; z-index:2;">
+              <div>
+                <div class="portada-eyebrow">Revista Especial · Automovilismo Argentino</div>
+              </div>
+              <div style="position:relative;">
+                <div class="portada-ghost" aria-hidden="true">F1</div>
+                <h1 class="portada-titulo" style="font-size:100px;">
+                  <span style="color:var(--celeste);display:block;">La Vuelta</span>
+                  <span style="color:var(--blanco);display:block;">del Gran</span>
+                  <span style="color:var(--celeste);display:block;">Circo</span>
+                </h1>
+              </div>
+              <div>
+                <p class="portada-sub" style="max-width:340px;font-size:15px;">Franco Colapinto encendió una llama. El sueño de ver la Fórmula 1 en Argentina otra vez no parece tan lejano.</p>
+              </div>
+              <div>
+                <div class="portada-cta">Leer edición completa →</div>
+              </div>
+            </div>
+            <div class="portada-bottom" style="position:relative;z-index:2;">
+              <div class="portada-bottom-logo">Combustión AR</div>
+              <div class="portada-bottom-info">EDICIÓN ESPECIAL · 2026</div>
+              <div style="font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:2px;color:rgba(245,242,237,0.25);">1</div>
+            </div>
+          </div>
+          <span class="page-num page-num-right" style="display:none;">1</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== SPREAD 1: LEGALES + STATS (doble página) ===================== -->
+    <div class="spread-container" id="spread-1">
+      <div class="spread">
+        <!-- Página izquierda: Legales -->
+        <div class="page page-left">
+          <div class="legales-page">
+            <div>
+              <div class="leg-titulo">Combustión Argentina</div>
+              <div class="leg-subtitulo">Revista digital de automovilismo argentino · Edición Especial 2026</div>
+              <div class="leg-rule"></div>
+              <p class="opening-line" style="font-family:'DM Serif Display',serif;font-style:italic;font-size:13px;color:var(--celeste);line-height:1.6;margin-bottom:20px;">La revista de quienes aman la Fórmula 1<br>con la pasión de un argentino en la largada.</p>
+              <div class="leg-block">
+                <div class="leg-label">Dirección editorial</div>
+                <div class="leg-txt"><strong>Combustión Argentina</strong> es una publicación digital independiente dedicada al automovilismo. Su misión es cubrir la F1 y el motor sport con la pasión y el rigor que los fans argentinos merecen.</div>
+              </div>
+
+              <div class="leg-block">
+                <div class="leg-label">Fuentes y verificación</div>
+                <div class="leg-txt">El contenido de esta edición fue elaborado con información verificada proveniente de <strong>Infobae, La Nación, ESPN, Motorsport.com, MotoGP.com, Autosport, Motorsport Week</strong> y comunicados oficiales de los equipos y la FIA. Toda cita directa corresponde a declaraciones públicas.</div>
+              </div>
+
+              <div class="leg-block">
+                <div class="leg-label">Política editorial</div>
+                <div class="leg-txt">Combustión Argentina no publica rumores ni especulaciones sin respaldo periodístico. Los datos económicos y estadísticos corresponden a fuentes oficiales o medios de referencia. Las opiniones expresadas son del cuerpo editorial.</div>
+              </div>
+
+              <div class="leg-block">
+                <div class="leg-label">Propiedad intelectual</div>
+                <div class="leg-txt">El diseño, la maquetación y los textos de esta publicación son propiedad de Combustión Argentina. Queda prohibida su reproducción total o parcial sin autorización expresa. Las marcas mencionadas pertenecen a sus respectivos dueños.</div>
+              </div>
+
+              <div class="leg-block">
+                <a href="mailto:combustionargentina.mg@gmail.com" style="text-decoration:none;"><div class="leg-label">Contacto</div></a>
+                <div class="leg-txt"><a href="mailto:combustionargentina.mg@gmail.com">combustionargentina.mg@gmail.com</a> · Buenos Aires, Argentina</div>
+                <div class="leg-txt" style="margin-top:5px;"><strong>Carrizo Agustina</strong> · Directora editorial</div>
+              </div>
+            </div>
+
+            <div class="leg-indice">
+              <div class="leg-indice-titulo">En este número</div>
+              <div class="leg-indice-grid">
+                <div class="leg-indice-item">
+                  <span class="leg-indice-num">01</span>
+                  <span class="leg-indice-name">¿Por qué se fue la F1?</span>
+                </div>
+                <div class="leg-indice-item">
+                  <span class="leg-indice-num">02</span>
+                  <span class="leg-indice-name">El Efecto Colapinto</span>
+                </div>
+                <div class="leg-indice-item">
+                  <span class="leg-indice-num">03</span>
+                  <span class="leg-indice-name">MotoGP 2027 en Buenos Aires</span>
+                </div>
+                <div class="leg-indice-item">
+                  <span class="leg-indice-num">04</span>
+                  <span class="leg-indice-name">¿Qué tan cerca está de pasar?</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <span class="page-num page-num-left">2</span>
+        </div>
+        <!-- Página derecha: Stats -->
+        <div class="page">
+          <div class="portada-der-pattern" style="position:absolute;inset:0;"></div>
+          <div class="portada-stats" style="position:absolute;inset:0;">
+            <div class="portada-stat-row">
+              <div class="portada-stat-item">
+                <div class="p-stat-n" style="font-size:72px;">20</div>
+                <div class="p-stat-l">Grandes Premios<br>en Argentina</div>
+              </div>
+              <div class="portada-stat-item">
+                <div class="p-stat-n" style="font-size:72px;">26</div>
+                <div class="p-stat-l">Años sin F1<br>en el país</div>
+              </div>
+            </div>
+            <div class="portada-stat-row">
+              <div class="portada-stat-item">
+                <div class="p-stat-n" style="font-size:60px;">$40M</div>
+                <div class="p-stat-l">Fee anual<br>para el GP</div>
+              </div>
+              <div class="portada-stat-item">
+                <div class="p-stat-n" style="font-size:72px;">43</div>
+                <div class="p-stat-l">Número de<br>Colapinto</div>
+              </div>
+            </div>
+          </div>
+          <span class="page-num page-num-right">3</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== SPREAD 2: HISTORIA (doble página) ===================== -->
+    <div class="spread-container" id="spread-2">
+      <div class="spread">
+        <div class="historia-panoramica" role="img" aria-label="Carlos Reutemann con Ferrari en el Gran Premio de Argentina de 1978"></div>
+        <!-- Página izquierda -->
+        <div class="page page-left">
+          <div class="page-content">
+            <div class="sec-tag">// 01 · Historia</div>
+            <h2 class="sec-title">¿Por qué<br>se fue<br>la F1?</h2>
+            <div class="sec-rule"></div>
+            <p class="lead">La Argentina tuvo veinte Grandes Premios. El último fue el 12 de abril de 1998. Desde entonces, el Gran Circo no volvió. Pero la historia es mucho más compleja que solo números.</p>
+            <div class="timeline historia-timeline">
+              <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">1953</div><div class="tl-desc">Primera carrera de F1 en Argentina. Fangio domina ante más de 100.000 espectadores. El país se convierte en referencia mundial del automovilismo.</div></div>
+              <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">1960</div><div class="tl-desc">Fangio se retira en 1958. Hay una sola carrera más en 1960 y el calendario abandona Argentina durante 11 años.</div></div>
+              <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">1972</div><div class="tl-desc">Regreso gracias a Carlos Reutemann. La F1 vuelve y se queda hasta 1981 con la excepción de 1976. El retiro del Lole detiene el ciclo.</div></div>
+              <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">1995</div><div class="tl-desc">Tercer regreso. La paridad peso-dólar hace posible el evento. Cuatro carreras entre 1995 y 1998. Schumacher gana la última.</div></div>
+              <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">1998</div><div class="tl-desc">Último Gran Premio. Crisis financiera, deudas impagables y falta de apoyo estatal. Argentina desaparece del calendario. Han pasado 26 años.</div></div>
+            </div>
+          </div>
+          <span class="running-head running-head-left">Combustión Argentina</span>
+          <span class="page-num page-num-left">3</span>
+        </div>
+        <!-- Página derecha -->
+        <div class="page">
+          <div class="page-content">
+            <div class="historia-texto">
+              <p class="body-txt">Argentina fue pionera: en 1953 fue el primer país sudamericano en el calendario y el segundo fuera de Europa en toda la historia de la F1, con más de 100.000 personas en las tribunas del Autódromo de Buenos Aires para ver a Juan Manuel Fangio. Pero lo que construyó el Quíntuple con su genio al volante no pudo sostenerse cuando él colgó el casco.</p>
+              <p class="body-txt">La F1 estuvo en Argentina en tres períodos: de 1953 a 1960 impulsada por Fangio, de 1972 a 1981 gracias a Carlos Reutemann, y de 1995 a 1998 por el trabajo de un grupo de empresarios. Cada vez que un argentino dejó la grilla, el Gran Premio lo siguió.</p>
+              <p class="body-txt">La vuelta de 1995 llegó sin piloto argentino y sin grandes patrocinantes locales. Solo la relación personal de McGough con Ecclestone hizo posible el evento. Se gastaron 7 millones de dólares en obras, más el fee anual. Pero la deuda creció, los bancos se retiraron y el Gobierno de Menem se negó a aportar fondos. En 1999, la fecha fue excluida del calendario.</p>
+            </div>
+          </div>
+          <span class="running-head running-head-right">¿Por qué se fue la F1?</span>
+          <span class="page-num page-num-right">4</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== SPREAD 3: COLAPINTO pt.1 (doble página) ===================== -->
+    <div class="spread-container" id="spread-3">
+      <div class="spread">
+        <!-- Página izquierda -->
+        <div class="page page-left">
+          <div class="page-content">
+            <div class="sec-tag">// 02 · El Efecto Colapinto</div>
+            <h2 class="sec-title">El Efecto<br>Colapinto</h2>
+            <div class="sec-rule"></div>
+            <p class="lead">Franco Colapinto no es solo un piloto. Es la mejor plataforma de comunicación de América Latina. Así lo define uno de sus sponsors. Y eso tiene un precio… y un poder.</p>
+            <p class="body-txt">El pilarense debutó en la F1 el 1 de septiembre de 2024 con Williams Racing en Monza, reemplazando a Logan Sargeant. En sus primeros seis Grandes Premios, sumó cinco puntos, cuatro más que su predecesor en 36 carreras. El impacto fue inmediato: sponsors argentinos que antes no miraban la F1 comenzaron a hacer fila para aparecer en su casco.</p>
+            <p class="body-txt">Lo que sucedió el 26 de abril en Palermo no fue solo un evento de entretenimiento. Fue una demostración de poder. Más de 600.000 personas —récord absoluto en la historia de la Fórmula 1— desbordaron las avenidas del Libertador y Sarmiento para ver a Colapinto encender un Alpine de F1 en casa. Mercado Libre, YPF, Claro, Motorola, Pax Assistance y Heineken, entre otros, pusieron su marca en el evento más masivo del automovilismo mundial. La F1 tomó nota: las imágenes llegarán a la mesa de negociaciones del GP de Miami el 3 de mayo.</p>
+          </div>
+          <span class="running-head running-head-left">Combustión Argentina</span>
+          <span class="page-num page-num-left">5</span>
+        </div>
+        <!-- Página derecha -->
+        <div class="page">
+          <div class="page-content">
+            <div class="divider-label-line"><span class="div-label">Antes y después del anuncio</span></div>
+            <div class="comp-wrap">
+              <div class="comp-panel comp-panel-left">
+                <div class="comp-accent-bar" style="background:#005AFF;"></div>
+                <div class="comp-team" style="color:#005AFF;">Williams Racing</div>
+                <div class="comp-row-sm"><div class="comp-metric">Instagram</div><div class="comp-vals"><span class="comp-before">3.1M</span><span style="color:#005AFF;font-size:11px;">→</span><span class="comp-after">4.6M</span><span class="comp-badge" style="background:var(--dorado);color:#0a0a0a;">+48%</span></div></div>
+                <div class="comp-row-sm"><div class="comp-metric">TikTok</div><div class="comp-vals"><span class="comp-before">890K</span><span style="color:#005AFF;font-size:11px;">→</span><span class="comp-after">1.4M</span><span class="comp-badge" style="background:var(--dorado);color:#0a0a0a;">+57%</span></div></div>
+                <div class="comp-row-sm"><div class="comp-metric">Sponsors Arg</div><div class="comp-vals"><span class="comp-before">0</span><span style="color:#005AFF;font-size:11px;">→</span><span class="comp-after">3</span><span class="comp-badge" style="background:var(--dorado);color:#0a0a0a;">∞</span></div></div>
+                <div class="comp-note" style="border-color:rgba(0,90,255,0.2);background:rgba(0,90,255,0.05);">James Vowles reveló que desde el anuncio, <strong>"el teléfono no paró de sonar"</strong> con empresas argentinas. Mercado Libre firmó días después.</div>
+              </div>
+              <div class="comp-panel">
+                <div class="comp-accent-bar" style="background:#FF0090;"></div>
+                <div class="comp-team" style="color:#FF0090;">BWT Alpine F1</div>
+                <div class="comp-row-sm"><div class="comp-metric">Instagram</div><div class="comp-vals"><span class="comp-before">4.2M</span><span style="color:#FF0090;font-size:11px;">→</span><span class="comp-after">5.0M+</span><span class="comp-badge" style="background:var(--dorado);color:#0a0a0a;">+19%</span></div></div>
+                <div class="comp-row-sm"><div class="comp-metric">Seg. Ganados</div><div class="comp-vals"><span class="comp-before">–</span><span style="color:#FF0090;font-size:11px;">→</span><span class="comp-after">+500K</span><span class="comp-badge" style="background:#FF0090;color:#fff;">Viral</span></div></div>
+                <div class="comp-row-sm"><div class="comp-metric">Sponsors Arg</div><div class="comp-vals"><span class="comp-before">0</span><span style="color:#FF0090;font-size:11px;">→</span><span class="comp-after" style="font-size:11px;">En Proceso</span><span class="comp-badge" style="background:#FF0090;color:#fff;">Activo</span></div></div>
+                <div class="comp-note" style="border-color:rgba(255,0,144,0.2);background:rgba(255,0,144,0.05);">Briatore reconoció que <strong>la popularidad argentina es un elemento "crucialmente atractivo".</strong> El CEO de YPF adelantó en TV el regreso de Franco antes del anuncio oficial del equipo.</div>
+              </div>
+            </div>
+            <p class="body-txt">Su fichaje por Alpine para 2025 no fue solo deportivo. Flavio Briatore no vio solo talento: vio el paquete de sponsors latinoamericanos que Colapinto traía consigo. Las empresas argentinas presionaron para que corriera.</p>
+            <div class="divider-label-line"><span class="div-label">Sus sponsors en Alpine</span></div>
+            <div class="sp-grid">
+              <div class="sp-card">
+                <div class="sp-name">Mercado Libre</div>
+                <div class="sp-tipo">E-commerce · Latinoamérica</div>
+                <div class="sp-desc">Partner oficial de Alpine F1. Acuerdo por varios millones de dólares. Presencia en el monoplaza y en el buzo de los pilotos.</div>
+              </div>
+              <div class="sp-card">
+                <div class="sp-name">YPF</div>
+                <div class="sp-tipo">Energía · Argentina</div>
+                <div class="sp-desc">La petrolera estatal acompaña a Colapinto en su imagen y trabaja para aparecer en el auto de Alpine.</div>
+              </div>
+              <div class="sp-card">
+                <div class="sp-name">Globant</div>
+                <div class="sp-tipo">Tecnología · Multinacional Arg.</div>
+                <div class="sp-desc">"Las métricas llegan a récords absolutos cada vez que tenemos algo vinculado a él." Sponsor desde los días de F2.</div>
+              </div>
+              <div class="sp-card">
+                <div class="sp-name">Pax Assistance</div>
+                <div class="sp-tipo">Asistencia al viajero · Arg.</div>
+                <div class="sp-desc">Acompaña a Colapinto desde sus días en F2. Un vínculo sobre valores compartidos: explorar con el respaldo adecuado.</div>
+              </div>
+              <div class="sp-card">
+                <div class="sp-name">Quilmes Cero</div>
+                <div class="sp-tipo">Consumo Masivo · Argentina</div>
+                <div class="sp-desc">La cerveza sin alcohol más icónica del país eligió a Franco como estandarte de orgullo nacional.</div>
+              </div>
+              <div class="sp-card">
+                <div class="sp-name">Ripio + Binance</div>
+                <div class="sp-tipo">Cripto · Fintech</div>
+                <div class="sp-desc">El mundo crypto ve en Colapinto un puente hacia audiencias globales. Ripio lo acompaña desde la F2.</div>
+              </div>
+            </div>
+          </div>
+          <span class="running-head running-head-right">El Efecto Colapinto</span>
+          <span class="page-num page-num-right">6</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== SPREAD 4: MOTOGP (doble página) ===================== -->
+    <div class="spread-container" id="spread-4">
+      <div class="spread">
+        <!-- Página izquierda -->
+        <div class="page page-left">
+          <div class="page-content">
+            <div class="sec-tag">// 03 · MotoGP 2027</div>
+            <h2 class="sec-title">MotoGP<br>vuelve en<br>2027</h2>
+            <div class="sec-rule"></div>
+            <p class="lead">Un contrato de cuatro años, 100 millones de dólares en obras y un diseñador alemán de talla mundial. El Autódromo Oscar y Juan Gálvez se reinventa. Y no solo para las motos.</p>
+            <p class="body-txt">El 21 de julio de 2025, Jorge Macri anunció desde la recta principal del Autódromo el regreso del MotoGP a Buenos Aires para 2027, bajo un contrato de cuatro años con Dorna Sports hasta 2030. Las obras estarán a cargo de <strong>Tilke Engineers & Architects</strong>, la firma detrás de Austin, Abu Dhabi, Bahréin y Las Vegas. La inversión superará los 100 millones de dólares.</p>
+            <div class="fases-grid">
+              <div class="fase-card">
+                <div class="fase-n">1</div>
+                <div class="fase-title">Fase MotoGP</div>
+                <div class="fase-desc">Obras entre oct. 2025 y mar. 2027. Rediseño de pista a 5.000 m, nuevos boxes, tribunas para 150.000 espectadores. Homologación FIM.</div>
+              </div>
+              <div class="fase-card">
+                <div class="fase-n">2</div>
+                <div class="fase-title">Fase F1 (Futura)</div>
+                <div class="fase-desc">Dos curvas adicionales (+500m) y boxes de mayor altura para Grado 1 FIA. Solo si las negociaciones con Liberty Media prosperan.</div>
+              </div>
+            </div>
+            <ul class="obras-list">
+              <li class="obra-item">
+                <div class="obra-icon">①</div>
+                <div class="obra-txt"><strong>Nuevo trazado</strong> — Basado en los históricos Circuitos 6 y 8. Se conservarán nombres de pilotos históricos.</div>
+              </li>
+              <li class="obra-item">
+                <div class="obra-icon">②</div>
+                <div class="obra-txt"><strong>Tribunas ampliadas</strong> — Capacidad para 150.000 espectadores, uno de los aforos más grandes del calendario MotoGP.</div>
+              </li>
+              <li class="obra-item">
+                <div class="obra-icon">③</div>
+                <div class="obra-txt"><strong>Pit Lane moderno</strong> — Nuevos garajes. Para F1 sería necesario elevar la altura a 5 metros. Se negocia con Liberty Media.</div>
+              </li>
+              <li class="obra-item">
+                <div class="obra-icon">④</div>
+                <div class="obra-txt"><strong>Financiamiento asegurado</strong> — El presupuesto total ya está confirmado. No hay riesgo de que las obras se frenen.</div>
+              </li>
+            </ul>
+          </div>
+          <span class="running-head running-head-left">Combustión Argentina</span>
+          <span class="page-num page-num-left">7</span>
+        </div>
+        <!-- Página derecha -->
+        <div class="page">
+          <div class="page-content">
+            <div class="impacto-card">
+              <span class="impacto-monto">$150M</span>
+              <span class="impacto-label">Impacto económico estimado</span>
+              <p class="impacto-desc">Por gastos de asistentes locales e internacionales, turismo y consecuencias en comercio, empleo e industria vinculada. Según proyecciones de la organización y el Gobierno de la Ciudad.</p>
+            </div>
+            <div class="data-table" style="margin-top:2px;">
+              <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dorado);padding:10px 0 8px;">Datos clave del evento</div>
+              <div class="data-row"><span class="data-label">Contrato con Dorna</span><span class="data-val">2027 – 2030</span></div>
+              <div class="data-row"><span class="data-label">Inversión total obras</span><span class="data-val">+$100M USD</span></div>
+              <div class="data-row"><span class="data-label">Capacidad tribunas</span><span class="data-val">150.000 personas</span></div>
+              <div class="data-row"><span class="data-label">Empresa de obras</span><span class="data-val">Tilke (Alemania)</span></div>
+              <div class="data-row"><span class="data-label">Promotor local</span><span class="data-val">Grupo OSD</span></div>
+            </div>
+            <div class="motogp-callout">
+              <div class="callout-label">⚡ Por qué importa para la F1</div>
+              <p class="callout-txt">MotoGP volver a Buenos Aires es el ensayo general. Si las obras se completan, el autódromo queda a dos curvas de cumplir los requisitos de la FIA para la Fórmula 1. Es un argumento concreto y tangible en la mesa de negociaciones con Stefano Domenicali.</p>
+            </div>
+            <div class="quote-block" style="margin-top:12px;">
+              <p class="quote-text">"Correr un Gran Premio en Argentina es una de las cosas que más quiero en esta vida. Veo bien a la pista. Estuve en enero. Vi el autódromo previo a ser desmantelado. Fui ahora y parecía otro lugar. No hay nada de lo que había antes. Están rehaciendo la pista. Es una obra muy grande. Era necesario. Va por muy buen camino. Están haciendo todos los pasos correctos en cuanto a cómo se puede proyectar una carrera de F1 al 27/28."</p>
+              <div class="quote-src">— Franco Colapinto, conferencia de prensa en Mercado Libre, Buenos Aires, 24 de abril de 2026</div>
+            </div>
+          </div>
+          <span class="running-head running-head-right">MotoGP vuelve en 2027</span>
+          <span class="page-num page-num-right">8</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== SPREAD 5: QUÉ TAN CERCA (doble página) ===================== -->
+    <div class="spread-container" id="spread-5">
+      <div class="spread">
+        <!-- Página izquierda -->
+        <div class="page page-left">
+          <div class="page-content">
+            <div class="sec-tag">// 04 · El Futuro</div>
+            <h2 class="sec-title">¿Qué tan<br>cerca está<br>de pasar?</h2>
+            <div class="sec-rule"></div>
+            <p class="lead">El sueño nunca estuvo más cerca. Pero entre el sueño y la realidad hay 40 millones de dólares anuales, homologaciones técnicas y la voluntad de Liberty Media.</p>
+            <p class="body-txt">La F1 de hoy es un negocio radicalmente distinto al de 1998. Liberty Media expandió el calendario a 24 carreras y sigue mirando nuevos mercados. El interés por Latinoamérica está ahí: México tiene Gran Premio, Brasil tiene Gran Premio. Argentina podría ser el tercero del continente. Pero solo si los números cierran.</p>
+            <div class="semaforo-panel">
+              <div class="divider-label-line"><span class="div-label">El semáforo de la vuelta</span></div>
+              <div class="prob-container">
+              <div class="prob-row">
+                <div class="prob-head"><span class="prob-name">MotoGP 2027 — confirmado</span><span class="prob-pct">100%</span></div>
+                <div class="prob-track"><div class="prob-fill" style="width:100%;"></div></div>
+              </div>
+              <div class="prob-row">
+                <div class="prob-head"><span class="prob-name">Obras del autódromo finalizadas</span><span class="prob-pct">90%</span></div>
+                <div class="prob-track"><div class="prob-fill" style="width:90%;"></div></div>
+              </div>
+              <div class="prob-row">
+                <div class="prob-head"><span class="prob-name">Sponsors locales suficientes</span><span class="prob-pct">65%</span></div>
+                <div class="prob-track"><div class="prob-fill" style="width:65%;"></div></div>
+              </div>
+              <div class="prob-row">
+                <div class="prob-head"><span class="prob-name">Homologación Grado 1 FIA</span><span class="prob-pct">55%</span></div>
+                <div class="prob-track"><div class="prob-fill" style="width:55%;"></div></div>
+              </div>
+              <div class="prob-row">
+                <div class="prob-head"><span class="prob-name">GP Argentina en el calendario F1</span><span class="prob-pct">40%</span></div>
+                <div class="prob-track"><div class="prob-fill" style="width:40%;"></div></div>
+              </div>
+              </div>
+            </div>
+          </div>
+          <span class="running-head running-head-left">Combustión Argentina</span>
+          <span class="page-num page-num-left">9</span>
+        </div>
+        <!-- Página derecha -->
+        <div class="page">
+          <div class="page-content">
+            <div class="cards-2x2">
+              <div class="obstacle-card">
+                <div class="tag-pos">A favor</div>
+                <div class="obstacle-title">🚦 El efecto Colapinto</div>
+                <div class="obstacle-desc">Un piloto argentino en la parrilla es la variable más poderosa. Históricamente, cuando hay un piloto local, hay Gran Premio.</div>
+              </div>
+              <div class="obstacle-card">
+                <div class="tag-pos">A favor</div>
+                <div class="obstacle-title">🏗️ Infraestructura</div>
+                <div class="obstacle-desc">Las obras de Tilke con una fase 2 específica para F1 son el argumento más concreto. BA Capital Mundial del Deporte 2027.</div>
+              </div>
+              <div class="obstacle-card">
+                <div class="tag-chal">Desafío</div>
+                <div class="obstacle-title">💰 Canon de $40M</div>
+                <div class="obstacle-desc">El fee anual para organizar un Gran Premio es de aproximadamente 40 millones de dólares. Se necesita una cartera de sponsors.</div>
+              </div>
+              <div class="obstacle-card">
+                <div class="tag-chal">Desafío</div>
+                <div class="obstacle-title">📐 Homologación</div>
+                <div class="obstacle-desc">La F1 exige 5 metros de altura en los boxes y el Grado 1 FIA. La fase 2 del proyecto Tilke contempla esto pero requiere inversión adicional.</div>
+              </div>
+            </div>
+            <div class="horizon-box">
+              <div class="horizon-year">2028</div>
+              <div class="horizon-label">El horizonte más probable</div>
+              <p class="horizon-quote">Si MotoGP 2027 es un éxito y las obras cumplen los plazos, Buenos Aires podría estar en el calendario de F1 para 2028 o 2029.</p>
+              <p class="horizon-txt">Esa es la lectura de quienes están en las negociaciones: MotoGP como vitrina, el autódromo como argumento y Colapinto como palanca emocional y comercial. El jefe de gobierno Jorge Macri le comunicó a Stefano Domenicali los planes de remodelación. La respuesta oficial de la F1 todavía no llegó. Pero el diálogo está abierto, algo que no ocurría desde hacía años.</p>
+            </div>
+            <div class="quote-block" style="margin-top:12px;">
+              <p class="quote-text">"Ya hacemos la obra completa porque el mundo está raro y hay ciudades que no están confirmando su vocación. Si se da la oportunidad de que venga la F1 antes de lo previsto, bienvenido. Vamos a estar listos."</p>
+              <div class="quote-src">— Jorge Macri, Jefe de Gobierno porteño, 26 de abril de 2026</div>
+            </div>
+          </div>
+          <span class="running-head running-head-right">¿Qué tan cerca está de pasar?</span>
+          <span class="page-num page-num-right">10</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== SPREAD 6: CIERRE (página sola) ===================== -->
+    <div class="spread-container" id="spread-6">
+      <div class="spread single">
+        <div class="page">
+          <div class="cierre-page">
+            <div class="cierre-bandera">
+              <div class="bf-c"></div><div class="bf-b"></div><div class="bf-c"></div>
+            </div>
+            <h2 class="cierre-titulo">El Gran Circo<br>vuelve a casa</h2>
+            <p class="cierre-sub">De Fangio a Reutemann, de Reutemann a Colapinto. Argentina siempre encontró la manera de volver al mundo cuando un piloto le mostró el camino.</p>
+            <div class="cierre-edition">COMBUSTIÓN ARGENTINA · EDICIÓN ESPECIAL 2026</div>
+          </div>
+          <span class="page-num page-num-right">12</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /spread-wrapper -->
+</div><!-- /stage -->
+
+
+
+<!-- ===== MOBILE VIEW ===== -->
+<div class="mobile-view" id="mobile-view">
+  <div class="mv-band"></div>
+
+  <div class="mv-portada mv-sheet active" data-page="1">
+    <div class="mv-portada-sol"><img src="/img/tomos/2026/vol-001/sol-de-mayo.jpg" width="960" height="960" decoding="async" alt="Sol de Mayo"/></div>
+    <div class="mv-portada-foto" aria-hidden="true"></div>
+    <div class="mv-eyebrow">Revista Especial · Automovilismo Argentino</div>
+    <h1 class="mv-titulo"><span class="tc">La Vuelta</span><span class="tb">del Gran</span><span class="tc">Circo</span></h1>
+    <p class="mv-sub">Franco Colapinto encendió una llama. El sueño de ver la Fórmula 1 en Argentina otra vez no parece tan lejano.</p>
+    <a href="#mv-historia" class="mv-cta">Leer edición completa →</a>
+    <div class="mv-stats">
+      <div class="mv-stat"><div class="mv-stat-n">20</div><div class="mv-stat-l">Grandes Premios en Argentina</div></div>
+      <div class="mv-stat"><div class="mv-stat-n">26</div><div class="mv-stat-l">Años sin F1 en el país</div></div>
+      <div class="mv-stat"><div class="mv-stat-n">$40M</div><div class="mv-stat-l">Fee anual para el GP</div></div>
+      <div class="mv-stat"><div class="mv-stat-n">43</div><div class="mv-stat-l">Número de Colapinto</div></div>
+    </div>
+    <div class="mv-ticker"><span class="mv-ticker-inner">COMBUSTIÓN ARGENTINA &nbsp;·&nbsp; EDICIÓN ESPECIAL 2026 &nbsp;·&nbsp; F1 &nbsp;·&nbsp; FRANCO COLAPINTO &nbsp;·&nbsp; MOTOGP 2027 &nbsp;·&nbsp; BUENOS AIRES &nbsp;·&nbsp; COMBUSTIÓN ARGENTINA &nbsp;·&nbsp; EDICIÓN ESPECIAL 2026 &nbsp;·&nbsp; F1 &nbsp;·&nbsp; FRANCO COLAPINTO &nbsp;·&nbsp; MOTOGP 2027 &nbsp;·&nbsp; BUENOS AIRES &nbsp;·&nbsp;</span></div>
+  </div>
+
+  <div class="mv-section mv-sheet" data-page="2">
+    <div class="mv-sec-tag">Información legal</div>
+    <h2 class="mv-sec-title" style="font-size:28px;">Combustión Argentina</h2>
+    <div class="mv-sec-rule"></div>
+    <p style="font-family:'DM Serif Display',serif;font-style:italic;font-size:13px;color:var(--gris-claro);margin-bottom:18px;">Revista digital de automovilismo argentino · Edición Especial 2026</p>
+    <p style="font-family:'DM Serif Display',serif;font-style:italic;font-size:14px;color:rgba(245,242,237,0.6);line-height:1.6;margin-bottom:20px;">La revista de quienes aman la Fórmula 1<br>con la pasión de un argentino en la largada.</p>
+    <div class="mv-leg-block"><div class="mv-leg-label">Dirección editorial</div><div class="mv-leg-txt"><strong>Combustión Argentina</strong> es una publicación digital independiente. Su misión es cubrir la F1 y el motor sport con la pasión y el rigor que los fans argentinos merecen.</div></div>
+    <div class="mv-leg-block"><div class="mv-leg-label">Fuentes y verificación</div><div class="mv-leg-txt">El contenido fue elaborado con información verificada de <strong>Infobae, La Nación, ESPN, Motorsport.com, MotoGP.com, Autosport y Motorsport Week</strong>. Toda cita corresponde a declaraciones públicas.</div></div>
+    <div class="mv-leg-block"><div class="mv-leg-label">Política editorial</div><div class="mv-leg-txt">Combustión Argentina no publica rumores sin respaldo periodístico. Las opiniones expresadas son del cuerpo editorial.</div></div>
+    <div class="mv-leg-block"><a href="mailto:combustionargentina.mg@gmail.com" style="text-decoration:none;"><div class="mv-leg-label">Contacto</div></a><div class="mv-leg-txt"><a href="mailto:combustionargentina.mg@gmail.com">combustionargentina.mg@gmail.com</a> · Buenos Aires, Argentina</div><div class="mv-leg-txt" style="margin-top:6px;"><strong>Carrizo Agustina</strong> · Directora editorial</div></div>
+    <div class="mv-leg-indice">
+      <div class="mv-leg-indice-titulo">En este número</div>
+      <div class="mv-leg-item"><span class="mv-leg-num">01</span><span class="mv-leg-name">¿Por qué se fue la F1?</span></div>
+      <div class="mv-leg-item"><span class="mv-leg-num">02</span><span class="mv-leg-name">El Efecto Colapinto</span></div>
+      <div class="mv-leg-item"><span class="mv-leg-num">03</span><span class="mv-leg-name">MotoGP 2027 en Buenos Aires</span></div>
+      <div class="mv-leg-item"><span class="mv-leg-num">04</span><span class="mv-leg-name">¿Qué tan cerca está de pasar?</span></div>
+    </div>
+  </div>
+
+  <div class="mv-section mv-sheet" id="mv-historia" data-page="3">
+    <div class="mv-sec-tag">// 01 · Historia</div>
+    <h2 class="mv-sec-title">¿Por qué<br>se fue<br>la F1?</h2>
+    <div class="mv-sec-rule"></div>
+    <div class="mv-historia-foto" role="img" aria-label="Carlos Reutemann con Ferrari en el Gran Premio de Argentina de 1978"></div>
+    <p class="mv-lead">La Argentina tuvo veinte Grandes Premios. El último fue el 12 de abril de 1998. Desde entonces, el Gran Circo no volvió.</p>
+    <p class="mv-body">Argentina fue pionera: en 1953 fue el primer país sudamericano en el calendario. Fangio fue el motor de la primera era, Reutemann de la segunda, y un grupo de empresarios trajo la tercera etapa (1995–1998). Cada vez que un argentino dejó la grilla, el Gran Premio lo siguió.</p>
+    <p class="mv-body">Se gastaron 7 millones de dólares en obras, más el fee anual. La deuda creció, los bancos se retiraron. En 1999, la fecha fue excluida del calendario.</p>
+    <div class="mv-timeline">
+      <div class="mv-tl-item"><div class="mv-tl-dot"></div><div class="mv-tl-year">1953</div><div class="mv-tl-desc">Primera carrera de F1 en Argentina. Fangio domina ante más de 100.000 espectadores.</div></div>
+      <div class="mv-tl-item"><div class="mv-tl-dot"></div><div class="mv-tl-year">1960</div><div class="mv-tl-desc">Fangio se retira en 1958. Una sola carrera más y Argentina abandona el calendario por 11 años.</div></div>
+      <div class="mv-tl-item"><div class="mv-tl-dot"></div><div class="mv-tl-year">1972</div><div class="mv-tl-desc">Regreso gracias a Carlos Reutemann. La F1 vuelve hasta 1981. El retiro del Lole detiene el ciclo.</div></div>
+      <div class="mv-tl-item"><div class="mv-tl-dot"></div><div class="mv-tl-year">1995</div><div class="mv-tl-desc">Tercer regreso. Cuatro carreras entre 1995 y 1998. Schumacher gana la última.</div></div>
+      <div class="mv-tl-item"><div class="mv-tl-dot"></div><div class="mv-tl-year">1998</div><div class="mv-tl-desc">Último Gran Premio. Crisis financiera, deudas impagables. Argentina desaparece del calendario.</div></div>
+    </div>
+  </div>
+
+  <div class="mv-section mv-sheet" id="mv-colapinto" data-page="4">
+    <div class="mv-sec-tag">// 02 · El Efecto Colapinto</div>
+    <h2 class="mv-sec-title">El Efecto<br>Colapinto</h2>
+    <div class="mv-sec-rule"></div>
+    <p class="mv-lead">Franco Colapinto no es solo un piloto. Es la mejor plataforma de comunicación de América Latina.</p>
+    <p class="mv-body">El pilarense debutó en la F1 el 1 de septiembre de 2024 con Williams Racing en Monza. En sus primeros seis Grandes Premios, sumó cinco puntos. El impacto fue inmediato: sponsors argentinos comenzaron a hacer fila.</p>
+    <p class="mv-body">Su fichaje por Alpine para 2025 no fue solo deportivo. Flavio Briatore vio el paquete de sponsors latinoamericanos que Colapinto traía. El CEO de YPF adelantó en televisión el regreso de Franco antes del anuncio oficial.</p>
+    <div class="mv-div-label"><span class="mv-div-text">Antes y después del anuncio</span></div>
+    <div class="mv-comp">
+      <div class="mv-comp-panel">
+        <div class="mv-comp-bar" style="background:#005AFF;"></div>
+        <div class="mv-comp-team" style="color:#005AFF;">Williams Racing</div>
+        <div class="mv-comp-row"><div class="mv-comp-metric">Instagram</div><div class="mv-comp-vals"><span class="mv-comp-before">3.1M</span><span style="color:#005AFF;font-size:12px;">→</span><span class="mv-comp-after">4.6M</span><span class="mv-comp-badge" style="background:var(--dorado);color:#0a0a0a;">+48%</span></div></div>
+        <div class="mv-comp-row"><div class="mv-comp-metric">TikTok</div><div class="mv-comp-vals"><span class="mv-comp-before">890K</span><span style="color:#005AFF;font-size:12px;">→</span><span class="mv-comp-after">1.4M</span><span class="mv-comp-badge" style="background:var(--dorado);color:#0a0a0a;">+57%</span></div></div>
+        <div class="mv-comp-row"><div class="mv-comp-metric">Sponsors Arg</div><div class="mv-comp-vals"><span class="mv-comp-before">0</span><span style="color:#005AFF;font-size:12px;">→</span><span class="mv-comp-after">3</span><span class="mv-comp-badge" style="background:var(--dorado);color:#0a0a0a;">∞</span></div></div>
+        <div class="mv-comp-note" style="border-color:rgba(0,90,255,0.2);background:rgba(0,90,255,0.05);">James Vowles reveló que <strong>"el teléfono no paró de sonar"</strong> con empresas argentinas. Mercado Libre firmó días después.</div>
+      </div>
+      <div class="mv-comp-panel">
+        <div class="mv-comp-bar" style="background:#FF0090;"></div>
+        <div class="mv-comp-team" style="color:#FF0090;">BWT Alpine F1</div>
+        <div class="mv-comp-row"><div class="mv-comp-metric">Instagram</div><div class="mv-comp-vals"><span class="mv-comp-before">4.2M</span><span style="color:#FF0090;font-size:12px;">→</span><span class="mv-comp-after">5.0M+</span><span class="mv-comp-badge" style="background:var(--dorado);color:#0a0a0a;">+19%</span></div></div>
+        <div class="mv-comp-row"><div class="mv-comp-metric">Seg. Ganados</div><div class="mv-comp-vals"><span class="mv-comp-before">–</span><span style="color:#FF0090;font-size:12px;">→</span><span class="mv-comp-after">+500K</span><span class="mv-comp-badge" style="background:#FF0090;color:#fff;">Viral</span></div></div>
+        <div class="mv-comp-row"><div class="mv-comp-metric">Sponsors Arg</div><div class="mv-comp-vals"><span class="mv-comp-before">0</span><span style="color:#FF0090;font-size:12px;">→</span><span class="mv-comp-after" style="font-size:12px;">En Proceso</span><span class="mv-comp-badge" style="background:#FF0090;color:#fff;">Activo</span></div></div>
+        <div class="mv-comp-note" style="border-color:rgba(255,0,144,0.2);background:rgba(255,0,144,0.05);">Briatore reconoció que <strong>la popularidad argentina es un elemento "crucialmente atractivo".</strong> El CEO de YPF adelantó en TV el regreso antes del anuncio oficial.</div>
+      </div>
+    </div>
+    <div class="mv-div-label" style="margin-top:20px;"><span class="mv-div-text">Sus sponsors en Alpine</span></div>
+    <div class="mv-sp-grid">
+      <div class="mv-sp-card"><div class="mv-sp-name">Mercado Libre</div><div class="mv-sp-tipo">E-commerce · Latam</div><div class="mv-sp-desc">Partner oficial de Alpine F1. El primer gran sponsor regional en el auto.</div></div>
+      <div class="mv-sp-card"><div class="mv-sp-name">YPF</div><div class="mv-sp-tipo">Energía · Argentina</div><div class="mv-sp-desc">La petrolera estatal acompaña a Colapinto y trabaja para aparecer en el auto.</div></div>
+      <div class="mv-sp-card"><div class="mv-sp-name">Globant</div><div class="mv-sp-tipo">Tecnología · Multinacional</div><div class="mv-sp-desc">"Las métricas llegan a récords absolutos cada vez que tenemos algo vinculado a él."</div></div>
+      <div class="mv-sp-card"><div class="mv-sp-name">Pax Assistance</div><div class="mv-sp-tipo">Asistencia al viajero</div><div class="mv-sp-desc">Acompaña a Colapinto desde sus días en F2.</div></div>
+      <div class="mv-sp-card"><div class="mv-sp-name">Quilmes Cero</div><div class="mv-sp-tipo">Consumo Masivo</div><div class="mv-sp-desc">La cerveza sin alcohol más icónica del país eligió a Franco como estandarte nacional.</div></div>
+      <div class="mv-sp-card"><div class="mv-sp-name">Ripio + Binance</div><div class="mv-sp-tipo">Cripto · Fintech</div><div class="mv-sp-desc">El mundo crypto ve en Colapinto un puente hacia audiencias globales.</div></div>
+    </div>
+    <p class="mv-body" style="margin-top:12px;">Lo que sucedió el 26 de abril en Palermo no fue solo un evento de entretenimiento. Fue una demostración de poder. Más de 600.000 personas —récord absoluto en la historia de la Fórmula 1— desbordaron las avenidas del Libertador y Sarmiento para ver a Colapinto encender un Alpine de F1 en casa. Mercado Libre, YPF, Claro, Motorola, Pax Assistance y Heineken, entre otros, pusieron su marca en el evento más masivo del automovilismo mundial. La F1 tomó nota: las imágenes llegarán a la mesa de negociaciones del GP de Miami el 3 de mayo.</p>
+  </div>
+
+  <div class="mv-section mv-sheet" id="mv-motogp" data-page="5">
+    <div class="mv-sec-tag">// 03 · MotoGP 2027</div>
+    <h2 class="mv-sec-title">MotoGP<br>vuelve en<br>2027</h2>
+    <div class="mv-sec-rule"></div>
+    <p class="mv-lead">Un contrato de cuatro años, 100 millones de dólares en obras y un diseñador alemán de talla mundial.</p>
+    <p class="mv-body">El 21 de julio de 2025, Jorge Macri anunció el regreso del MotoGP a Buenos Aires para 2027. Las obras estarán a cargo de <strong>Tilke Engineers & Architects</strong>, firma detrás de Austin, Abu Dhabi, Bahréin y Las Vegas.</p>
+    <div class="mv-fases">
+      <div class="mv-fase"><div class="mv-fase-n">1</div><div class="mv-fase-title">Fase MotoGP</div><div class="mv-fase-desc">Oct. 2025–mar. 2027. Rediseño a 5.000 m, nuevos boxes, 150.000 espectadores.</div></div>
+      <div class="mv-fase"><div class="mv-fase-n">2</div><div class="mv-fase-title">Fase F1 (Futura)</div><div class="mv-fase-desc">Dos curvas adicionales y boxes de mayor altura para Grado 1 FIA.</div></div>
+    </div>
+    <ul class="mv-obras">
+      <li class="mv-obra"><div class="mv-obra-icon">①</div><div class="mv-obra-txt"><strong>Nuevo trazado</strong> — Basado en los históricos Circuitos 6 y 8.</div></li>
+      <li class="mv-obra"><div class="mv-obra-icon">②</div><div class="mv-obra-txt"><strong>Tribunas ampliadas</strong> — Capacidad para 150.000 espectadores.</div></li>
+      <li class="mv-obra"><div class="mv-obra-icon">③</div><div class="mv-obra-txt"><strong>Pit Lane moderno</strong> — Para F1 sería necesario elevar la altura a 5 metros.</div></li>
+      <li class="mv-obra"><div class="mv-obra-icon">④</div><div class="mv-obra-txt"><strong>Financiamiento asegurado</strong> — El presupuesto total ya está confirmado.</div></li>
+    </ul>
+    <div class="mv-impacto"><span class="mv-impacto-monto">$150M</span><span class="mv-impacto-label">Impacto económico estimado</span><p class="mv-impacto-desc">Por gastos de asistentes, turismo y consecuencias en el comercio, empleo e industria vinculada.</p></div>
+    <div class="mv-data-table">
+      <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dorado);padding:5px 0 9px;">Datos clave del evento</div>
+      <div class="mv-data-row"><span class="mv-data-label">Contrato con Dorna</span><span class="mv-data-val">2027 – 2030</span></div>
+      <div class="mv-data-row"><span class="mv-data-label">Inversión total obras</span><span class="mv-data-val">+$100M USD</span></div>
+      <div class="mv-data-row"><span class="mv-data-label">Capacidad tribunas</span><span class="mv-data-val">150.000 personas</span></div>
+      <div class="mv-data-row"><span class="mv-data-label">Empresa de obras</span><span class="mv-data-val">Tilke (Alemania)</span></div>
+      <div class="mv-data-row"><span class="mv-data-label">Promotor local</span><span class="mv-data-val">Grupo OSD</span></div>
+    </div>
+    <div class="mv-callout"><div class="mv-callout-label">⚡ Por qué importa para la F1</div><p class="mv-callout-txt">MotoGP volver a Buenos Aires es el ensayo general. Si las obras se completan, el autódromo queda a dos curvas de cumplir los requisitos de la FIA.</p></div>
+    <div class="mv-quote" style="margin-top:14px;">
+      <p class="mv-quote-text">"Correr un Gran Premio en Argentina es una de las cosas que más quiero en esta vida. Veo bien a la pista. Estuve en enero. Vi el autódromo previo a ser desmantelado. Fui ahora y parecía otro lugar. No hay nada de lo que había antes. Están rehaciendo la pista. Es una obra muy grande. Era necesario. Va por muy buen camino. Están haciendo todos los pasos correctos en cuanto a cómo se puede proyectar una carrera de F1 al 27/28."</p>
+      <div class="mv-quote-src">— Franco Colapinto, conferencia en Mercado Libre, Buenos Aires, 24 de abril de 2026</div>
+    </div>
+  </div>
+
+  <div class="mv-section mv-sheet" id="mv-futuro" data-page="6">
+    <div class="mv-sec-tag">// 04 · El Futuro</div>
+    <h2 class="mv-sec-title">¿Qué tan<br>cerca está<br>de pasar?</h2>
+    <div class="mv-sec-rule"></div>
+    <p class="mv-lead">El sueño nunca estuvo más cerca. Pero entre el sueño y la realidad hay 40 millones de dólares anuales y la voluntad de Liberty Media.</p>
+    <p class="mv-body">La F1 de hoy es un negocio radicalmente distinto al de 1998. Liberty Media expandió el calendario a 24 carreras. México y Brasil tienen Gran Premio. Argentina podría ser el tercero del continente.</p>
+    <div class="mv-div-label"><span class="mv-div-text">El semáforo de la vuelta</span></div>
+    <div class="mv-prob" id="mv-prob-section">
+      <div class="mv-prob-row"><div class="mv-prob-head"><span class="mv-prob-name">MotoGP 2027 — confirmado</span><span class="mv-prob-pct">100%</span></div><div class="mv-prob-track"><div class="mv-prob-fill" style="width:100%;"></div></div></div>
+      <div class="mv-prob-row"><div class="mv-prob-head"><span class="mv-prob-name">Obras del autódromo finalizadas</span><span class="mv-prob-pct">90%</span></div><div class="mv-prob-track"><div class="mv-prob-fill" style="width:90%;"></div></div></div>
+      <div class="mv-prob-row"><div class="mv-prob-head"><span class="mv-prob-name">Sponsors locales suficientes</span><span class="mv-prob-pct">65%</span></div><div class="mv-prob-track"><div class="mv-prob-fill" style="width:65%;"></div></div></div>
+      <div class="mv-prob-row"><div class="mv-prob-head"><span class="mv-prob-name">Homologación Grado 1 FIA</span><span class="mv-prob-pct">55%</span></div><div class="mv-prob-track"><div class="mv-prob-fill" style="width:55%;"></div></div></div>
+      <div class="mv-prob-row"><div class="mv-prob-head"><span class="mv-prob-name">GP Argentina en el calendario F1</span><span class="mv-prob-pct">40%</span></div><div class="mv-prob-track"><div class="mv-prob-fill" style="width:40%;"></div></div></div>
+    </div>
+    <div class="mv-cards">
+      <div class="mv-card"><div class="mv-card-tag-pos">A favor</div><div class="mv-card-title">🚦 El efecto Colapinto</div><div class="mv-card-desc">Un piloto argentino en la parrilla es la variable más poderosa. Históricamente, cuando hay un piloto local, hay Gran Premio.</div></div>
+      <div class="mv-card"><div class="mv-card-tag-pos">A favor</div><div class="mv-card-title">🏗️ Infraestructura</div><div class="mv-card-desc">Las obras de Tilke con fase 2 específica para F1 son el argumento más concreto.</div></div>
+      <div class="mv-card"><div class="mv-card-tag-chal">Desafío</div><div class="mv-card-title">💰 Canon de $40M</div><div class="mv-card-desc">El fee anual es de aproximadamente 40 millones de dólares. Se necesita una cartera de sponsors sólida.</div></div>
+      <div class="mv-card"><div class="mv-card-tag-chal">Desafío</div><div class="mv-card-title">📐 Homologación</div><div class="mv-card-desc">La F1 exige 5 metros de altura en los boxes y el Grado 1 FIA. Requiere inversión adicional.</div></div>
+    </div>
+    <div class="mv-horizon">
+      <div class="mv-horizon-year">2028</div>
+      <div class="mv-horizon-label">El horizonte más probable</div>
+      <p class="mv-horizon-quote">Si MotoGP 2027 es un éxito y las obras cumplen los plazos, Buenos Aires podría estar en el calendario de F1 para 2028 o 2029.</p>
+      <p class="mv-horizon-txt">Esa es la lectura de quienes están en las negociaciones: MotoGP como vitrina, el autódromo como argumento y Colapinto como palanca emocional y comercial. El diálogo está abierto, algo que no ocurría desde hacía años.</p>
+    </div>
+    <div class="mv-quote" style="margin-top:14px;">
+      <p class="mv-quote-text">"Ya hacemos la obra completa porque el mundo está raro y hay ciudades que no están confirmando su vocación. Si se da la oportunidad de que venga la F1 antes de lo previsto, bienvenido. Vamos a estar listos."</p>
+      <div class="mv-quote-src">— Jorge Macri, Jefe de Gobierno porteño, 26 de abril de 2026</div>
+    </div>
+  </div>
+
+  <div class="mv-cierre mv-sheet" data-page="7">
+    <div class="mv-bandera"><div class="mv-bf-c"></div><div class="mv-bf-b"></div><div class="mv-bf-c"></div></div>
+    <h2 class="mv-cierre-titulo">El Gran Circo<br>vuelve a casa</h2>
+    <p class="mv-cierre-sub">De Fangio a Reutemann, de Reutemann a Colapinto. Argentina siempre encontró la manera de volver al mundo cuando un piloto le mostró el camino.</p>
+    <div class="mv-cierre-edition">COMBUSTIÓN ARGENTINA · EDICIÓN ESPECIAL 2026</div>
+  </div>
+
+  <div class="mv-footer mv-sheet" data-page="8">
+    <div class="mv-footer-logo">Combustión AR</div>
+    <p class="mv-footer-tagline">La revista de quienes aman la Fórmula 1<br>con la pasión de un argentino en la largada.</p>
+    <div class="mv-footer-divider"></div>
+    <div class="mv-footer-label">En este número</div>
+    <ul class="mv-footer-list">
+      <li>Por qué se fue la F1</li>
+      <li>El impacto de Colapinto</li>
+      <li>Perfil: Franco Colapinto</li>
+      <li>MotoGP 2027 en Buenos Aires</li>
+      <li>¿Qué tan cerca está de pasar?</li>
+    </ul>
+    <div class="mv-footer-sources">Fuentes: Infobae · La Nación · ESPN · MotoGP.com · Motorsport.com<br>Autosport · Motorsport Week · Letra P · Ambito · Perfil</div>
+  </div>
+</div>
+<!-- /MOBILE VIEW -->
+
+
+
+<script is:inline>
+
+  const spreads = document.querySelectorAll('.spread-container');
+  const totalSpreads = spreads.length;
+  let current = 0;
+  let animating = false;
+
+  const pageLabels = [
+    'PÁG 1', 'PÁGS 2–3', 'PÁGS 4–5', 'PÁGS 6–7',
+    'PÁGS 8–9', 'PÁGS 10–11', 'PÁG 12'
+  ];
+
+  function goToSpread(index, direction) {
+    if (animating) return;
+    if (index < 0 || index >= totalSpreads || index === current) return;
+    animating = true;
+
+    const dir = direction !== undefined ? direction : (index > current ? 1 : -1);
+    const outClass = dir > 0 ? 'anim-out-right' : 'anim-out-left';
+    const inClass  = dir > 0 ? 'anim-in-right'  : 'anim-in-left';
+
+    const outEl = spreads[current];
+    const inEl  = spreads[index];
+
+    // Animate out current
+    outEl.classList.add(outClass);
+
+    setTimeout(() => {
+      outEl.classList.remove('active', outClass);
+      current = index;
+
+      inEl.classList.add('active', inClass);
+      document.getElementById('page-indicator').textContent = pageLabels[current];
+      document.getElementById('btn-prev').disabled = current === 0;
+      document.getElementById('btn-next').disabled = current === totalSpreads - 1;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      setTimeout(() => {
+        inEl.classList.remove(inClass);
+        animating = false;
+      }, 440);
+    }, 290);
+  }
+
+  const mobileQuery = window.matchMedia('(max-width: 599px)');
+  const mobilePages = [...document.querySelectorAll('.spread-container .page')];
+  const spreadWrapper = document.querySelector('.spread-wrapper');
+  let mobileCurrent = 0;
+
+  function sizeMobilePage() {
+    const width = mobilePages[mobileCurrent].closest('.spread.single') ? 610 : 520;
+    spreadWrapper.style.setProperty('--mobile-page-width', `${width}px`);
+    spreadWrapper.style.setProperty('--mobile-page-scale', Math.min(1, (window.innerWidth - 28) / width));
+  }
+
+  function goToMobilePage(index) {
+    if (index < 0 || index >= mobilePages.length || index === mobileCurrent) return;
+    mobilePages[mobileCurrent].classList.remove('mobile-visible');
+    mobilePages[mobileCurrent].closest('.spread-container').classList.remove('active');
+    mobileCurrent = index;
+    mobilePages[mobileCurrent].closest('.spread-container').classList.add('active');
+    mobilePages[mobileCurrent].classList.add('mobile-visible');
+    sizeMobilePage();
+    document.getElementById('page-indicator').textContent = `PÁG ${index + 1} / ${mobilePages.length}`;
+    document.getElementById('btn-prev').disabled = index === 0;
+    document.getElementById('btn-next').disabled = index === mobilePages.length - 1;
+    window.scrollTo(0, 0);
+  }
+
+  function prevSpread() {
+    if (mobileQuery.matches) goToMobilePage(mobileCurrent - 1);
+    else goToSpread(current - 1, -1);
+  }
+  function nextSpread() {
+    if (mobileQuery.matches) goToMobilePage(mobileCurrent + 1);
+    else goToSpread(current + 1, 1);
+  }
+
+  // Keyboard
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown')  nextSpread();
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')    prevSpread();
+  });
+
+  // Click on spread halves
+  document.querySelector('.spread-wrapper').addEventListener('click', (e) => {
+    if (mobileQuery.matches) { nextSpread(); return; }
+    const wrapper = document.querySelector('.spread-wrapper');
+    const rect = wrapper.getBoundingClientRect();
+    const midX = rect.left + rect.width / 2;
+    if (e.clientX > midX) nextSpread();
+    else                   prevSpread();
+  });
+
+  // Touch / swipe
+  let touchStartX = 0;
+  document.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
+  document.addEventListener('touchend', (e) => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 60) dx < 0 ? nextSpread() : prevSpread();
+  }, { passive: true });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    mobilePages[0].classList.add('mobile-visible');
+    sizeMobilePage();
+    mobileQuery.addEventListener('change', () => {
+      if (mobileQuery.matches) {
+        spreads.forEach(spread => spread.classList.remove('active'));
+        mobilePages[mobileCurrent].closest('.spread-container').classList.add('active');
+        sizeMobilePage();
+        document.getElementById('page-indicator').textContent = `PÁG ${mobileCurrent + 1} / ${mobilePages.length}`;
+        document.getElementById('btn-prev').disabled = mobileCurrent === 0;
+        document.getElementById('btn-next').disabled = mobileCurrent === mobilePages.length - 1;
+      } else {
+        spreads.forEach(spread => spread.classList.remove('active'));
+        current = [...spreads].indexOf(mobilePages[mobileCurrent].closest('.spread-container'));
+        spreads[current].classList.add('active');
+        document.getElementById('page-indicator').textContent = pageLabels[current];
+        document.getElementById('btn-prev').disabled = current === 0;
+        document.getElementById('btn-next').disabled = current === totalSpreads - 1;
+      }
+    });
+    window.addEventListener('resize', () => { if (mobileQuery.matches) sizeMobilePage(); });
+    if (mobileQuery.matches) document.getElementById('page-indicator').textContent = `PÁG 1 / ${mobilePages.length}`;
+  });
+
+  // Mobile probability bar animation
+  const mvObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll('.mv-prob-fill').forEach(fill => {
+          const w = fill.style.width;
+          fill.style.width = '0%';
+          setTimeout(() => { fill.style.width = w; }, 200);
+        });
+        mvObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  const mvProb = document.querySelector('.mv-prob');
+  if (mvProb) mvObserver.observe(mvProb);
+
+  // Mobile probability bars animation on scroll
+  const mvProbSection = document.getElementById('mv-prob-section');
+  if (mvProbSection) {
+    const mvObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.querySelectorAll('.mv-prob-fill').forEach(fill => {
+            const w = fill.style.width;
+            fill.style.width = '0%';
+            setTimeout(() => { fill.style.width = w; }, 200);
+          });
+          mvObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    mvObserver.observe(mvProbSection);
+  }
+
+
+</script>
+
+<style is:global>
+
+  :root {
+    --negro: #0a0a0a;
+    --blanco: #f5f2ed;
+    --celeste: #74acdf;
+    --celeste-oscuro: #3a7ab5;
+    --dorado: #c8a84b;
+    --gris: #1e1e1e;
+    --gris-medio: #3a3a3a;
+    --gris-claro: #9a9a9a;
+    --page-w: 520px;
+    --page-h: 720px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #111;
+    color: var(--blanco);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+  }
+
+  /* ===== CHROME / TOOLBAR ===== */
+  .toolbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 200;
+    height: 52px;
+    background: rgba(5,5,5,0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(116,172,223,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+  }
+  .toolbar-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 4px;
+    color: var(--dorado);
+  }
+  .toolbar-nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .nav-btn {
+    background: none;
+    border: 1px solid var(--gris-medio);
+    color: var(--blanco);
+    width: 36px; height: 36px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex; align-items: center; justify-content: center;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .nav-btn:hover:not(:disabled) { border-color: var(--celeste); color: var(--celeste); }
+  .nav-btn:disabled { opacity: 0.25; cursor: default; }
+  .page-indicator {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: var(--gris-claro);
+    min-width: 90px;
+    text-align: center;
+  }
+  .toolbar-sections {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+  }
+  .toolbar-sections button {
+    background: none; border: none;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gris-claro);
+    cursor: pointer;
+    transition: color 0.2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .toolbar-sections button:hover { color: var(--celeste); }
+
+  /* ===== MAGAZINE STAGE ===== */
+  .stage {
+    margin-top: 52px;
+    padding: 40px 20px 60px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: calc(100vh - 52px);
+  }
+
+  /* ===== SPREAD (double page) ===== */
+  .spread-wrapper {
+    position: relative;
+  }
+  .spread {
+    display: flex;
+    box-shadow:
+      -12px 4px 40px rgba(0,0,0,0.7),
+      12px 4px 40px rgba(0,0,0,0.7),
+      0 20px 60px rgba(0,0,0,0.5);
+    position: relative;
+  }
+  /* Spine shadow */
+  .spread::after {
+    content: '';
+    position: absolute;
+    left: 50%; top: 0; bottom: 0;
+    width: 6px;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg,
+      rgba(0,0,0,0.6) 0%,
+      rgba(0,0,0,0.1) 40%,
+      rgba(0,0,0,0.1) 60%,
+      rgba(0,0,0,0.6) 100%
+    );
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  /* Single page (portada) */
+  .spread.single {
+    justify-content: center;
+  }
+  .spread.single::after { display: none; }
+
+  /* ===== PAGE ===== */
+  .page {
+    width: var(--page-w);
+    height: var(--page-h);
+    background: var(--negro);
+    overflow: hidden;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .page-left { border-right: 1px solid #1a1a1a; }
+
+  /* Page number */
+  .page-num {
+    position: absolute;
+    bottom: 14px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: rgba(245,242,237,0.25);
+    z-index: 5;
+  }
+  .page-num-left { left: 20px; }
+  .page-num-right { right: 20px; }
+
+  /* Running header */
+  .running-head {
+    position: absolute;
+    top: 14px;
+    font-size: 9px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: rgba(245,242,237,0.2);
+    z-index: 5;
+  }
+  .running-head-left { left: 20px; }
+  .running-head-right { right: 20px; }
+
+  /* Page content area */
+  .page-content {
+    position: absolute;
+    inset: 36px 24px 32px;
+    overflow: hidden;
+  }
+
+  /* ===== SPREAD TRANSITIONS ===== */
+  .spread-wrapper {
+    perspective: 2400px;
+    perspective-origin: center center;
+    position: relative;
+  }
+
+  .spread-container {
+    display: none;
+    position: absolute;
+    top: 0; left: 0;
+  }
+  .spread-container.active {
+    display: block;
+    position: relative;
+  }
+
+  @keyframes flipInRight {
+    0%   { transform: rotateY(-22deg) translateX(40px); opacity: 0; filter: brightness(0.6); }
+    100% { transform: rotateY(0deg)   translateX(0);    opacity: 1; filter: brightness(1); }
+  }
+  @keyframes flipInLeft {
+    0%   { transform: rotateY(22deg)  translateX(-40px); opacity: 0; filter: brightness(0.6); }
+    100% { transform: rotateY(0deg)   translateX(0);     opacity: 1; filter: brightness(1); }
+  }
+  @keyframes flipOutRight {
+    0%   { transform: rotateY(0deg)   translateX(0);    opacity: 1; filter: brightness(1); }
+    100% { transform: rotateY(-28deg) translateX(40px); opacity: 0; filter: brightness(0.4); }
+  }
+  @keyframes flipOutLeft {
+    0%   { transform: rotateY(0deg)  translateX(0);     opacity: 1; filter: brightness(1); }
+    100% { transform: rotateY(28deg) translateX(-40px); opacity: 0; filter: brightness(0.4); }
+  }
+
+  .spread-container.anim-in-right  .spread { animation: flipInRight  0.42s cubic-bezier(0.22,0.9,0.36,1) both; }
+  .spread-container.anim-in-left   .spread { animation: flipInLeft   0.42s cubic-bezier(0.22,0.9,0.36,1) both; }
+  .spread-container.anim-out-right .spread { animation: flipOutRight 0.28s cubic-bezier(0.55,0,0.8,0.45) both; }
+  .spread-container.anim-out-left  .spread { animation: flipOutLeft  0.28s cubic-bezier(0.55,0,0.8,0.45) both; }
+
+  /* ===== TYPOGRAPHY / COMPONENTS ===== */
+  .bb { font-family: 'Bebas Neue', sans-serif; }
+  .serif { font-family: 'DM Serif Display', serif; }
+
+  /* Section tag */
+  .sec-tag {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--celeste);
+    margin-bottom: 6px;
+  }
+  .sec-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(32px, 5vw, 52px);
+    line-height: 0.92;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+  }
+  .sec-rule {
+    width: 40px; height: 3px;
+    background: var(--celeste);
+    margin-bottom: 16px;
+  }
+  .lead {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--blanco);
+    margin-bottom: 12px;
+  }
+  .body-txt {
+    font-size: 11px;
+    line-height: 1.75;
+    color: rgba(245,242,237,0.72);
+    margin-bottom: 10px;
+  }
+  .body-txt strong { color: var(--blanco); }
+
+  /* Quote block */
+  .quote-block {
+    background: var(--gris);
+    border-left: 3px solid var(--celeste);
+    padding: 14px 16px;
+    margin: 12px 0;
+    position: relative;
+  }
+  .quote-text {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: 12px;
+    line-height: 1.55;
+    color: var(--blanco);
+  }
+  .quote-src {
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gris-claro);
+    margin-top: 6px;
+  }
+
+  /* Timeline */
+  .timeline { padding-left: 20px; position: relative; }
+  .timeline::before {
+    content: '';
+    position: absolute; left: 0; top: 0; bottom: 0; width: 1px;
+    background: linear-gradient(to bottom, var(--celeste), transparent);
+  }
+  .tl-item { margin-bottom: 14px; position: relative; }
+  .tl-dot {
+    position: absolute; left: -24px; top: 4px;
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--celeste);
+    border: 1.5px solid var(--negro);
+    box-shadow: 0 0 0 1px var(--celeste);
+  }
+  .tl-year {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px; color: var(--dorado); line-height: 1;
+  }
+  .tl-desc {
+    font-size: 10px; color: rgba(245,242,237,0.6); line-height: 1.5; margin-top: 2px;
+  }
+
+  /* Stats row */
+  .stats-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin: 10px 0;
+  }
+  .stat-box {
+    background: var(--gris);
+    padding: 14px;
+    text-align: center;
+  }
+  .stat-n {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px; color: var(--dorado); line-height: 1;
+  }
+  .stat-l {
+    font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--gris-claro); margin-top: 3px; line-height: 1.3;
+  }
+
+  /* Sponsor grid (2-col) */
+  .sp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin: 10px 0;
+  }
+  .sp-card {
+    background: var(--gris);
+    padding: 10px 12px;
+    position: relative;
+    overflow: hidden;
+  }
+  .sp-card::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+    background: var(--celeste);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .sp-card:hover::after { transform: scaleX(1); }
+  .sp-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 15px; letter-spacing: 1px; color: var(--blanco); margin-bottom: 2px;
+  }
+  .sp-tipo {
+    font-size: 8px; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--dorado); margin-bottom: 6px;
+  }
+  .sp-desc { font-size: 9.5px; line-height: 1.5; color: rgba(245,242,237,0.55); }
+
+  /* Comparison panel (Williams/Alpine) */
+  .comp-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid var(--gris-medio);
+    margin: 10px 0;
+  }
+  .comp-panel {
+    background: var(--gris);
+    padding: 14px 12px 12px;
+    position: relative;
+    overflow: hidden;
+  }
+  .comp-panel-left { border-right: 2px solid #005AFF; }
+  .comp-accent-bar {
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  }
+  .comp-team {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 16px; letter-spacing: 2px; margin-bottom: 10px; margin-top: 4px;
+  }
+  .comp-row-sm {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 6px 0; border-bottom: 1px solid var(--gris-medio); gap: 4px;
+  }
+  .comp-row-sm:last-child { border-bottom: none; }
+  .comp-metric { font-size: 8px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gris-claro); flex-shrink: 0; min-width: 60px; }
+  .comp-vals { display: flex; align-items: center; gap: 4px; font-family: 'Bebas Neue', sans-serif; }
+  .comp-before { font-size: 12px; color: rgba(245,242,237,0.4); }
+  .comp-after { font-size: 14px; color: var(--dorado); }
+  .comp-badge { font-size: 9px; padding: 2px 5px; font-weight: 700; white-space: nowrap; font-family: 'DM Sans', sans-serif; }
+  .comp-note {
+    margin-top: 8px; padding: 8px; font-size: 9px; line-height: 1.5;
+    color: rgba(245,242,237,0.65); border: 1px solid;
+  }
+  .comp-note strong { color: var(--blanco); }
+
+  /* Probability bars */
+  .prob-container { margin: 10px 0; }
+  .prob-row { margin-bottom: 10px; }
+  .prob-head { display: flex; justify-content: space-between; margin-bottom: 4px; }
+  .prob-name { font-size: 10px; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; color: var(--blanco); }
+  .prob-pct {
+    font-family: 'Bebas Neue', sans-serif; font-size: 15px; color: var(--dorado);
+  }
+  .prob-track { height: 5px; background: var(--gris-medio); overflow: hidden; }
+  .prob-fill { height: 100%; background: linear-gradient(90deg, var(--celeste-oscuro), var(--celeste)); }
+
+  /* Cards grid 2x2 */
+  .cards-2x2 {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 10px 0;
+  }
+  .obstacle-card {
+    border: 1px solid var(--gris-medio); padding: 10px 12px;
+    transition: border-color 0.3s;
+  }
+  .obstacle-card:hover { border-color: var(--dorado); }
+  .tag-pos {
+    display: inline-block;
+    background: rgba(0,120,0,0.2); border: 1px solid rgba(0,180,0,0.3);
+    color: #5fca5f; font-size: 7.5px; font-weight: 600; letter-spacing: 2px;
+    text-transform: uppercase; padding: 2px 6px; margin-bottom: 6px;
+  }
+  .tag-chal {
+    display: inline-block;
+    background: rgba(120,80,0,0.2); border: 1px solid rgba(200,168,75,0.3);
+    color: var(--dorado); font-size: 7.5px; font-weight: 600; letter-spacing: 2px;
+    text-transform: uppercase; padding: 2px 6px; margin-bottom: 6px;
+  }
+  .obstacle-title { font-family: 'Bebas Neue', sans-serif; font-size: 13px; letter-spacing: 1px; margin-bottom: 4px; }
+  .obstacle-desc { font-size: 9.5px; color: rgba(245,242,237,0.6); line-height: 1.5; }
+
+  /* Obras list */
+  .obras-list { list-style: none; margin: 10px 0; }
+  .obra-item { display: flex; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--gris-medio); align-items: flex-start; }
+  .obra-icon {
+    width: 24px; height: 24px; background: var(--celeste);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; flex-shrink: 0; font-weight: 700;
+    font-family: 'Bebas Neue', sans-serif; color: var(--negro);
+  }
+  .obra-txt { font-size: 10px; line-height: 1.5; color: rgba(245,242,237,0.7); }
+  .obra-txt strong { color: var(--blanco); }
+
+  /* Fases */
+  .fases-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin: 10px 0; }
+  .fase-card { background: var(--gris); padding: 14px; position: relative; }
+  .fase-n {
+    font-family: 'Bebas Neue', sans-serif; font-size: 48px;
+    color: rgba(116,172,223,0.12); position: absolute; top: 4px; right: 8px; line-height: 1;
+  }
+  .fase-title { font-family: 'Bebas Neue', sans-serif; font-size: 14px; letter-spacing: 2px; color: var(--dorado); margin-bottom: 6px; }
+  .fase-desc { font-size: 10px; color: rgba(245,242,237,0.65); line-height: 1.55; }
+
+  /* Impacto card */
+  .impacto-card {
+    background: linear-gradient(135deg, #8b6a1a, var(--dorado));
+    padding: 20px 18px; position: relative; overflow: hidden; margin-bottom: 2px;
+  }
+  .impacto-card::before {
+    content: '$'; font-family: 'Bebas Neue', sans-serif; font-size: 120px;
+    color: rgba(255,255,255,0.08); position: absolute; right: -10px; bottom: -20px; line-height: 1;
+  }
+  .impacto-monto { font-family: 'Bebas Neue', sans-serif; font-size: 52px; color: var(--blanco); line-height: 1; display: block; }
+  .impacto-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.7); display: block; margin-bottom: 8px; }
+  .impacto-desc { font-size: 10px; color: rgba(255,255,255,0.85); line-height: 1.5; position: relative; z-index: 1; }
+
+  /* Data table */
+  .data-table { background: var(--gris); padding: 14px; }
+  .data-row {
+    display: flex; justify-content: space-between;
+    padding: 6px 0; border-bottom: 1px solid var(--gris-medio); font-size: 10px;
+  }
+  .data-row:last-child { border-bottom: none; }
+  .data-label { color: rgba(245,242,237,0.55); }
+  .data-val { font-weight: 500; }
+
+  /* MotoGP callout */
+  .motogp-callout {
+    background: rgba(200,168,75,0.08); border: 1px solid rgba(200,168,75,0.3);
+    padding: 12px 14px; margin-top: 8px;
+  }
+  .callout-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--dorado); margin-bottom: 6px; }
+  .callout-txt { font-size: 10px; color: rgba(245,242,237,0.75); line-height: 1.5; }
+
+  /* Horizon box */
+  .horizon-box { background: var(--gris); padding: 20px; margin-top: 14px; position: relative; overflow: hidden; }
+  .horizon-year {
+    position: absolute; right: -8px; bottom: -8px;
+    font-family: 'Bebas Neue', sans-serif; font-size: 80px;
+    color: rgba(116,172,223,0.08); line-height: 1;
+  }
+  .horizon-label { font-family: 'Bebas Neue', sans-serif; font-size: 10px; letter-spacing: 3px; color: var(--celeste); margin-bottom: 8px; }
+  .horizon-quote {
+    font-family: 'DM Serif Display', serif; font-style: italic;
+    font-size: 13px; line-height: 1.5; color: var(--blanco); margin-bottom: 8px; position: relative; z-index: 1;
+  }
+  .horizon-txt { font-size: 10px; line-height: 1.7; color: rgba(245,242,237,0.7); position: relative; z-index: 1; }
+
+  /* Context box */
+  .context-box { background: var(--gris); padding: 16px; margin-top: 12px; }
+  .context-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--dorado); margin-bottom: 8px; }
+
+  /* Ticker band */
+  .ticker-band {
+    width: 100%;
+    background: linear-gradient(90deg, var(--celeste-oscuro), var(--celeste));
+    padding: 8px 0;
+    overflow: hidden; white-space: nowrap;
+  }
+  .ticker-inner {
+    display: inline-block;
+    animation: ticker 25s linear infinite;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px; letter-spacing: 3px; color: var(--negro);
+  }
+  @keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* Divider line with label */
+  .divider-label-line {
+    display: flex; align-items: center; gap: 10px; margin: 12px 0;
+  }
+  .divider-label-line::before, .divider-label-line::after {
+    content: ''; flex: 1; height: 1px; background: var(--gris-medio);
+  }
+  .div-label { font-size: 8px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gris-claro); white-space: nowrap; }
+
+  /* ===========================
+     PAGE-SPECIFIC LAYOUTS
+  =========================== */
+
+  /* === PORTADA (p1) === */
+  .portada {
+    background: var(--negro);
+    width: 100%; height: 100%;
+    display: flex; flex-direction: column;
+    position: relative; overflow: hidden;
+  }
+  .portada-foto {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background:
+      linear-gradient(90deg, rgba(0,0,0,0.84) 0%, rgba(0,0,0,0.62) 48%, rgba(0,0,0,0.22) 100%),
+      linear-gradient(180deg, rgba(0,0,0,0.08) 45%, rgba(0,0,0,0.8) 100%),
+      url('/img/portada.webp') center center / cover no-repeat;
+  }
+  .portada-sol-anterior { display: none; }
+  .portada-band-top {
+    height: 5px;
+    background: linear-gradient(90deg, var(--celeste) 33%, #fff 33%, #fff 66%, var(--celeste) 66%);
+    opacity: 0.7;
+  }
+  .portada-grid {
+    flex: 1; display: grid; grid-template-columns: 1fr 1fr; overflow: hidden;
+  }
+  .portada-izq {
+    padding: 32px 28px; display: flex; flex-direction: column; justify-content: space-between;
+    position: relative; z-index: 2;
+  }
+  .portada-izq::after {
+    content: ''; position: absolute; right: 0; top: 0; bottom: 0; width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--celeste), transparent);
+  }
+  .portada-eyebrow {
+    font-size: 8px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--celeste); display: flex; align-items: center; gap: 8px;
+  }
+  .portada-eyebrow::before { content: ''; display: block; width: 20px; height: 1px; background: var(--celeste); }
+  .portada-titulo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 80px; line-height: 0.88; letter-spacing: 2px; color: var(--blanco);
+  }
+  .portada-titulo span { color: var(--celeste); display: block; }
+  .portada-sub {
+    font-family: 'DM Serif Display', serif; font-style: italic;
+    font-size: 13px; color: var(--gris-claro); line-height: 1.5; max-width: 220px;
+  }
+  .portada-cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--celeste); color: var(--negro);
+    padding: 8px 16px; font-size: 9px; font-weight: 700;
+    letter-spacing: 2.5px; text-transform: uppercase; width: fit-content;
+  }
+  .portada-der {
+    background: var(--gris); position: relative; overflow: hidden;
+  }
+  .portada-der-pattern {
+    position: absolute; inset: 0;
+    background:
+      repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(116,172,223,0.04) 40px, rgba(116,172,223,0.04) 41px),
+      repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(116,172,223,0.04) 40px, rgba(116,172,223,0.04) 41px);
+  }
+  .portada-stats {
+    position: absolute; inset: 0;
+    display: grid; grid-template-rows: 1fr 1fr;
+  }
+  .portada-stat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; }
+  .portada-stat-item {
+    background: rgba(10,10,10,0.65);
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 24px; position: relative; overflow: hidden;
+    transition: background 0.3s;
+  }
+  .portada-stat-item:hover { background: rgba(10,20,35,0.9); }
+  .portada-stat-item::before {
+    content: ''; position: absolute; bottom: 0; left: 0;
+    width: 3px; height: 0; background: var(--dorado); transition: height 0.4s;
+  }
+  .portada-stat-item:hover::before { height: 100%; }
+  .p-stat-n { font-family: 'Bebas Neue', sans-serif; font-size: 42px; color: var(--dorado); line-height: 1; margin-bottom: 4px; }
+  .p-stat-l { font-size: 8px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gris-claro); line-height: 1.3; }
+  .portada-ghost {
+    position: absolute; bottom: -10px; left: -10px;
+    font-family: 'Bebas Neue', sans-serif; font-size: 140px;
+    color: rgba(116,172,223,0.04); line-height: 1; pointer-events: none; z-index: 0;
+  }
+  .portada-bottom {
+    height: 44px; background: rgba(5,5,5,0.9);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 20px;
+  }
+  .portada-bottom-logo {
+    font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 3px; color: var(--dorado);
+  }
+  .portada-bottom-info { font-size: 9px; letter-spacing: 1.5px; color: rgba(245,242,237,0.35); }
+
+  /* === LEGALES (p2) === */
+  .legales-page {
+    width: 100%; height: 100%;
+    background: var(--negro);
+    display: flex; flex-direction: column;
+    padding: 40px 32px 32px;
+    position: relative; overflow: hidden;
+  }
+  .legales-page::before {
+    content: 'VR'; font-family: 'Bebas Neue', sans-serif; font-size: 240px;
+    color: rgba(116,172,223,0.03); position: absolute; bottom: -20px; right: -20px; line-height: 1;
+  }
+  .leg-titulo {
+    font-family: 'Bebas Neue', sans-serif; font-size: 36px; letter-spacing: 3px; color: var(--blanco); margin-bottom: 4px;
+  }
+  .leg-subtitulo {
+    font-family: 'DM Serif Display', serif; font-style: italic;
+    font-size: 12px; color: var(--gris-claro); margin-bottom: 24px; line-height: 1.5;
+  }
+  .leg-rule { width: 40px; height: 2px; background: var(--celeste); margin-bottom: 24px; }
+  .leg-block { margin-bottom: 18px; }
+  .leg-label { font-size: 8px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--celeste); margin-bottom: 5px; }
+  .leg-txt { font-size: 10px; line-height: 1.65; color: rgba(245,242,237,0.55); }
+  .leg-txt strong { color: rgba(245,242,237,0.8); }
+  .leg-indice { margin-top: auto; padding-top: 20px; border-top: 1px solid var(--gris-medio); }
+  .leg-indice-titulo { font-size: 8px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--dorado); margin-bottom: 10px; }
+  .leg-indice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 16px; }
+  .leg-indice-item { display: flex; align-items: baseline; gap: 6px; font-size: 9.5px; }
+  .leg-indice-num { font-family: 'Bebas Neue', sans-serif; font-size: 13px; color: var(--celeste); flex-shrink: 0; }
+  .leg-indice-name { color: rgba(245,242,237,0.65); }
+
+  /* === CIERRE page === */
+  .cierre-page {
+    width: 100%; height: 100%; position: relative; overflow: hidden;
+    background: linear-gradient(180deg, #0d0d0d 0%, #1a2d42 60%, #0d1e2e 100%);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 32px;
+  }
+  .cierre-page::before {
+    content: 'ARGENTINA'; font-family: 'Bebas Neue', sans-serif; font-size: 160px;
+    color: rgba(255,255,255,0.025); position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%); white-space: nowrap; pointer-events: none; line-height: 1;
+  }
+  .cierre-bandera { display: flex; width: 56px; height: 3px; margin: 0 auto 20px; }
+  .bf-c { flex: 1; background: #74acdf; }
+  .bf-b { flex: 1; background: #fff; }
+  .cierre-titulo {
+    font-family: 'Bebas Neue', sans-serif; font-size: 60px; line-height: 0.92;
+    margin-bottom: 16px; position: relative; z-index: 1;
+  }
+  .cierre-sub {
+    font-family: 'DM Serif Display', serif; font-style: italic;
+    font-size: 14px; color: rgba(245,242,237,0.8); max-width: 360px;
+    margin: 0 auto 24px; line-height: 1.5; position: relative; z-index: 1;
+  }
+  .cierre-edition {
+    font-family: 'Bebas Neue', sans-serif; font-size: 11px; letter-spacing: 3px;
+    color: rgba(245,242,237,0.35); position: relative; z-index: 1;
+  }
+
+  /* === FOOTER page === */
+  .footer-page {
+    width: 100%; height: 100%; background: var(--negro);
+    display: flex; flex-direction: column; padding: 36px 32px;
+    border-top: 1px solid var(--gris-medio);
+  }
+  .fp-logo {
+    font-family: 'Bebas Neue', sans-serif; font-size: 36px; letter-spacing: 5px; color: var(--dorado);
+    margin-bottom: 6px;
+  }
+  .fp-tagline {
+    font-family: 'DM Serif Display', serif; font-style: italic;
+    font-size: 12px; color: rgba(245,242,237,0.5); line-height: 1.6; max-width: 280px; margin-bottom: 20px;
+  }
+  .fp-divider { height: 1px; background: var(--gris-medio); margin-bottom: 20px; }
+  .fp-indice-label {
+    font-size: 8.5px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--celeste); margin-bottom: 12px;
+  }
+  .fp-indice { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .fp-indice li { font-size: 11.5px; color: rgba(245,242,237,0.55); display: flex; align-items: center; gap: 8px; }
+  .fp-indice li::before { content: ''; display: block; width: 12px; height: 1px; background: var(--dorado); flex-shrink: 0; }
+  .fp-sources { margin-top: auto; font-size: 8px; letter-spacing: 1px; color: rgba(245,242,237,0.25); line-height: 1.6; }
+
+  /* ===========================
+     EDITORIAL REDESIGN PASS
+     Visual direction: racing magazine, image-led spreads, stronger hierarchy.
+  =========================== */
+  :root {
+    --rojo-f1: #e10600;
+    --papel: #f4f0e8;
+    --tinta: #101010;
+  }
+
+  .toolbar {
+    background: rgba(8,8,8,0.98);
+    border-bottom: 2px solid var(--rojo-f1);
+  }
+  .toolbar-logo { color: var(--blanco); }
+  .toolbar-logo::before {
+    content: '';
+    display: inline-block;
+    width: 18px;
+    height: 8px;
+    margin-right: 8px;
+    background: var(--rojo-f1);
+    transform: skewX(-18deg);
+  }
+
+  .stage {
+    background:
+      radial-gradient(circle at 50% 0%, rgba(225,6,0,0.16), transparent 28%),
+      linear-gradient(180deg, #151515 0%, #070707 100%);
+  }
+
+  .spread {
+    box-shadow:
+      -16px 8px 44px rgba(0,0,0,0.82),
+      16px 8px 44px rgba(0,0,0,0.82),
+      0 26px 70px rgba(0,0,0,0.62);
+  }
+
+  .page {
+    background: var(--papel);
+    color: var(--tinta);
+  }
+
+  .page-content {
+    inset: 30px 28px 34px;
+  }
+
+  #spread-0 .page,
+  #spread-6 .page {
+    background: var(--negro);
+    color: var(--blanco);
+  }
+
+  .sec-tag {
+    color: var(--rojo-f1);
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+  }
+
+  .sec-title {
+    color: var(--tinta);
+    font-size: 52px;
+    line-height: 0.84;
+    letter-spacing: 0;
+    max-width: 360px;
+  }
+
+  .sec-rule {
+    width: 64px;
+    height: 5px;
+    background: var(--rojo-f1);
+    transform: skewX(-18deg);
+    margin: 12px 0 18px;
+  }
+
+  .lead {
+    color: #222;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .body-txt,
+  .tl-desc,
+  .sp-desc,
+  .fase-desc,
+  .obra-txt,
+  .callout-txt,
+  .horizon-txt,
+  .horizon-quote,
+  .prob-name,
+  .obstacle-desc {
+    color: rgba(16,16,16,0.72);
+  }
+
+  .body-txt strong,
+  .obra-txt strong {
+    color: var(--tinta);
+  }
+
+  .running-head,
+  .page-num {
+    color: rgba(16,16,16,0.34);
+  }
+
+  #spread-0 .running-head,
+  #spread-0 .page-num,
+  #spread-6 .page-num {
+    color: rgba(245,242,237,0.42);
+  }
+
+  .quote-block,
+  .stat-box,
+  .sp-card,
+  .comp-panel,
+  .fase-card,
+  .data-table,
+  .horizon-box,
+  .context-box,
+  .obstacle-card {
+    background: #ffffff;
+    border: 1px solid rgba(16,16,16,0.11);
+    box-shadow: 0 10px 22px rgba(0,0,0,0.07);
+  }
+
+  .quote-block {
+    border-left: 6px solid var(--rojo-f1);
+  }
+
+  .quote-text {
+    color: var(--tinta);
+    font-size: 13px;
+  }
+
+  .quote-src,
+  .stat-l,
+  .div-label,
+  .data-label {
+    color: rgba(16,16,16,0.48);
+  }
+
+  .stat-n,
+  .tl-year,
+  .p-stat-n,
+  .prob-pct,
+  .impacto-monto {
+    color: var(--rojo-f1);
+  }
+
+  .timeline::before {
+    background: linear-gradient(to bottom, var(--rojo-f1), rgba(225,6,0,0));
+  }
+
+  .tl-dot,
+  .prob-fill {
+    background: var(--rojo-f1);
+  }
+
+  .prob-track {
+    background: rgba(16,16,16,0.16);
+  }
+
+  .divider-label-line::before,
+  .divider-label-line::after,
+  .data-row,
+  .obra-item,
+  .comp-row-sm {
+    border-color: rgba(16,16,16,0.12);
+  }
+
+  .photo-slot {
+    position: relative;
+    min-height: 168px;
+    overflow: hidden;
+    background:
+      linear-gradient(135deg, rgba(225,6,0,0.88), rgba(10,10,10,0.92)),
+      repeating-linear-gradient(90deg, transparent 0 18px, rgba(255,255,255,0.08) 18px 20px);
+    color: var(--blanco);
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    isolation: isolate;
+  }
+
+  .photo-slot::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 75% 25%, rgba(255,255,255,0.22), transparent 22%),
+      linear-gradient(120deg, transparent 0 48%, rgba(255,255,255,0.1) 49% 51%, transparent 52%);
+    z-index: -1;
+  }
+
+  .photo-slot::after {
+    content: attr(data-suggest);
+    font-size: 9px;
+    line-height: 1.35;
+    letter-spacing: 1.7px;
+    text-transform: uppercase;
+    color: rgba(245,242,237,0.76);
+  }
+
+  .photo-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 30px;
+    line-height: 0.95;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  .portada {
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0.14), rgba(0,0,0,0.88)),
+      radial-gradient(circle at 76% 35%, rgba(225,6,0,0.56), transparent 30%),
+      linear-gradient(135deg, #050505 0%, #171717 58%, #050505 100%);
+  }
+
+  .portada-band-top {
+    height: 9px;
+    background: linear-gradient(90deg, var(--rojo-f1) 0 38%, var(--blanco) 38% 43%, var(--celeste) 43% 68%, #050505 68% 100%);
+  }
+
+  .portada-grid {
+    grid-template-columns: 1.05fr 0.95fr;
+  }
+
+  .portada-izq {
+    padding: 36px 30px 28px;
+  }
+
+  .portada-eyebrow {
+    color: var(--rojo-f1);
+  }
+
+  .portada-eyebrow::before {
+    background: var(--rojo-f1);
+  }
+
+  .portada-titulo {
+    font-size: 88px;
+    line-height: 0.78;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+
+  .portada-titulo span {
+    color: var(--rojo-f1);
+  }
+
+  .portada-sub {
+    color: rgba(245,242,237,0.82);
+    border-left: 4px solid var(--rojo-f1);
+    padding-left: 12px;
+  }
+
+  .portada-cta {
+    background: var(--rojo-f1);
+    color: var(--blanco);
+  }
+
+  .portada-der {
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0.04), rgba(0,0,0,0.82)),
+      linear-gradient(135deg, #232323, #070707);
+  }
+
+  .portada-der::before {
+    content: 'IMAGEN SUGERIDA\A F1 showrun en Buenos Aires, Alpine de Colapinto o recta principal del Galvez';
+    white-space: pre-line;
+    position: absolute;
+    inset: 34px 28px 184px;
+    z-index: 1;
+    border: 1px solid rgba(255,255,255,0.22);
+    background:
+      linear-gradient(135deg, rgba(225,6,0,0.72), rgba(10,10,10,0.75)),
+      repeating-linear-gradient(90deg, transparent 0 22px, rgba(255,255,255,0.08) 22px 24px);
+    display: flex;
+    align-items: flex-end;
+    padding: 18px;
+    font-size: 9px;
+    line-height: 1.45;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: rgba(245,242,237,0.82);
+  }
+
+  .portada-stats {
+    inset: auto 0 0 0 !important;
+    height: 182px;
+    z-index: 2;
+    grid-template-rows: 1fr 1fr;
+  }
+
+  .portada-stat-item {
+    background: rgba(5,5,5,0.86);
+    padding: 14px 18px;
+  }
+
+  .p-stat-n {
+    color: var(--blanco);
+  }
+
+  .p-stat-l {
+    color: rgba(245,242,237,0.62);
+  }
+
+  .legales-page {
+    background: var(--papel);
+    color: var(--tinta);
+    padding: 24px 30px 26px;
+  }
+
+  .legales-page::before {
+    content: none;
+    top: 10px;
+    right: -12px;
+    bottom: auto;
+    font-size: 92px;
+    color: rgba(225,6,0,0.06);
+  }
+
+  .leg-titulo {
+    color: var(--tinta);
+    font-size: 38px;
+    line-height: 0.9;
+  }
+
+  .leg-subtitulo {
+    margin-bottom: 14px;
+  }
+
+  #spread-1 .opening-line {
+    margin-bottom: 12px !important;
+  }
+
+  #spread-1 .leg-block {
+    margin-bottom: 10px;
+  }
+
+  #spread-1 .leg-label {
+    margin-bottom: 3px;
+  }
+
+  #spread-1 .leg-txt {
+    font-size: 9px;
+    line-height: 1.45;
+  }
+
+  .leg-subtitulo,
+  .leg-txt,
+  .leg-indice-name {
+    color: rgba(16,16,16,0.62);
+  }
+
+  .leg-label,
+  .leg-indice-num {
+    color: var(--rojo-f1);
+  }
+
+  .leg-rule {
+    width: 74px;
+    height: 5px;
+    background: var(--rojo-f1);
+    transform: skewX(-18deg);
+    margin-bottom: 14px;
+  }
+
+  .leg-indice {
+    border-top: 3px solid var(--tinta);
+    padding-top: 12px;
+  }
+
+  .leg-indice-titulo {
+    color: var(--tinta);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 1px;
+    margin-bottom: 7px;
+  }
+
+  .leg-indice-grid {
+    gap: 5px 18px;
+  }
+
+  .leg-indice-item {
+    border-bottom: 1px solid rgba(16,16,16,0.12);
+    padding-bottom: 4px;
+  }
+
+  #spread-1 .page:last-child {
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0.32), rgba(0,0,0,0.68)),
+      linear-gradient(90deg, rgba(0,0,0,0.36), rgba(0,0,0,0.12)),
+      url('/img/Galvez autodromo.webp') center center / cover no-repeat;
+    color: var(--blanco);
+  }
+
+  #spread-1 .page:last-child::before {
+    display: none;
+  }
+
+  #spread-1 .page:last-child .portada-stats {
+    inset: 34px 30px 38px !important;
+    height: auto;
+    gap: 10px;
+    z-index: 2;
+  }
+
+  #spread-1 .page:last-child .portada-stat-row {
+    gap: 10px;
+  }
+
+  #spread-1 .page:last-child .portada-stat-item {
+    min-height: 0;
+    padding: 22px 20px;
+    border: 1px solid rgba(255,255,255,0.24);
+    background: rgba(5,5,5,0.62);
+    backdrop-filter: blur(2px);
+  }
+
+  #spread-1 .page:last-child .p-stat-l {
+    color: rgba(255,255,255,0.86);
+  }
+
+  #spread-2 .historia-panoramica {
+    position: absolute;
+    top: 34px;
+    left: 28px;
+    right: 28px;
+    height: 330px;
+    z-index: 1;
+    background:
+      linear-gradient(90deg, rgba(0,0,0,0.5), rgba(0,0,0,0.08) 45%, rgba(0,0,0,0.3)),
+      linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.7)),
+      url('/img/GP arg.webp') center center / cover no-repeat;
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+
+  #spread-2 .page {
+    background: linear-gradient(180deg, #101010 0%, #050505 100%);
+  }
+
+  #spread-3 .page-left {
+    background: url('/img/fc.webp') center center / cover no-repeat;
+  }
+
+  #spread-4 .page-left {
+    background:
+      url('/img/pista arg.webp') center bottom / 100% 50% no-repeat,
+      var(--papel);
+  }
+
+  #spread-5 .page-left {
+    background:
+      linear-gradient(180deg, rgba(245,242,237,0.72) 0%, rgba(245,242,237,0.2) 36%, rgba(245,242,237,0) 55%),
+      url('/img/ROADSHOW.webp') center center / cover no-repeat;
+  }
+
+  #spread-3 .page-left .body-txt {
+    align-self: start;
+    padding: 12px 14px;
+    background: rgba(245,242,237,0.72);
+    border: 1px solid rgba(255,255,255,0.48);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    backdrop-filter: blur(3px);
+  }
+
+  #spread-4 .page-left .body-txt {
+    margin-bottom: 2px;
+  }
+
+  #spread-4 .page-left .fases-grid {
+    margin-top: 0;
+  }
+
+  #spread-2 .page-content {
+    z-index: 2;
+  }
+
+  #spread-2 .page-left .sec-title {
+    color: var(--dorado) !important;
+    transform: translate(28px, 2px);
+    margin-bottom: 0;
+    max-width: calc(100% - 56px);
+  }
+
+  #spread-2 .page-left .sec-tag {
+    position: relative;
+    z-index: 3;
+    width: fit-content;
+    margin-top: 18px;
+    margin-left: 28px;
+    margin-bottom: 6px;
+    padding: 4px 9px 3px;
+    color: var(--dorado) !important;
+    background: rgba(5,5,5,0.78);
+    border-left: 3px solid var(--dorado);
+  }
+
+  #spread-2 .page-left .sec-rule {
+    transform: translate(28px, 2px) skewX(-18deg);
+    margin-bottom: 8px;
+  }
+
+  #spread-2 .page-left .lead {
+    color: rgba(255,255,255,0.78) !important;
+    transform: translateY(-10px);
+    margin-bottom: 2px;
+    margin-left: 28px;
+    max-width: calc(100% - 46px);
+  }
+
+  #spread-2 .running-head-left {
+    color: rgba(255,255,255,0.9) !important;
+  }
+
+  #spread-2 .running-head-right {
+    color: rgba(255,255,255,0.9) !important;
+  }
+
+  #spread-4 .running-head-right {
+    color: rgba(255,255,255,0.9) !important;
+  }
+
+  #spread-2 .historia-timeline {
+    position: absolute;
+    top: 350px;
+    left: 22px;
+    right: 8px;
+    margin: 0;
+    padding-left: 18px;
+  }
+
+  #spread-2 .historia-timeline .tl-item {
+    margin-bottom: 9px;
+  }
+
+  #spread-2 .historia-timeline .tl-year {
+    color: var(--dorado) !important;
+    font-size: 18px;
+  }
+
+  #spread-2 .historia-timeline .tl-desc {
+    color: rgba(255,255,255,0.72) !important;
+    font-size: 8.5px;
+    line-height: 1.35;
+  }
+
+  #spread-2 .historia-texto {
+    margin-top: 338px;
+    padding: 18px 20px 10px;
+    background: rgba(5,5,5,0.72);
+    border-left: 3px solid var(--dorado);
+    backdrop-filter: blur(2px);
+  }
+
+  #spread-2 .historia-texto .body-txt {
+    color: rgba(255,255,255,0.86) !important;
+    font-size: 10px;
+    line-height: 1.58;
+  }
+
+  #spread-2 .page-left .page-content,
+  #spread-3 .page-left .page-content,
+  #spread-4 .page-left .page-content,
+  #spread-5 .page-left .page-content {
+    display: grid;
+    grid-template-rows: auto auto auto auto 1fr;
+    align-content: start;
+  }
+
+  #spread-2 .page-left .page-content::before,
+  #spread-3 .page-left .page-content::before,
+  #spread-4 .page-left .page-content::before,
+  #spread-5 .page-left .page-content::before {
+    content: 'IMAGEN SUGERIDA';
+    height: 96px;
+    margin-bottom: 14px;
+    background:
+      linear-gradient(135deg, rgba(225,6,0,0.82), rgba(15,15,15,0.9)),
+      repeating-linear-gradient(90deg, transparent 0 18px, rgba(255,255,255,0.08) 18px 20px);
+    color: rgba(245,242,237,0.82);
+    display: flex;
+    align-items: flex-end;
+    padding: 14px;
+    font-size: 9px;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+  }
+
+  #spread-3 .page-left .page-content::before,
+  #spread-4 .page-left .page-content::before,
+  #spread-5 .page-left .page-content::before {
+    height: 54px;
+    margin-bottom: 10px;
+    padding: 10px 12px;
+    font-size: 8px;
+  }
+
+  #spread-3 .sec-title,
+  #spread-4 .sec-title,
+  #spread-5 .sec-title {
+    font-size: 44px;
+  }
+
+  #spread-3 .lead,
+  #spread-4 .lead,
+  #spread-5 .lead {
+    font-size: 12.5px;
+    margin-bottom: 8px;
+  }
+
+  #spread-3 .body-txt,
+  #spread-4 .body-txt,
+  #spread-5 .body-txt {
+    font-size: 10.4px;
+    line-height: 1.5;
+    margin-bottom: 7px;
+  }
+
+  #spread-3 .comp-wrap {
+    margin-top: 8px;
+  }
+
+  #spread-3 .comp-panel {
+    padding: 9px 10px;
+  }
+
+  #spread-3 .comp-team {
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+
+  #spread-3 .comp-row-sm {
+    padding: 4px 0;
+  }
+
+  #spread-3 .comp-note {
+    margin-top: 6px;
+    padding: 6px;
+    font-size: 8px;
+    line-height: 1.35;
+  }
+
+  #spread-4 .obras-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+
+  #spread-4 .obra-item {
+    padding: 6px;
+    border: 1px solid rgba(16,16,16,0.12);
+    background: rgba(255,255,255,0.48);
+  }
+
+  #spread-4 .obra-icon {
+    width: 18px;
+    height: 18px;
+    font-size: 8px;
+  }
+
+  #spread-4 .obra-txt {
+    font-size: 8.5px;
+    line-height: 1.35;
+  }
+
+  #spread-2 .page-left .page-content::before {
+    display: none;
+  }
+
+  #spread-3 .page-left .page-content::before {
+    display: none;
+  }
+
+  #spread-4 .page-left .page-content::before {
+    display: none;
+  }
+
+  #spread-5 .page-left .page-content::before {
+    display: none;
+  }
+
+  #spread-2 .page:not(.page-left) .page-content,
+  #spread-3 .page:not(.page-left) .page-content,
+  #spread-4 .page:not(.page-left) .page-content,
+  #spread-5 .page:not(.page-left) .page-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  #spread-2 .page:not(.page-left),
+  #spread-4 .page:not(.page-left) {
+    background: #111;
+    color: var(--blanco);
+  }
+
+  #spread-2 .page:not(.page-left) .body-txt,
+  #spread-2 .page:not(.page-left) .tl-desc,
+  #spread-2 .page:not(.page-left) .quote-src,
+  #spread-4 .page:not(.page-left) .body-txt,
+  #spread-4 .page:not(.page-left) .callout-txt,
+  #spread-4 .page:not(.page-left) .data-label,
+  #spread-4 .page:not(.page-left) .quote-src {
+    color: rgba(245,242,237,0.68);
+  }
+
+  #spread-2 .page:not(.page-left) .quote-block,
+  #spread-4 .page:not(.page-left) .quote-block,
+  #spread-4 .page:not(.page-left) .data-table,
+  #spread-4 .page:not(.page-left) .motogp-callout {
+    background: rgba(255,255,255,0.06);
+    border-color: rgba(255,255,255,0.13);
+    box-shadow: none;
+  }
+
+  #spread-2 .page:not(.page-left) .quote-text,
+  #spread-4 .page:not(.page-left) .quote-text,
+  #spread-4 .page:not(.page-left) .data-val {
+    color: var(--blanco);
+  }
+
+  .impacto-card {
+    background: linear-gradient(135deg, var(--rojo-f1), #740000);
+  }
+
+  .impacto-monto {
+    color: var(--blanco);
+  }
+
+  .cards-2x2 {
+    gap: 10px;
+  }
+
+  .tag-pos {
+    background: rgba(22,130,70,0.12);
+    color: #14763d;
+  }
+
+  .tag-chal {
+    background: rgba(225,6,0,0.1);
+    border-color: rgba(225,6,0,0.28);
+    color: var(--rojo-f1);
+  }
+
+  .cierre-page {
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0.72), rgba(0,0,0,0.9)),
+      radial-gradient(circle at 50% 22%, rgba(225,6,0,0.2), transparent 36%),
+      url('/img/portada.webp') center 62% / cover no-repeat;
+  }
+
+  .cierre-page .cierre-titulo,
+  .cierre-page .cierre-sub,
+  .cierre-page .cierre-edition {
+    text-shadow: 0 2px 14px rgba(0,0,0,0.9);
+  }
+
+  .cierre-bandera {
+    width: 86px;
+    height: 5px;
+  }
+
+  .cierre-titulo {
+    font-size: 72px;
+  }
+
+  /* Legibilidad: las paginas claras usan tinta negra y destacados dorados. */
+  #spread-1 .page-left *,
+  #spread-2 .page-left *,
+  #spread-3 .page *,
+  #spread-4 .page-left *,
+  #spread-5 .page * {
+    color: var(--tinta);
+  }
+
+  /* Numeración visible sobre todas las páginas oscuras. */
+  #spread-0 .page-num,
+  #spread-1 .page:last-child .page-num,
+  #spread-2 .page-num,
+  #spread-4 .page:not(.page-left) .page-num,
+  #spread-5 .page-left .page-num,
+  #spread-6 .page-num {
+    color: rgba(255,255,255,0.78) !important;
+  }
+
+  #spread-5 .page-left .page-num {
+    text-shadow: 0 1px 6px rgba(0,0,0,0.9);
+  }
+
+  #spread-1 .leg-label,
+  #spread-1 .leg-indice-num,
+  #spread-2 .sec-tag,
+  #spread-2 .tl-year,
+  #spread-3 .sec-tag,
+  #spread-3 .sp-tipo,
+  #spread-3 .comp-after,
+  #spread-4 .sec-tag,
+  #spread-4 .fase-title,
+  #spread-5 .sec-tag,
+  #spread-5 .prob-pct,
+  #spread-5 .horizon-label,
+  #spread-5 .tag-chal {
+    color: var(--dorado);
+  }
+
+  #spread-4 .fase-n,
+  #spread-5 .horizon-year {
+    color: rgba(200,168,75,0.16);
+    z-index: 0;
+  }
+
+  #spread-5 .horizon-box > *:not(.horizon-year) {
+    position: relative;
+    z-index: 1;
+  }
+
+  #spread-2 .context-box,
+  #spread-2 .context-box * {
+    color: var(--tinta) !important;
+  }
+
+  #spread-2 .context-label,
+  #spread-2 .context-box strong {
+    color: var(--dorado) !important;
+  }
+
+  #spread-2 .context-box .body-txt {
+    color: rgba(16,16,16,0.78) !important;
+  }
+
+  #spread-1 .opening-line {
+    color: var(--celeste) !important;
+    font-weight: 600;
+  }
+
+  #spread-4 .impacto-card {
+    min-height: 166px;
+    padding: 20px 20px 24px;
+  }
+
+  #spread-4 .impacto-monto {
+    font-size: 50px;
+    line-height: 0.95;
+  }
+
+  #spread-4 .impacto-label {
+    margin-bottom: 10px;
+  }
+
+  #spread-4 .impacto-desc {
+    font-size: 10px;
+    line-height: 1.55;
+    max-width: 92%;
+  }
+
+  #spread-1 .leg-txt,
+  #spread-1 .leg-subtitulo,
+  #spread-1 .leg-indice-name,
+  #spread-2 .body-txt,
+  #spread-2 .tl-desc,
+  #spread-3 .body-txt,
+  #spread-3 .sp-desc,
+  #spread-3 .comp-before,
+  #spread-3 .comp-note,
+  #spread-4 .body-txt,
+  #spread-4 .fase-desc,
+  #spread-4 .obra-txt,
+  #spread-5 .body-txt,
+  #spread-5 .obstacle-desc,
+  #spread-5 .horizon-txt {
+    color: rgba(16,16,16,0.74);
+  }
+
+  #spread-3 .sp-name,
+  #spread-3 .comp-team,
+  #spread-3 .comp-note strong,
+  #spread-4 .obra-txt strong,
+  #spread-5 .quote-text,
+  #spread-5 .horizon-quote,
+  #spread-5 .prob-name {
+    color: var(--tinta);
+  }
+
+  #spread-3 .comp-badge,
+  #spread-3 .comp-badge *,
+  #spread-4 .obra-icon,
+  #spread-4 .obra-icon *,
+  #spread-5 .tag-pos {
+    color: #0a0a0a;
+  }
+
+  #spread-3 .comp-badge[style*="#FF0090"],
+  #spread-3 .comp-badge[style*="#FF0090"] *,
+  #spread-3 .comp-badge[style*="background:#FF0090"],
+  #spread-3 .comp-badge[style*="background:#FF0090"] * {
+    color: #fff;
+  }
+
+  #spread-5 .page-left .sec-title {
+    text-shadow: 0 1px 12px rgba(255,255,255,0.72);
+  }
+
+  #spread-5 .page-left .lead,
+  #spread-5 .page-left > .page-content > .body-txt {
+    align-self: start;
+    padding: 10px 13px;
+    background: rgba(245,242,237,0.76);
+    border: 1px solid rgba(255,255,255,0.5);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    backdrop-filter: blur(3px);
+  }
+
+  #spread-5 .page-left .semaforo-panel {
+    align-self: end;
+    margin-top: 12px;
+    padding: 14px 16px 10px;
+    background: rgba(5,5,5,0.76);
+    border: 1px solid rgba(255,255,255,0.15);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.28);
+    backdrop-filter: blur(4px);
+  }
+
+  #spread-5 .semaforo-panel .divider-label-line {
+    margin-top: 0;
+  }
+
+  #spread-5 .semaforo-panel .divider-label-line::before,
+  #spread-5 .semaforo-panel .divider-label-line::after {
+    background: rgba(255,255,255,0.32);
+  }
+
+  #spread-5 .semaforo-panel .div-label,
+  #spread-5 .semaforo-panel .prob-name {
+    color: rgba(255,255,255,0.9) !important;
+  }
+
+  #spread-5 .semaforo-panel .prob-track {
+    background: rgba(255,255,255,0.22);
+  }
+
+  @media (min-width: 900px) {
+    .spread.single .page {
+      width: 610px;
+      height: 790px;
+    }
+  }
+
+    /* ===== RESPONSIVE ===== */
+
+  /* TABLET 600-899px: scale pages to viewport */
+  @media (max-width: 899px) and (min-width: 600px) {
+    :root {
+      --page-w: calc((100vw - 32px) / 2);
+      --page-h: calc(var(--page-w) * 1.38);
+    }
+    .toolbar { padding: 0 16px; }
+    .toolbar-sections { display: none; }
+    .stage { padding: 16px 0 40px; }
+    .spread.single .page { width: calc(100vw - 32px) !important; }
+    .portada-titulo { font-size: clamp(36px, 6.5vw, 60px) !important; }
+    .portada-izq { padding: 20px !important; }
+    .portada-izq::after { display: none; }
+    .sec-title { font-size: clamp(22px, 3.5vw, 38px); }
+    .cards-2x2 { grid-template-columns: 1fr; gap: 6px; }
+    .fases-grid { grid-template-columns: 1fr; }
+    .sp-grid { grid-template-columns: 1fr; }
+    .comp-wrap { grid-template-columns: 1fr; }
+    .comp-panel-left { border-right: none; border-bottom: 2px solid #005AFF; }
+    .comp-metric { min-width: 44px; }
+    .portada-ghost { font-size: 80px; }
+  }
+
+  /* MOBILE <600px: single magazine pages */
+  @media (max-width: 599px) {
+    body { display: block; background: #1b1b1b; overflow-x: hidden; }
+    .toolbar { padding: 0 16px; height: 52px; }
+    .toolbar-sections { display: none !important; }
+    .toolbar-logo { font-size: 18px; }
+    .page-indicator { min-width: 70px; font-size: 12px; }
+    .nav-btn { width: 32px; height: 32px; font-size: 14px; }
+    .stage { margin-top: 52px; padding: 0; display: block; min-height: auto; }
+    .spread-wrapper { display: none !important; }
+    .mobile-view { display: block !important; width: 100%; max-width: 520px; margin: 0 auto; padding: 20px 14px 40px; }
+    .mv-sheet {
+      display: none;
+      position: relative;
+      min-height: calc(100svh - 132px);
+      background: var(--negro);
+      border: 1px solid rgba(245,242,237,0.22);
+      box-shadow: 0 2px 0 rgba(255,255,255,0.06), 0 16px 32px rgba(0,0,0,0.55);
+    }
+    .mv-sheet.active { display: block; }
+    .mv-portada.mv-sheet.active { display: flex; }
+    .mv-section.mv-sheet { padding: 62px 24px 60px; border-bottom: 1px solid rgba(245,242,237,0.22); }
+    .mv-section.mv-sheet::before, .mv-footer.mv-sheet::before {
+      content: 'COMBUSTIÓN ARGENTINA  /  EDICIÓN ESPECIAL 2026';
+      position: absolute;
+      top: 22px; left: 24px; right: 24px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(116,172,223,0.35);
+      color: var(--celeste);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 10px;
+      letter-spacing: 2px;
+    }
+    .mv-sheet::after {
+      content: attr(data-page);
+      position: absolute;
+      bottom: 20px; right: 24px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 13px;
+      letter-spacing: 2px;
+      color: var(--dorado);
+    }
+    .mv-portada.mv-sheet::after { display: none; }
+    .mv-footer.mv-sheet { padding: 62px 24px 60px; }
+    .mv-cierre.mv-sheet { display: none; }
+    .mv-cierre.mv-sheet.active { display: block; }
+    .mv-band { display: none; }
+
+    .mv-band { height: 4px; background: linear-gradient(90deg, var(--celeste) 33%, #fff 33%, #fff 66%, var(--celeste) 66%); opacity: 0.7; }
+    .mv-portada { position: relative; min-height: calc(100svh - 132px); background: var(--negro); display: flex; flex-direction: column; justify-content: center; padding: 56px 24px 40px; overflow: hidden; }
+    .mv-portada-foto { position: absolute; inset: 0; z-index: 0; background: linear-gradient(90deg, rgba(0,0,0,0.8), rgba(0,0,0,0.28)), linear-gradient(180deg, rgba(0,0,0,0.12) 42%, rgba(0,0,0,0.84) 100%), url('/img/portada.webp') center center / cover no-repeat; }
+    .mv-portada-sol { display: none; }
+    .mv-portada-sol img { width: 100%; height: 100%; object-fit: contain; }
+    .mv-eyebrow { font-size: 9px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--celeste); display: flex; align-items: center; gap: 8px; margin-bottom: 18px; position: relative; z-index: 2; }
+    .mv-eyebrow::before { content: ''; width: 20px; height: 1px; background: var(--celeste); }
+    .mv-titulo { font-family: 'Bebas Neue', sans-serif; font-size: clamp(62px, 18vw, 88px); line-height: 0.88; letter-spacing: 2px; position: relative; z-index: 2; margin-bottom: 18px; }
+    .mv-titulo .tc { color: var(--celeste); display: block; }
+    .mv-titulo .tb { color: var(--blanco); display: block; }
+    .mv-sub { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 15px; line-height: 1.55; color: var(--gris-claro); max-width: 280px; margin-bottom: 22px; position: relative; z-index: 2; }
+    .mv-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--celeste); color: var(--negro); padding: 11px 18px; font-size: 10px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; text-decoration: none; width: fit-content; position: relative; z-index: 2; margin-bottom: 26px; }
+    .mv-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; position: relative; z-index: 2; }
+    .mv-stat { background: rgba(255,255,255,0.04); border: 1px solid var(--gris-medio); padding: 14px; }
+    .mv-stat-n { font-family: 'Bebas Neue', sans-serif; font-size: 36px; color: var(--dorado); line-height: 1; margin-bottom: 3px; }
+    .mv-stat-l { font-size: 8px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gris-claro); line-height: 1.4; }
+
+    .mv-ticker { background: linear-gradient(90deg, var(--celeste-oscuro), var(--celeste)); padding: 9px 0; overflow: hidden; white-space: nowrap; margin: 18px -24px 0; position: relative; z-index: 2; }
+    .mv-ticker-inner { display: inline-block; animation: ticker 25s linear infinite; font-family: 'Bebas Neue', sans-serif; font-size: 12px; letter-spacing: 3px; color: var(--negro); }
+
+    .mv-section { padding: 42px 20px; border-bottom: 1px solid var(--gris-medio); }
+    .mv-section:last-of-type { border-bottom: none; }
+    .mv-sec-tag { font-family: 'Bebas Neue', sans-serif; font-size: 10px; letter-spacing: 4px; color: var(--celeste); margin-bottom: 6px; }
+    .mv-sec-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(32px, 9.5vw, 46px); line-height: 0.92; letter-spacing: 1px; margin-bottom: 10px; }
+    .mv-sec-rule { width: 40px; height: 3px; background: var(--celeste); margin-bottom: 16px; }
+    .mv-lead { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 16px; line-height: 1.55; color: var(--blanco); margin-bottom: 12px; }
+    .mv-body { font-size: 14px; line-height: 1.75; color: rgba(245,242,237,0.72); margin-bottom: 11px; }
+    .mv-body strong { color: var(--blanco); }
+    .mv-historia-foto { width: 100%; aspect-ratio: 2.05 / 1; margin: 15px 0 18px; background: url('/img/GP arg.webp') center center / cover no-repeat; border: 1px solid var(--gris-medio); }
+
+    .mv-quote { background: var(--gris); border-left: 3px solid var(--celeste); padding: 13px 15px; margin: 13px 0; }
+    .mv-quote-text { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 14px; line-height: 1.55; color: var(--blanco); }
+    .mv-quote-src { font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gris-claro); margin-top: 6px; }
+
+    .mv-timeline { padding-left: 20px; position: relative; margin: 16px 0; }
+    .mv-timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: linear-gradient(to bottom, var(--celeste), transparent); }
+    .mv-tl-item { margin-bottom: 16px; position: relative; }
+    .mv-tl-dot { position: absolute; left: -24px; top: 5px; width: 7px; height: 7px; border-radius: 50%; background: var(--celeste); border: 1.5px solid var(--negro); box-shadow: 0 0 0 1px var(--celeste); }
+    .mv-tl-year { font-family: 'Bebas Neue', sans-serif; font-size: 23px; color: var(--dorado); line-height: 1; }
+    .mv-tl-desc { font-size: 12px; color: rgba(245,242,237,0.65); line-height: 1.55; margin-top: 3px; }
+
+    .mv-context { background: var(--gris); padding: 15px; margin-top: 13px; }
+    .mv-context-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--dorado); margin-bottom: 7px; }
+
+    .mv-div-label { display: flex; align-items: center; gap: 10px; margin: 16px 0; }
+    .mv-div-label::before, .mv-div-label::after { content: ''; flex: 1; height: 1px; background: var(--gris-medio); }
+    .mv-div-text { font-size: 8px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gris-claro); white-space: nowrap; }
+
+    .mv-sp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin: 13px 0; }
+    .mv-sp-card { background: var(--gris); padding: 11px; }
+    .mv-sp-name { font-family: 'Bebas Neue', sans-serif; font-size: 14px; letter-spacing: 1px; color: var(--blanco); margin-bottom: 2px; }
+    .mv-sp-tipo { font-size: 7.5px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--dorado); margin-bottom: 5px; }
+    .mv-sp-desc { font-size: 11px; line-height: 1.5; color: rgba(245,242,237,0.55); }
+
+    .mv-comp { border: 1px solid var(--gris-medio); margin: 13px 0; }
+    .mv-comp-panel { background: var(--gris); padding: 13px; position: relative; }
+    .mv-comp-panel + .mv-comp-panel { border-top: 1px solid var(--gris-medio); }
+    .mv-comp-bar { position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+    .mv-comp-team { font-family: 'Bebas Neue', sans-serif; font-size: 17px; letter-spacing: 2px; margin-bottom: 9px; margin-top: 6px; }
+    .mv-comp-row { display: flex; align-items: center; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid var(--gris-medio); gap: 5px; }
+    .mv-comp-row:last-of-type { border-bottom: none; }
+    .mv-comp-metric { font-size: 8.5px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gris-claro); flex-shrink: 0; }
+    .mv-comp-vals { display: flex; align-items: center; gap: 5px; font-family: 'Bebas Neue', sans-serif; }
+    .mv-comp-before { font-size: 13px; color: rgba(245,242,237,0.4); }
+    .mv-comp-after { font-size: 15px; color: var(--dorado); }
+    .mv-comp-badge { font-size: 9px; padding: 2px 5px; font-weight: 700; white-space: nowrap; font-family: 'DM Sans', sans-serif; }
+    .mv-comp-note { margin-top: 9px; padding: 9px; font-size: 11px; line-height: 1.5; color: rgba(245,242,237,0.65); border: 1px solid; }
+    .mv-comp-note strong { color: var(--blanco); }
+
+    .mv-fases { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin: 13px 0; }
+    .mv-fase { background: var(--gris); padding: 13px; position: relative; }
+    .mv-fase-n { font-family: 'Bebas Neue', sans-serif; font-size: 42px; color: rgba(116,172,223,0.12); position: absolute; top: 4px; right: 6px; line-height: 1; }
+    .mv-fase-title { font-family: 'Bebas Neue', sans-serif; font-size: 13px; letter-spacing: 2px; color: var(--dorado); margin-bottom: 5px; }
+    .mv-fase-desc { font-size: 10px; color: rgba(245,242,237,0.65); line-height: 1.55; }
+
+    .mv-obras { list-style: none; margin: 13px 0; }
+    .mv-obra { display: flex; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--gris-medio); align-items: flex-start; }
+    .mv-obra-icon { width: 26px; height: 26px; background: var(--celeste); display: flex; align-items: center; justify-content: center; font-size: 11px; flex-shrink: 0; font-weight: 700; font-family: 'Bebas Neue', sans-serif; color: var(--negro); }
+    .mv-obra-txt { font-size: 12px; line-height: 1.5; color: rgba(245,242,237,0.7); }
+    .mv-obra-txt strong { color: var(--blanco); }
+
+    .mv-impacto { background: linear-gradient(135deg, #8b6a1a, var(--dorado)); padding: 20px 17px; position: relative; overflow: hidden; margin-bottom: 2px; }
+    .mv-impacto::before { content: '$'; font-family: 'Bebas Neue', sans-serif; font-size: 96px; color: rgba(255,255,255,0.08); position: absolute; right: -8px; bottom: -14px; line-height: 1; }
+    .mv-impacto-monto { font-family: 'Bebas Neue', sans-serif; font-size: 50px; color: var(--blanco); line-height: 1; display: block; }
+    .mv-impacto-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.7); display: block; margin-bottom: 7px; }
+    .mv-impacto-desc { font-size: 11px; color: rgba(255,255,255,0.85); line-height: 1.5; position: relative; z-index: 1; }
+
+    .mv-data-table { background: var(--gris); padding: 13px; margin: 2px 0; }
+    .mv-data-row { display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid var(--gris-medio); font-size: 12px; }
+    .mv-data-row:last-child { border-bottom: none; }
+    .mv-data-label { color: rgba(245,242,237,0.55); }
+    .mv-data-val { font-weight: 500; }
+
+    .mv-callout { background: rgba(200,168,75,0.08); border: 1px solid rgba(200,168,75,0.3); padding: 12px 14px; margin: 11px 0; }
+    .mv-callout-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--dorado); margin-bottom: 5px; }
+    .mv-callout-txt { font-size: 12px; color: rgba(245,242,237,0.75); line-height: 1.55; }
+
+    .mv-prob { margin: 13px 0; }
+    .mv-prob-row { margin-bottom: 12px; }
+    .mv-prob-head { display: flex; justify-content: space-between; margin-bottom: 5px; }
+    .mv-prob-name { font-size: 11px; font-weight: 500; text-transform: uppercase; color: var(--blanco); letter-spacing: 0.5px; }
+    .mv-prob-pct { font-family: 'Bebas Neue', sans-serif; font-size: 15px; color: var(--dorado); }
+    .mv-prob-track { height: 5px; background: var(--gris-medio); overflow: hidden; }
+    .mv-prob-fill { height: 100%; background: linear-gradient(90deg, var(--celeste-oscuro), var(--celeste)); transition: width 1.5s ease; }
+
+    .mv-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 13px 0; }
+    .mv-card { border: 1px solid var(--gris-medio); padding: 11px 12px; }
+    .mv-card-tag-pos { display: inline-block; background: rgba(0,120,0,0.2); border: 1px solid rgba(0,180,0,0.3); color: #5fca5f; font-size: 7px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; padding: 2px 5px; margin-bottom: 5px; }
+    .mv-card-tag-chal { display: inline-block; background: rgba(120,80,0,0.2); border: 1px solid rgba(200,168,75,0.3); color: var(--dorado); font-size: 7px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; padding: 2px 5px; margin-bottom: 5px; }
+    .mv-card-title { font-family: 'Bebas Neue', sans-serif; font-size: 12px; letter-spacing: 1px; margin-bottom: 4px; }
+    .mv-card-desc { font-size: 10px; color: rgba(245,242,237,0.6); line-height: 1.5; }
+
+    .mv-horizon { background: var(--gris); padding: 17px; margin-top: 13px; position: relative; overflow: hidden; }
+    .mv-horizon-year { position: absolute; right: -6px; bottom: -6px; font-family: 'Bebas Neue', sans-serif; font-size: 68px; color: rgba(116,172,223,0.08); line-height: 1; }
+    .mv-horizon-label { font-family: 'Bebas Neue', sans-serif; font-size: 10px; letter-spacing: 3px; color: var(--celeste); margin-bottom: 7px; }
+    .mv-horizon-quote { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 14px; line-height: 1.5; color: var(--blanco); margin-bottom: 8px; position: relative; z-index: 1; }
+    .mv-horizon-txt { font-size: 12px; line-height: 1.7; color: rgba(245,242,237,0.7); position: relative; z-index: 1; }
+
+    .mv-cierre { background: linear-gradient(180deg, rgba(0,0,0,0.72), rgba(0,0,0,0.9)), url('/img/portada.webp') center 62% / cover no-repeat; padding: 60px 22px; text-align: center; position: relative; overflow: hidden; }
+    .mv-cierre::before { content: 'ARGENTINA'; font-family: 'Bebas Neue', sans-serif; font-size: 96px; color: rgba(255,255,255,0.025); position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); white-space: nowrap; pointer-events: none; line-height: 1; }
+    .mv-bandera { display: flex; width: 48px; height: 3px; margin: 0 auto 17px; }
+    .mv-bf-c { flex: 1; background: #74acdf; }
+    .mv-bf-b { flex: 1; background: #fff; }
+    .mv-cierre-titulo { font-family: 'Bebas Neue', sans-serif; font-size: clamp(40px, 11.5vw, 64px); line-height: 0.92; margin-bottom: 13px; position: relative; z-index: 1; }
+    .mv-cierre-sub { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 14px; color: rgba(245,242,237,0.8); max-width: 290px; margin: 0 auto 17px; line-height: 1.5; position: relative; z-index: 1; }
+    .mv-cierre-edition { font-family: 'Bebas Neue', sans-serif; font-size: 10px; letter-spacing: 3px; color: rgba(245,242,237,0.35); position: relative; z-index: 1; }
+
+    .mv-footer { background: var(--negro); border-top: 1px solid var(--gris-medio); padding: 30px 20px; }
+    .mv-footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 25px; letter-spacing: 4px; color: var(--dorado); margin-bottom: 5px; }
+    .mv-footer-tagline { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 12px; color: rgba(245,242,237,0.5); line-height: 1.6; margin-bottom: 16px; }
+    .mv-footer-divider { height: 1px; background: var(--gris-medio); margin-bottom: 14px; }
+    .mv-footer-label { font-size: 8px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--celeste); margin-bottom: 10px; }
+    .mv-footer-list { list-style: none; }
+    .mv-footer-list li { font-size: 13px; color: rgba(245,242,237,0.55); display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .mv-footer-list li::before { content: ''; display: block; width: 12px; height: 1px; background: var(--dorado); flex-shrink: 0; }
+    .mv-footer-sources { margin-top: 16px; font-size: 9px; letter-spacing: 1px; color: rgba(245,242,237,0.25); line-height: 1.7; }
+
+    .mv-leg-block { margin-bottom: 14px; }
+    .mv-leg-label { font-size: 8px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--celeste); margin-bottom: 5px; }
+    .mv-leg-txt { font-size: 12px; line-height: 1.65; color: rgba(245,242,237,0.55); }
+    .mv-leg-txt strong { color: rgba(245,242,237,0.8); }
+    .mv-leg-indice { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--gris-medio); }
+    .mv-leg-indice-titulo { font-size: 8px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--dorado); margin-bottom: 9px; }
+    .mv-leg-item { display: flex; align-items: baseline; gap: 7px; margin-bottom: 7px; font-size: 13px; }
+    .mv-leg-num { font-family: 'Bebas Neue', sans-serif; font-size: 15px; color: var(--celeste); }
+    .mv-leg-name { color: rgba(245,242,237,0.65); }
+  }
+
+  .mobile-view { display: none; }
+
+  @media (max-width: 599px) {
+    body { background: #111; }
+    .page-indicator { min-width: 92px; }
+    .stage { display: flex; justify-content: center; padding: 20px 14px 40px; min-height: calc(100vh - 52px); }
+    .spread-wrapper { display: block !important; width: var(--mobile-page-width, 610px); zoom: var(--mobile-page-scale, 0.6); }
+    .spread { width: max-content; }
+    .spread::after { display: none; }
+    .spread-container .page { display: none; }
+    .spread-container .page.mobile-visible { display: block; }
+    .spread.single .page { width: 610px; height: 790px; }
+    #spread-0 .portada-titulo { font-size: 80px !important; }
+    .page-left { border-right: 0; }
+    .mobile-view { display: none !important; }
+  }
+
+  
+</style>
