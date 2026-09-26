@@ -1,97 +1,248 @@
 ---
-const brevoEndpoint = import.meta.env.PUBLIC_BREVO_FORM_ENDPOINT;
+const brevoFormEndpoint =
+  'https://6ecf6b7e.sibforms.com/serve/MUIFAAF0mxZrdfT1zHNO-hhDzNUvr94UsZnXwQ1pSdZa4uGZDakBDag2zwHG_QrXiPlJCkzT9fRSNfBxBT79DTDlGL9M7jWzY1UW0LCfywlrHCl1qGw2axMemi4VzCVjm1YF2bU-6_KRxgMX3Jd9_Vdq6ZrcGcLNl_aXvqUThH3zZlY6pUW2XB0a4cxrSUMc3_f0S3F_Q6lf8MzbDQ==';
 ---
 
-<form class="newsletter-form" data-newsletter-form data-endpoint={brevoEndpoint ?? ''}>
-  <label class="sr-only" for="newsletter-email">Email para recibir novedades</label>
-  <input id="newsletter-email" name="email" type="email" placeholder="tu@email.com" autocomplete="email" required />
-  <button type="submit">Avisame</button>
-  <p class="form-status" data-form-status role="status" aria-live="polite">
-    Configurá Brevo para activar el alta real.
-  </p>
-</form>
+<link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css" />
+
+<div class="sib-form newsletter-brevo">
+  <div id="sib-form-container" class="sib-form-container newsletter-form-container">
+    <div
+      id="error-message"
+      class="sib-form-message-panel form-status form-status-error"
+      role="alert"
+      aria-live="assertive"
+    >
+      <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+        <span class="sib-form-message-panel__inner-text">No pudimos validar tu suscripción. Probá de nuevo en unos minutos.</span>
+      </div>
+    </div>
+
+    <div id="success-message" class="sib-form-message-panel form-status form-status-success" role="status" aria-live="polite">
+      <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+        <span class="sib-form-message-panel__inner-text">Listo. Cuando salga el próximo tomo te avisamos.</span>
+      </div>
+    </div>
+
+    <div id="sib-container" class="sib-container--large sib-container--vertical newsletter-sib-container">
+      <form id="sib-form" class="newsletter-form" method="POST" action={brevoFormEndpoint} data-type="subscription">
+        <div class="sib-input sib-form-block">
+          <div class="form__entry entry_block">
+            <div class="form__label-row">
+              <label class="entry__label sr-only" for="EMAIL" data-required="*">Email para recibir novedades</label>
+              <div class="entry__field">
+                <input
+                  id="EMAIL"
+                  class="input"
+                  name="EMAIL"
+                  type="email"
+                  placeholder="tu@email.com"
+                  autocomplete="email"
+                  data-required="true"
+                  required
+                />
+              </div>
+            </div>
+            <label class="entry__error entry__error--primary form-status form-status-error"></label>
+          </div>
+        </div>
+        <button class="sib-form-block__button sib-form-block__button-with-loader" form="sib-form" type="submit">Avisame</button>
+        <input type="text" name="email_address_check" value="" class="input--hidden" />
+        <input type="hidden" name="locale" value="es" />
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="newsletter-toast" data-newsletter-toast data-state="idle" hidden>
+  <div class="newsletter-toast-copy">
+    <span class="newsletter-toast-label" data-newsletter-toast-label>Newsletter</span>
+    <p data-newsletter-feedback role="status" aria-live="polite"></p>
+  </div>
+  <button class="newsletter-toast-close" type="button" data-newsletter-toast-close aria-label="Cerrar aviso">×</button>
+</div>
 
 <script>
-  const form = document.querySelector('[data-newsletter-form]');
-  const status = document.querySelector('[data-form-status]');
+  window.REQUIRED_CODE_ERROR_MESSAGE = 'Elegí un código de país';
+  window.LOCALE = 'es';
+  window.EMAIL_INVALID_MESSAGE =
+    window.SMS_INVALID_MESSAGE =
+    window.GENERIC_INVALID_MESSAGE =
+    window.INVALID_NUMBER =
+      'La información que ingresaste no es válida. Revisá el formato e intentá de nuevo.';
+  window.REQUIRED_ERROR_MESSAGE = 'Este campo no puede quedar vacío.';
+  window.INVALID_DATE = 'Ingresá una fecha válida';
+  window.REQUIRED_MULTISELECT_MESSAGE = 'Seleccioná al menos una opción';
+  window.translation = {
+    common: {
+      selectedList: '{quantity} lista seleccionada',
+      selectedLists: '{quantity} listas seleccionadas',
+      selectedOption: '{quantity} seleccionado',
+      selectedOptions: '{quantity} seleccionados',
+    },
+  };
+  window.AUTOHIDE = false;
+</script>
 
-  form?.addEventListener('submit', async (event) => {
+<script>
+  const newsletterForm = document.querySelector('#sib-form');
+  const newsletterFeedback = document.querySelector('[data-newsletter-feedback]');
+  const newsletterToast = document.querySelector('[data-newsletter-toast]');
+  const newsletterToastLabel = document.querySelector('[data-newsletter-toast-label]');
+  const newsletterToastClose = document.querySelector('[data-newsletter-toast-close]');
+  let newsletterTimeout;
+  let newsletterToastTimeout;
+
+  const toastLabels = {
+    error: 'Revisá el envío',
+    pending: 'Enviando',
+    success: 'Solicitud enviada',
+  };
+
+  const hideNewsletterToast = () => {
+    if (!(newsletterToast instanceof HTMLElement)) return;
+
+    newsletterToast.hidden = true;
+    newsletterToast.dataset.state = 'idle';
+  };
+
+  const setNewsletterFeedback = (message, state = 'pending') => {
+    if (!(newsletterFeedback instanceof HTMLElement) || !(newsletterToast instanceof HTMLElement)) return;
+
+    newsletterFeedback.textContent = message;
+    newsletterToast.dataset.state = state;
+    newsletterToast.hidden = false;
+
+    if (newsletterToastLabel instanceof HTMLElement) {
+      newsletterToastLabel.textContent = toastLabels[state] ?? 'Newsletter';
+    }
+
+    window.clearTimeout(newsletterToastTimeout);
+    if (state === 'success') {
+      newsletterToastTimeout = window.setTimeout(hideNewsletterToast, 9000);
+    }
+  };
+
+  newsletterToastClose?.addEventListener('click', hideNewsletterToast);
+
+  newsletterForm?.addEventListener('submit', async (event) => {
     event.preventDefault();
 
-    if (!(form instanceof HTMLFormElement) || !(status instanceof HTMLElement)) return;
+    if (!(newsletterForm instanceof HTMLFormElement)) return;
 
-    const endpoint = form.dataset.endpoint;
-    const data = new FormData(form);
-    const email = String(data.get('email') || '').trim();
-    const button = form.querySelector('button');
-
-    if (!endpoint) {
-      status.textContent = 'El formulario ya esta listo, pero falta configurar Brevo.';
+    if (!newsletterForm.reportValidity()) {
+      setNewsletterFeedback('Revisá el email antes de enviar.', 'error');
       return;
     }
 
-    if (!email) {
-      status.textContent = 'Ingresá un email válido.';
-      return;
-    }
-
+    const button = newsletterForm.querySelector('button');
+    const controller = new AbortController();
     button?.setAttribute('disabled', 'true');
-    status.textContent = 'Enviando alta...';
+    setNewsletterFeedback('Enviando suscripción...', 'pending');
+
+    window.clearTimeout(newsletterTimeout);
+    newsletterTimeout = window.setTimeout(() => {
+      controller.abort();
+    }, 15000);
 
     try {
-      const response = await fetch(endpoint, {
+      await fetch(newsletterForm.action, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, source: 'combustion-argentina-home' }),
+        body: new FormData(newsletterForm),
+        mode: 'no-cors',
+        signal: controller.signal,
       });
-
-      if (!response.ok) throw new Error('Newsletter request failed');
-
-      form.reset();
-      status.textContent = 'Listo. Cuando salga el próximo tomo te avisamos.';
+      newsletterForm.reset();
+      setNewsletterFeedback('Solicitud enviada a Brevo. Revisá tu email para confirmar la suscripción.', 'success');
     } catch {
-      status.textContent = 'No pudimos registrar el email. Probá de nuevo en unos minutos.';
+      setNewsletterFeedback('No recibimos respuesta de Brevo. Revisá tu conexión y probá de nuevo.', 'error');
     } finally {
+      window.clearTimeout(newsletterTimeout);
       button?.removeAttribute('disabled');
     }
   });
 </script>
 
 <style>
+  .newsletter-brevo,
+  .newsletter-form-container,
+  .newsletter-sib-container {
+    width: min(620px, 100%);
+    margin: 0 auto;
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    text-align: center !important;
+  }
+
+  .newsletter-brevo {
+    font-family: inherit !important;
+  }
+
+  :global(.sib-form-message-panel) {
+    display: none;
+  }
+
   .newsletter-form {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
     gap: 0;
-    width: min(620px, 100%);
+    width: 100%;
     margin: 0 auto;
     border: 1px solid rgba(200, 169, 81, 0.35);
-    background: rgba(10, 10, 10, 0.72);
+    background: rgba(10, 10, 10, 0.72) !important;
   }
 
-  input {
+  .sib-input,
+  .sib-form-block,
+  .form__entry,
+  .form__label-row,
+  .entry__field {
+    min-width: 0;
+    margin: 0;
+    padding: 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+
+  input:not(.input--hidden) {
+    width: 100%;
     min-height: 58px;
-    border: 0;
-    background: transparent;
-    color: var(--brand-paper);
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    color: var(--brand-paper) !important;
     padding: 0 22px;
-    outline: none;
+    outline: none !important;
+    font-family: inherit !important;
+    font-size: 16px !important;
   }
 
-  input:focus {
+  input:not(.input--hidden)::placeholder {
+    color: rgba(245, 239, 229, 0.58) !important;
+  }
+
+  input:not(.input--hidden):focus {
     box-shadow: inset 0 0 0 2px rgba(116, 172, 223, 0.5);
   }
 
   button {
     min-height: 58px;
-    border: 0;
-    background: var(--brand-gold);
-    color: var(--brand-black);
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: var(--brand-gold) !important;
+    color: var(--brand-black) !important;
     cursor: pointer;
     padding: 0 26px;
     font-size: 12px;
     font-weight: 800;
     letter-spacing: 2px;
     text-transform: uppercase;
+    font-family: inherit !important;
+    line-height: 1 !important;
   }
 
   button:disabled {
@@ -101,12 +252,96 @@ const brevoEndpoint = import.meta.env.PUBLIC_BREVO_FORM_ENDPOINT;
 
   .form-status {
     grid-column: 1 / -1;
-    min-height: 22px;
-    margin: 8px 0 0;
-    padding: 0 4px 12px;
+    min-height: 20px;
+    margin: 10px 0 0;
+    padding: 0 4px;
     color: var(--brand-muted);
     font-size: 13px;
     text-align: center;
+  }
+
+  .form-status-error {
+    color: #f2b8b8;
+  }
+
+  .form-status-success {
+    color: #a8e6bd;
+  }
+
+  .input--hidden {
+    display: none;
+  }
+
+  .newsletter-toast {
+    position: fixed;
+    right: max(24px, env(safe-area-inset-right));
+    bottom: max(24px, env(safe-area-inset-bottom));
+    z-index: 1000;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 18px;
+    align-items: start;
+    width: min(420px, calc(100vw - 32px));
+    padding: 18px 18px 18px 20px;
+    border: 1px solid rgba(200, 169, 81, 0.45);
+    background: rgba(8, 8, 8, 0.94);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.42);
+    color: var(--brand-paper);
+  }
+
+  .newsletter-toast[hidden] {
+    display: none;
+  }
+
+  .newsletter-toast::before {
+    content: '';
+    position: absolute;
+    inset: -1px auto -1px -1px;
+    width: 4px;
+    background: var(--brand-gold);
+  }
+
+  .newsletter-toast[data-state='success']::before {
+    background: #74acdf;
+  }
+
+  .newsletter-toast[data-state='error']::before {
+    background: #d85d4f;
+  }
+
+  .newsletter-toast-label {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--brand-gold);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
+  .newsletter-toast p {
+    margin: 0;
+    color: var(--brand-paper);
+    font-size: 14px;
+    line-height: 1.45;
+    text-align: left;
+  }
+
+  .newsletter-toast-close {
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    min-height: 0;
+    padding: 0;
+    border: 1px solid rgba(245, 239, 229, 0.18) !important;
+    background: transparent !important;
+    color: var(--brand-paper) !important;
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1;
   }
 
   .sr-only {
@@ -129,9 +364,16 @@ const brevoEndpoint = import.meta.env.PUBLIC_BREVO_FORM_ENDPOINT;
       background: transparent;
     }
 
-    input {
+    input:not(.input--hidden) {
       border: 1px solid rgba(200, 169, 81, 0.35);
       background: rgba(10, 10, 10, 0.72);
+    }
+
+    .newsletter-toast {
+      right: 16px;
+      bottom: 16px;
+      left: 16px;
+      width: auto;
     }
   }
 </style>

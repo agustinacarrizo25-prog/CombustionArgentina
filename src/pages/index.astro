@@ -117,14 +117,22 @@ import { editions, featuredStats } from '@data/editions';
         {editions.map((edition) => (
           <article class="edition-card">
             <a href={edition.href} class="edition-image" aria-label={`Abrir ${edition.title}`}>
-              <img
-                src={edition.image}
-                alt=""
-                width={edition.width}
-                height={edition.height}
-                loading="lazy"
-                decoding="async"
-              />
+              {edition.isPublished && edition.image ? (
+                <img
+                  src={edition.image}
+                  alt=""
+                  width={edition.width}
+                  height={edition.height}
+                  loading="lazy"
+                  decoding="async"
+                />
+              ) : (
+                <div class="edition-placeholder" aria-hidden="true">
+                  <small>Combustión Argentina</small>
+                  <strong>{edition.number}</strong>
+                  <em>Tomo en desarrollo</em>
+                </div>
+              )}
               <span>{edition.status}</span>
             </a>
             <div class="edition-body">
@@ -375,14 +383,65 @@ import { editions, featuredStats } from '@data/editions';
     text-decoration: none;
   }
 
-  .edition-image img {
+  .edition-image img,
+  .edition-placeholder {
     width: 100%;
     height: 100%;
-    object-fit: cover;
     transition: transform 220ms ease;
   }
 
-  .edition-image:hover img {
+  .edition-image img {
+    object-fit: cover;
+  }
+
+  .edition-placeholder {
+    display: grid;
+    place-items: center;
+    gap: 10px;
+    padding: 34px 22px;
+    overflow: hidden;
+    border: 1px solid rgba(116, 172, 223, 0.18);
+    background:
+      linear-gradient(135deg, rgba(116, 172, 223, 0.18), transparent 38%),
+      linear-gradient(315deg, rgba(200, 169, 81, 0.14), transparent 42%),
+      repeating-linear-gradient(90deg, rgba(245, 240, 232, 0.055) 0 1px, transparent 1px 18px),
+      #101010;
+    color: var(--brand-paper);
+    text-align: center;
+  }
+
+  .edition-placeholder small,
+  .edition-placeholder em {
+    position: relative;
+    z-index: 1;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .edition-placeholder small {
+    color: var(--brand-sky);
+  }
+
+  .edition-placeholder strong {
+    position: relative;
+    z-index: 1;
+    color: rgba(245, 240, 232, 0.9);
+    font-family: var(--font-display);
+    font-size: 88px;
+    font-weight: 900;
+    line-height: 0.78;
+    text-shadow: 0 8px 30px rgba(0, 0, 0, 0.42);
+  }
+
+  .edition-placeholder em {
+    color: var(--brand-gold);
+  }
+
+  .edition-image:hover img,
+  .edition-image:hover .edition-placeholder {
     transform: scale(1.03);
   }
 
