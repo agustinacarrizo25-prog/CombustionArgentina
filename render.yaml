@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: combustion-argentina
+    runtime: static
+    buildCommand: pnpm run build
+    staticPublishPath: ./dist
